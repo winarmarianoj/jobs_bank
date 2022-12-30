@@ -5,6 +5,7 @@ import 'package:jobs_bank/constant/constantsText.dart';
 import 'dart:math';
 
 import 'package:jobs_bank/cubit/userCubit.dart';
+import 'package:jobs_bank/screens/home/home.dart';
 import 'package:jobs_bank/screens/welcome/classes/animateCar.dart';
 import 'package:jobs_bank/screens/welcome/classes/animateCar64.dart';
 import 'package:jobs_bank/screens/welcome/classes/animateFiat500.dart';

@@ -1,18 +1,15 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/cubit/userCubit.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/providers/loginFormProvider.dart';
 import 'package:jobs_bank/providers/registerFormProvider.dart';
 import 'package:http/http.dart' as http;
-import 'package:jobs_bank/widgets/button/bounceButton.dart';
-import 'package:jobs_bank/widgets/message/customPopup.dart';
 
 class AuthenticationService {
   Future<LoginFormProvider?> getLoginUser(LoginFormProvider loginForm, BuildContext context) async{    
-    final usuarioCubit = context.read<UserCubit>();  
+    final userCubit = context.read<UserCubit>();  
     var url = Uri.parse('http://10.0.2.2:8082/auth/loginflutter');
     final response = await http.post(url,
     headers: <String, String>{
@@ -28,7 +25,7 @@ class AuthenticationService {
       String body = utf8.decode(response.bodyBytes);      
       loginForm.isLoading = true;
       User newUser = getNewUser(body);
-      usuarioCubit.createUser(newUser);
+      userCubit.createUser(newUser);
     }else{
       print("Fallo traer la lista de Joboffers");      
     }
@@ -36,7 +33,7 @@ class AuthenticationService {
   }
 
   Future<RegisterFormProvider?> registerApplicant(RegisterFormProvider register, BuildContext context) async{
-    final usuarioCubit = context.read<UserCubit>();  
+    final userCubit = context.read<UserCubit>();  
     var url = Uri.parse('http://10.0.2.2:8082/applicant/');
     final response = await http.post(url,
     headers: <String, String>{
@@ -60,7 +57,7 @@ class AuthenticationService {
       String body = utf8.decode(response.bodyBytes);      
       register.isLoading = true;
       User newUser = getNewUser(body);
-      usuarioCubit.createUser(newUser);
+      userCubit.createUser(newUser);
     }else{
       print("Fallo el registro del estudiante.");       
     }
@@ -68,7 +65,7 @@ class AuthenticationService {
   }
 
   Future<RegisterFormProvider?> registerPublisher(RegisterFormProvider register, BuildContext context) async{
-    final usuarioCubit = context.read<UserCubit>();
+    final userCubit = context.read<UserCubit>();
     var url = Uri.parse('http://10.0.2.2:8082/publisher/');
     final response = await http.post(url,
     headers: <String, String>{
@@ -90,7 +87,7 @@ class AuthenticationService {
       String body = utf8.decode(response.bodyBytes);
       register.isLoading = true;
       User newUser = getNewUser(body);
-      usuarioCubit.createUser(newUser);
+      userCubit.createUser(newUser);
     }else{
       print("Fallo el registro del publicador.");   
     }    

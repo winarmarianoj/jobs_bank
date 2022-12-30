@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jobs_bank/screens/ui/home/myDrawer.dart';
-
+import 'package:jobs_bank/screens/components/joboffer/bodyHome.dart';
+import 'package:jobs_bank/widgets/userActive/homeDrawer.dart';
 class Home extends StatelessWidget{      
   const Home({Key? key}) : super(key: key);
 
@@ -14,7 +14,6 @@ class Home extends StatelessWidget{
   }
   AppBar EmptyAppBar(BuildContext context){
     return AppBar(
-      //backgroundColor: themeAppBarHome,
       elevation: 10,
       title: Text("Bolsa de Trabajo UTN"),
     );

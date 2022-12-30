@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 const kDefaultPaddin = 10.0;
+const defaultPAddinBodyHome = 3.0;
+const defaultPaddingLeftAndRight = 5.0;
+const childAspectRatioBodyHome = 0.75;
 const defaultPaddingTextObjectsHome = 4.0;
 const defaultPaddingImageObjectsHome = 0.5;
 const defaultPaddingHome = 0.9;
@@ -43,6 +46,7 @@ const textContactEmail = "shopofvehicles@algunlugar.com.ar";
 const textInitialsWebSiteName = 'SoV';
 const textDarkModeTheme = 'Dark Mode';
 const textCustomModeTheme = 'Custom Theme';
+const textLogin = 'Login - Register';
 const textLogout = 'Logout';
 
 const textSelectedRoleInRegister = 'Seleccionar uno...';
@@ -92,7 +96,7 @@ const textButtonShowDialogRegister = 'OK';
 const textWelcomeTitleAnimation = "Bienvenido!!!";
 
 //TODO Main
-const textTitleWebSite = 'Shop of Vehicles';
+const textTitleWebSite = 'Jobs Bank';
 const textInitialRouteApp = 'login';
 
 //TODO Title AppBar

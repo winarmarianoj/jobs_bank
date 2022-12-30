@@ -9,32 +9,7 @@ import 'package:jobs_bank/widgets/routes/optionRoutesPublisher.dart';
 import 'package:jobs_bank/widgets/routes/optionRoutesUtn.dart';
 import 'package:jobs_bank/widgets/text/myText.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../models/User.dart';
-
-class HomeDrawer extends StatelessWidget {
-  HomeDrawer({Key? key, }) : super(key: key);  
-
-  @override
-  Widget build(BuildContext context) {
-
-    return BlocBuilder<UserCubit, UserState>(
-      builder: ( _ , state) {
-
-        switch ( state.runtimeType ) {
-          
-          case UserInitial:
-            return Center(child: Text(textNoDataUserInitial));
-
-          case UserActive:
-            return BodyDrawer(user: (state as UserActive).user, );
-
-          default:
-            return Center( child: Text(textUnknownState));
-        }
-    });
-  }  
-}
 
 class BodyDrawer extends StatelessWidget{
   final User user;
@@ -93,9 +68,11 @@ class BodyDrawer extends StatelessWidget{
               color: accentColor,
               fontWeight: FontWeight.bold,
             ), 
+
             user.role == "APPLICANT" ? Expanded(child: OptionRoutesApplicant()) 
             : user.role == "PUBLISHER" ? Expanded(child: OptionRoutesPublisher())
             : Expanded(child: OptionRoutesUtn()),
+            
             const SizedBox(height: 5),
             ListTile(
               leading: Icon( Icons.lightbulb_outline, color: accentColor ),
@@ -121,6 +98,18 @@ class BodyDrawer extends StatelessWidget{
                   onChanged: ( value ) => appTheme.customTheme = value
                 ),
               ),
+            ),
+            ListTile(
+              leading: Icon(Icons.login, color: accentColor ),
+              title: Text(textLogin),
+              onTap: () {                
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginScreen(),
+                  ),
+                );
+              }
             ),
             ListTile(
               leading: Icon(Icons.logout, color: accentColor ),

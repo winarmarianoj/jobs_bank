@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/cubit/userCubit.dart';
+import 'package:jobs_bank/screens/home/home.dart';
 import 'package:jobs_bank/screens/welcome/headerPage.dart';
 import 'package:jobs_bank/theme/menuTheme.dart';
 import 'package:jobs_bank/theme/themeChange.dart';
@@ -33,8 +34,8 @@ class MyApp extends StatelessWidget {
           return MaterialApp(            
             debugShowCheckedModeBanner: false,
             title: textTitleWebSite,
-            initialRoute: textInitialRouteApp,
-            home: HeadersPage(),
+            //initialRoute: textInitialRouteApp,
+            home: Home(),
             theme: appTheme.darkTheme ? themeDarkTwo : themeLightTwo, 
             //theme: appTheme.darkTheme ? themeDarkOne : themeLightOne, 
             //theme: appTheme.darkTheme ? ThemeData.dark() : ThemeData.light(), 

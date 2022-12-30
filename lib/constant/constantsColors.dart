@@ -12,21 +12,11 @@ const colorIconAppBar = Colors.white;
 const appBarBackground = Color.fromARGB(255, 15, 157, 228);
 const smartphoneColor = Color.fromARGB(255, 232, 248, 1);
 
-//TODO CAR
-const itemCardBackgroundCar = Colors.black;
-const buttonBackCar = Colors.white;
-const carouselCarBackground = Colors.deepOrangeAccent;
-
-//TODO TRUCK
-const itemCardBackgroundTruck = Colors.black;
-const buttonBackTruck = Colors.white;
-const carouselTruckBackground = Colors.deepOrangeAccent;
-
-//TODO VAN
-const itemCardBackgroundVan = Colors.black;
-const buttonBackVan = Colors.white;
-
-const themeTextCardHome = Colors.green;
+//TODO JOBOFFER
+const itemCardColorTextJobOffer = Color(0xFFFA8A04);
+const descriptionJobOfferDetails = Colors.amber;
+const themeProductJobOfferPublisherTextTitle = Colors.white;
+const themeProductJobOfferPublisherTextValue = Colors.redAccent;
 
 //TODO LOGIN
 const themePersonAdd = Colors.black;
