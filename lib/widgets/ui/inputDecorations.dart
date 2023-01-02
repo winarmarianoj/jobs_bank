@@ -13,6 +13,7 @@ class InputDecorations {
         focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: themeInputDecorationLogin, width: 2)),
         hintText: hintText,
+        hintStyle: const TextStyle(color: themeInputDecorationLoginLabel),
         labelText: labelText,
         labelStyle: const TextStyle(color: themeInputDecorationLoginLabel),
         prefixIcon: prefixIcon != null

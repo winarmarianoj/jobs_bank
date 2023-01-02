@@ -8,6 +8,7 @@ const defaultPaddingTextObjectsHome = 4.0;
 const defaultPaddingImageObjectsHome = 0.5;
 const defaultPaddingHome = 0.9;
 const defaultSpaceBetweenObjectsDescription = 7.0;
+const defaultSpaceBetweenTextAndButtonDescription = 40.0;
 
 //TODO Profile
 const textTitleProfile = 'Profile User';

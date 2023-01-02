@@ -25,13 +25,12 @@ class ApplicantService {
     
     if(response.statusCode == 200){
       String body = utf8.decode(response.bodyBytes);
-      final jsonData = jsonDecode(body);
       result = true;
       showDialog(
         context: context, 
         builder: (_) => CustomPopup(
             title: textLabelPostulateService,
-            message: jsonData['message'], //textResultPostulateMessageService,
+            message: body, //textResultPostulateMessageService,
             buttonAccept: BounceButton(
               buttonSize: ButtonSize.small,
               type: ButtonType.primary,

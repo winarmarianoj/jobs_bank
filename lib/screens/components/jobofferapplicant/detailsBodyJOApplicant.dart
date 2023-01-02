@@ -34,15 +34,18 @@ class DetailsBodyJOApplicant extends StatelessWidget {
                     top: size.height * 0.04,
                     left: defaultPaddingLeftAndRight,
                     right: defaultPaddingLeftAndRight,
-                  ),
-                  height: 800,
-                   decoration: const BoxDecoration(
-                    color: detailJobOfferApplied,
+                  ),                  
+                  decoration: BoxDecoration(
+                    //color: detailJobOfferApplied,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40),
                       bottomLeft: Radius.circular(40),
                       bottomRight: Radius.circular(40),
+                    ),
+                    border: Border.all(
+                      color: kFondo,
+                      width: 4.0,
                     ),
                   ),
                   child: Column(

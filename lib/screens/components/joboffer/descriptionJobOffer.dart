@@ -18,9 +18,9 @@ class DescriptionJobOffer extends StatelessWidget {
       child: Column(        
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          ItemCardTextWidget(label: "", text: jobOffer.title, fontWeight: FontWeight.bold, /* color: kTitle, */ size: 18.0,),
+          ItemCardTextWidget(label: "", text: jobOffer.title, fontWeight: FontWeight.bold, /* color: kTitle, */ size: 22.0,),
           const SizedBox(height: defaultSpaceBetweenObjectsDescription),
-          ItemCardTextWidget(label: "", text: jobOffer.description, fontWeight: FontWeight.bold, /* color: descriptionJobOfferDetails */ size: 14,),
+          ItemCardTextWidget(label: "", text: jobOffer.description, fontWeight: FontWeight.bold, /* color: descriptionJobOfferDetails */ size: 16,),
           const SizedBox(height: defaultSpaceBetweenObjectsDescription),
           ItemCardTextWidget(label: "Detalles: ", text: jobOffer.body, fontWeight: FontWeight.normal, /* color: themeProductJobOfferPublisherTextTitle, */ size: 14,),
           const SizedBox(height: defaultSpaceBetweenObjectsDescription),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobs_bank/constant/constantsColors.dart';
 import 'package:jobs_bank/models/JobOfferApplicant.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/screens/components/jobofferapplicant/detailsScreenJOApplicant.dart';
@@ -14,24 +15,39 @@ class ItemsJOApplicant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => DetailsScreenJOApplicant(
-                user: user,
-                joApp: joApp,
-              ),
-            )
-        );
-      },
-      title: ItemCardTextWidget(label: "", text: joApp.title + " " + joApp.description + " " + joApp.area, fontWeight: FontWeight.bold, size: 12),
-      subtitle: ItemCardTextWidget(label: "", text: joApp.experience + " " + joApp.modality + " " + joApp.position + " " + joApp.category, fontWeight: FontWeight.bold, size: 11),
-      leading: CircleAvatar(
-        child: MyText(text: joApp.title.substring(0,1), ),
+    return Container(
+      decoration: BoxDecoration(
+        //color: detailJobOfferApplied,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(40),
+          topRight: Radius.circular(40),
+          bottomLeft: Radius.circular(40),
+          bottomRight: Radius.circular(40),
+        ),
+        border: Border.all(
+          color: kFondo,
+          width: 4.0,
+        ),
       ),
-      trailing: Icon(Icons.arrow_forward_ios),
+      child: ListTile(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailsScreenJOApplicant(
+                  user: user,
+                  joApp: joApp,
+                ),
+              )
+          );
+        }, 
+        title: ItemCardTextWidget(label: "", text: joApp.title + " " + joApp.description + " " + joApp.area, fontWeight: FontWeight.bold, size: 12),
+        subtitle: ItemCardTextWidget(label: "", text: joApp.experience + " " + joApp.modality + " " + joApp.position + " " + joApp.category, fontWeight: FontWeight.bold, size: 11),
+        leading: CircleAvatar(
+          child: MyText(text: joApp.title.substring(0,1), ),
+        ),
+        trailing: Icon(Icons.arrow_forward_ios),
+      ),
     );
   }
 }

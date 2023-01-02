@@ -26,15 +26,14 @@ class DetailsBodyJobOffer extends StatelessWidget {
           child: Column(
             children: <Widget>[          
               SizedBox(
-                height: size.height,
+                height: 550,// size.height,
                 child: Container(
                   margin: EdgeInsets.only(top: size.height * 0.04),
                   padding: EdgeInsets.only(
                     top: size.height * 0.04,
                     left: defaultPaddingLeftAndRight,
                     right: defaultPaddingLeftAndRight,
-                  ),
-                  height: 700,
+                  ),                  
                   decoration: BoxDecoration(
                     //color: kFondo,
                     borderRadius: BorderRadius.only(

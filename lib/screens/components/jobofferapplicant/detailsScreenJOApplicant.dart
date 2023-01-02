@@ -23,7 +23,7 @@ class DetailsScreenJOApplicant extends StatelessWidget {
     return AppBar(
       elevation: 0,
       leading: IconButton(
-        color: colorIconAppBar,
+        //color: colorIconAppBar,
         icon: SvgPicture.asset(
           'assets/icons/back.svg',
         ),
