@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const kDefaultPaddin = 10.0;
-const defaultPAddinBodyHome = 3.0;
+const defaultPaddinBodyHome = 3.0;
 const defaultPaddingLeftAndRight = 5.0;
 const childAspectRatioBodyHome = 0.75;
 const defaultPaddingTextObjectsHome = 4.0;
@@ -9,16 +9,9 @@ const defaultPaddingImageObjectsHome = 0.5;
 const defaultPaddingHome = 0.9;
 const defaultSpaceBetweenObjectsDescription = 7.0;
 
-//TODO Description vehicles
-const textLabelDescriptionVehicles = "Precio en Dolares : ";
-const textLabelButton = 'Agregar a Contactos';
-const textShowDialogTitleAddContactProfile = "Contacto del Propietario";
-const textShowDialogBodyAddContactProfile = "Ya se ha agregado el contacto a su perfil de Contactos.";
-const textButtonResponseShowDialog = "OK";
-
 //TODO Profile
 const textTitleProfile = 'Profile User';
-const textNoDataUserInitial = 'No hay información del usuario';
+const textNoDataUserInitial = 'No tiene acceso ya que no está logueado. Diríjase a la opción Login.';
 const textUnknownState = 'Estado no reconocido';
 const textChangeProfileTitle = 'Change Profile User';
 const textButtonChangeName = 'Cambiar Nombre';
@@ -31,6 +24,13 @@ const textWriterNewChangeByVariable = 'Escriba su nuevo ';
 const textSendDataButton = 'Enviar Cambios';
 const textTitleResultChangeNotExists = 'Resultado de su solicitud: ';
 const textTypeChangeNotExists = 'No existe lo solicitado';
+const textButtonShowDialogProfile = 'OK';
+
+//TODO Applicant
+const textButtonAppliedByJobOffer = 'POSTULARSE';
+const textLabelPostulateService = 'Resultado de su postulación';
+const textResultPostulateMessageService = 'Se ha postulado exitosamente.';
+const textFailedPostulateMessageService = "Fallo la aplicación al Joboffers.";
 
 //TODO Search
 const textDecorationHintTextSearch = "Buscar...";

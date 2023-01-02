@@ -6,10 +6,10 @@ import 'package:jobs_bank/service/applicantService.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/itemCardWidgetText/itemCardTextWidget.dart';
 
-class DescriptionJobOffer extends StatelessWidget {
+class DescriptionJOByStudent extends StatelessWidget {
   final JobOffer jobOffer;
   final User user;
-  const DescriptionJobOffer({Key? key, required this.jobOffer, required this.user,}) : super(key: key); 
+  const DescriptionJOByStudent({Key? key, required this.jobOffer, required this.user,}) : super(key: key); 
   
   @override
   Widget build(BuildContext context) {

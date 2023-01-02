@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jobs_bank/widgets/userActive/bodyHomeDrawer.dart';
 import 'package:jobs_bank/widgets/userActive/drawDrawer.dart';
-class Home extends StatelessWidget{      
-  const Home({Key? key}) : super(key: key);
+class Applicant extends StatelessWidget{      
+  const Applicant({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

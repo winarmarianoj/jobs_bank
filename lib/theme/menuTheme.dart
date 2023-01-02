@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-ThemeData themeLightOne = ThemeData(
+/* ThemeData themeLightOne = ThemeData(
     brightness: Brightness.light,
     visualDensity: VisualDensity(vertical: 0.5, horizontal: 0.5),
     primarySwatch: MaterialColor(
@@ -31,8 +31,9 @@ ThemeData themeLightOne = ThemeData(
     cardColor: Color(0xaaF5E0C3),
     dividerColor: Color(0x1f6D42CE),
     focusColor: Color(0x1aF5E0C3));
+ */
 
-ThemeData themeDarkOne = ThemeData(
+/* ThemeData themeDarkOne = ThemeData(
 
     brightness: Brightness.dark,
     visualDensity: VisualDensity(vertical: 0.5, horizontal: 0.5),
@@ -63,12 +64,13 @@ ThemeData themeDarkOne = ThemeData(
     cardColor: Color(0xaa311F06), //este es el color del custompopup y barra
     dividerColor: Color(0x1f6D42CE),
     focusColor: Color(0x1a311F06));
+ */
 
 ThemeData themeLightTwo = ThemeData(
   brightness: Brightness.light,
   visualDensity: VisualDensity(vertical: 0.5, horizontal: 0.5),
   primarySwatch: MaterialColor(
-    0xFFF5E0C3,
+    /* 0xFFF5E0C3,
     <int, Color>{
       50: Color(0x1aF5E0C3),
       100: Color(0xa1F5E0C3),
@@ -79,23 +81,36 @@ ThemeData themeLightTwo = ThemeData(
       600: Color(0xffDEC29B),
       700: Color(0xffC9A87C),
       800: Color(0xffB28E5E),
-      900: Color(0xff936F3E)
+      900: Color(0xff936F3E) */
+      0xFF1CE9D4,
+    <int, Color>{
+      50: Color(0x1a1CE9D4),
+      100: Color(0xa11CE9D4),
+      200: Color(0xaa1CE9D4),
+      300: Color(0xaf1CE9D4),
+      400: Color(0xff1CE9D4),
+      500: Color(0xff1CE9D4),
+      600: Color(0xff1CE9D4),
+      700: Color(0xff1CE9D4),
+      800: Color(0xff1CE9D4),
+      900: Color(0xff1CE9D4)
     },
   ),
-  primaryColor: Color(0xffEDD5B3),
+  primaryColor: Color(0xff1CE9D4),
   primaryColorBrightness: Brightness.light,
   primaryColorLight: Color(0x1aF5E0C3),
-  primaryColorDark: Color(0xff936F3E),
+  primaryColorDark: Color(0xff1CE9D4),
   canvasColor: Color(0xffE09E45),
   accentColor: Color(0xff457BE0),
   accentColorBrightness: Brightness.light,
-  scaffoldBackgroundColor: Color(0xffB5BFD3),
+  // color fondo background
+  scaffoldBackgroundColor: Color.fromARGB(255, 114, 145, 207),
   bottomAppBarColor: Color(0xff6D42CE),
-  cardColor: Color(0xaaF5E0C3),
+  cardColor: Color(0xaa1CE9D4),
   dividerColor: Color(0x1f6D42CE),
   focusColor: Color(0x1aF5E0C3),
-  hoverColor: Color(0xffDEC29B),
-  highlightColor: Color(0xff936F3E),
+  hoverColor: Color(0xff1CE9D4),
+  highlightColor: Color(0xff1CE9D4),
   splashColor: Color(0xff457BE0),
 //  splashFactory: # override create method from  InteractiveInkFeatureFactory
   selectedRowColor: Colors.grey,
@@ -107,7 +122,7 @@ ThemeData themeLightTwo = ThemeData(
   toggleButtonsTheme: ToggleButtonsThemeData(
       //toggle button theme
       ),
-  buttonColor: Color(0xff936F3E),
+  buttonColor: Color(0xff1CE9D4),
   secondaryHeaderColor: Colors.grey,
   /* textSelectionColor: Color(0xffB5BFD3),
   cursorColor: Color(0xff936F3E),
@@ -145,7 +160,7 @@ ThemeData themeDarkTwo = ThemeData(
   brightness: Brightness.dark,
   visualDensity: VisualDensity(vertical: 0.5, horizontal: 0.5),
   primarySwatch: MaterialColor(
-    0xFFF5E0C3,
+    /* 0xFFF5E0C3,
     <int, Color>{
       50: Color(0x1a5D4524),
       100: Color(0xa15D4524),
@@ -156,22 +171,34 @@ ThemeData themeDarkTwo = ThemeData(
       600: Color(0xaa483112),
       700: Color(0xff483112),
       800: Color(0xaf2F1E06),
-      900: Color(0xff2F1E06)
+      900: Color(0xff2F1E06) */
+      0xFF0E655C,
+    <int, Color>{
+      50: Color(0x1a0E655C),
+      100: Color(0xa10E655C),
+      200: Color(0xaa0E655C),
+      300: Color(0xaf0E655C),
+      400: Color(0x1a0E655C),
+      500: Color(0xa10E655C),
+      600: Color(0xaa0E655C),
+      700: Color(0xff0E655C),
+      800: Color(0xaf0E655C),
+      900: Color(0xff0E655C)      
     },
   ),
-  primaryColor: Color(0xff5D4524),
+  primaryColor: Color(0xff0E655C),
   primaryColorBrightness: Brightness.dark,
   primaryColorLight: Color(0x1a311F06),
-  primaryColorDark: Color(0xff936F3E),
+  primaryColorDark: Color(0xff0E655C),
   canvasColor: Color(0xffE09E45),
   accentColor: Colors.pink,//Color(0xff457BE0),
   accentColorBrightness: Brightness.dark,
-  scaffoldBackgroundColor: Color(0xffB5BFD3),
+  scaffoldBackgroundColor: Color.fromARGB(255, 10, 76, 206),
   bottomAppBarColor: Color(0xff6D42CE),
-  cardColor: Color(0xaa311F06),
+  cardColor: Color(0xaa0E655C),
   dividerColor: Color(0x1f6D42CE),
   focusColor: Color(0x1a311F06),
-  hoverColor: Color(0xa15D4524),
+  hoverColor: Color(0xa10E655C),
   highlightColor: Color(0xaf2F1E06),
   splashColor: Color(0xff457BE0),
 //  splashFactory: # override create method from  InteractiveInkFeatureFactory
@@ -184,7 +211,7 @@ ThemeData themeDarkTwo = ThemeData(
   toggleButtonsTheme: ToggleButtonsThemeData(
 //toggle button theme
       ),
-  buttonColor: Color(0xff483112),
+  buttonColor: Color(0xffC24303),
   secondaryHeaderColor: Colors.grey,
   /* textSelectionColor: Color(0x1a483112),
   cursorColor: Color(0xff483112),
@@ -218,7 +245,7 @@ ThemeData themeDarkTwo = ThemeData(
       ),
 );
 
-ThemeData themeLightThree = ThemeData(
+/* ThemeData themeLightThree = ThemeData(
     brightness: Brightness.light,
     visualDensity: VisualDensity(vertical: 0.5, horizontal: 0.5),
     primarySwatch: MaterialColor(
@@ -379,7 +406,7 @@ ThemeData themeLightThree = ThemeData(
     splashFactory: InkSplash.splashFactory
 );
 
-ThemeData themeDarkThree = ThemeData(
+ThemeData themeDarkThree = ThemeData( 
     brightness: Brightness.dark,
     visualDensity: VisualDensity(vertical: 0.5, horizontal: 0.5),
     primarySwatch: MaterialColor(
@@ -537,4 +564,4 @@ ThemeData themeDarkThree = ThemeData(
         // button bar theme
         ),
     fontFamily: 'ROBOTO',
-    splashFactory: InkSplash.splashFactory);
+    splashFactory: InkSplash.splashFactory); */

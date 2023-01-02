@@ -1,15 +1,20 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/cubit/userCubit.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/providers/loginFormProvider.dart';
 import 'package:jobs_bank/providers/registerFormProvider.dart';
 import 'package:http/http.dart' as http;
+import 'package:jobs_bank/screens/welcome/headerPage.dart';
+import 'package:jobs_bank/widgets/button/bounceButton.dart';
+import 'package:jobs_bank/widgets/message/customPopup.dart';
 
 class AuthenticationService {
   Future<LoginFormProvider?> getLoginUser(LoginFormProvider loginForm, BuildContext context) async{    
-    final userCubit = context.read<UserCubit>();  
+    final userCubit = context.read<UserCubit>(); 
     var url = Uri.parse('http://10.0.2.2:8082/auth/loginflutter');
     final response = await http.post(url,
     headers: <String, String>{
@@ -23,11 +28,27 @@ class AuthenticationService {
 
     if(response.statusCode == 200){
       String body = utf8.decode(response.bodyBytes);      
-      loginForm.isLoading = true;
+      loginForm.isLoading = true;      
       User newUser = getNewUser(body);
-      userCubit.createUser(newUser);
+      userCubit.createUser(newUser);      
+      Navigator.push(context, MaterialPageRoute(builder: ((context) => HeadersPage())));
     }else{
-      print("Fallo traer la lista de Joboffers");      
+      log("Fallo el login.");
+      showDialog(
+        context: context, 
+        builder: (_) => CustomPopup(
+            title: textResultErrorLoginTitle,
+            message: textResultInvalidDataLogin,
+            buttonAccept: BounceButton(
+              buttonSize: ButtonSize.small,
+              type: ButtonType.primary,
+              label: textButtonShowDialogLogin,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          )
+      );  
     }
     return loginForm;
   }
@@ -59,7 +80,7 @@ class AuthenticationService {
       User newUser = getNewUser(body);
       userCubit.createUser(newUser);
     }else{
-      print("Fallo el registro del estudiante.");       
+      log("Fallo el registro del estudiante.");       
     }
     return register;    
   }
@@ -89,7 +110,7 @@ class AuthenticationService {
       User newUser = getNewUser(body);
       userCubit.createUser(newUser);
     }else{
-      print("Fallo el registro del publicador.");   
+      log("Fallo el registro del publicador.");   
     }    
     return register;
   }
@@ -99,7 +120,8 @@ class AuthenticationService {
     User user = User(id: jsonData['id'], name: jsonData['name'], lastName: jsonData['lastName'], 
     phone: jsonData['phone'], email: jsonData['username'], password: jsonData['password'],
     role: jsonData['role'], jwt: jsonData['jwt'], contacts: []);
-    user.isLoading = true;
+    user.isConected = true;
+    log(user.name + user.lastName + " esta todo bien");
     return user;
   }
   

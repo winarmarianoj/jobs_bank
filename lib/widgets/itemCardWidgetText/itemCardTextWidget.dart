@@ -6,11 +6,12 @@ class ItemCardTextWidget extends StatelessWidget {
   final String? label;
   final FontWeight? fontWeight;
   final Color? color;
+  final double? size;
 
   const ItemCardTextWidget({
     Key? key,
     required this.text, required this.label,
-    this.fontWeight, this.color,
+    this.fontWeight, this.color, this.size,
   }) : super(key: key);
 
   @override
@@ -18,7 +19,7 @@ class ItemCardTextWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Center(
-        child: MyBodyLargeText(text: label! + text!,
+        child: MyBodyLargeText(text: label! + text!, size: size,
         color: color, fontWeight: fontWeight,)
         
         /* Text(

@@ -103,8 +103,9 @@ class MyBodyLargeText extends StatelessWidget {
   final String text;
   final Color? color;
   final FontWeight? fontWeight;
+  final double? size;
   const MyBodyLargeText({Key? key, 
-  required this.text,
+  required this.text, this.size,
   this.color, this.fontWeight}) : super(key: key);
 
   @override
@@ -112,7 +113,7 @@ class MyBodyLargeText extends StatelessWidget {
     return Text(
       text,
       style: Theme.of(context).textTheme.bodyLarge
-              ?.copyWith(color: color, fontWeight: fontWeight),
+              ?.copyWith(color: color, fontWeight: fontWeight, fontSize: size,),
     );    
   }
 }

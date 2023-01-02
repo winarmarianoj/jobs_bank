@@ -18,6 +18,9 @@ const descriptionJobOfferDetails = Colors.amber;
 const themeProductJobOfferPublisherTextTitle = Colors.white;
 const themeProductJobOfferPublisherTextValue = Colors.redAccent;
 
+//TODO JOBOFFERAPPLICANT
+const detailJobOfferApplied =  Color(0xFFF021C2A);
+
 //TODO LOGIN
 const themePersonAdd = Colors.black;
 const themePersonAddHeaderIcon = Colors.white;

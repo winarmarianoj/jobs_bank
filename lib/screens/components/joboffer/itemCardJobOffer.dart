@@ -22,28 +22,26 @@ class ItemCardJobOffer extends StatelessWidget {
               left: defaultPaddingLeftAndRight,
               right: defaultPaddingLeftAndRight,
             ),
-        decoration: const BoxDecoration(
-            color: kFondo,
+        decoration: BoxDecoration(
+            //color: kFondo,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
               bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
+              bottomRight: Radius.circular(20),              
+            ),
+            border: Border.all(
+              color: kFondo,
+              width: 4.0,
             ),
           ),
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Center(
-                child: 
-                  ItemCardTextWidget(label: "", text: jobOffer.title, fontWeight: FontWeight.bold, color: itemCardColorTextJobOffer),              
-              ),
-              ItemCardTextWidget(label: "", text: jobOffer.description, fontWeight: FontWeight.w900, color: itemCardColorTextJobOffer),
-              ItemCardTextWidget(label: "", text: jobOffer.category, fontWeight: FontWeight.w900, color: itemCardColorTextJobOffer),
-              ItemCardTextWidget(label: "", text: jobOffer.modality, fontWeight: FontWeight.w900, color: itemCardColorTextJobOffer),
-              ItemCardTextWidget(label: "", text: jobOffer.position, fontWeight: FontWeight.w900, color: itemCardColorTextJobOffer),
-              ItemCardTextWidget(label: "Area ", text: jobOffer.area, fontWeight: FontWeight.w900, color: itemCardColorTextJobOffer),
-              ItemCardTextWidget(label: "Experiencia ", text: jobOffer.experience, fontWeight: FontWeight.w900, color: itemCardColorTextJobOffer),
+              ItemCardTextWidget(label: "", text: jobOffer.title, fontWeight: FontWeight.bold, size: 16, /*color: itemCardColorTextJobOffer*/),
+              ItemCardTextWidget(label: "", text: jobOffer.description, fontWeight: FontWeight.w700, size: 11, /*color: itemCardColorTextJobOffer*/),
+              ItemCardTextWidget(label: "", text: jobOffer.category + "-" + jobOffer.modality + "-" + jobOffer.position, fontWeight: FontWeight.w900, size: 10, /*color: itemCardColorTextJobOffer*/),
+              ItemCardTextWidget(label: "Area ", text: jobOffer.area + " / " + "Experiencia " + jobOffer.experience, fontWeight: FontWeight.w600, size: 11, /*color: itemCardColorTextJobOffer*/),
             ],
           ),
       ),

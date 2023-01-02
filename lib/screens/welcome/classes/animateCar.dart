@@ -4,7 +4,7 @@ class AnimateCar extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
     return Container(
-      child: Image.asset("assets/image/auto.png"),
+      child: Image.asset("assets/images/auto.png"),
      );
    }
 }

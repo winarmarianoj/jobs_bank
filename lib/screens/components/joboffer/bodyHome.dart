@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/models/JobOffer.dart';
+import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/screens/components/joboffer/detailsScreenJobOffer.dart';
 import 'package:jobs_bank/screens/components/joboffer/itemCardJobOffer.dart';
 import 'package:jobs_bank/service/jobOfferService.dart';
 
-class BodyHome extends StatelessWidget{  
-  BodyHome({Key? key,}) : super(key: key);  
+class BodyHome extends StatelessWidget{
+  final User user;
+  BodyHome({Key? key, required this.user}) : super(key: key);  
 
   @override
   Widget build(BuildContext context) {
     final JobOfferService jobOfferService = JobOfferService();    
     return Stack(
       children: [
-        Image.asset(
+        /* Image.asset(
           "assets/images/texture.jpg",
           width: 600,
           height: 800,
           fit: BoxFit.cover,
-        ),
+        ), */
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -34,9 +35,9 @@ class BodyHome extends StatelessWidget{
                           itemCount: amountListJobOffer(snapshot.data),
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            mainAxisSpacing: defaultPAddinBodyHome,
-                            crossAxisSpacing: defaultPAddinBodyHome,
-                            childAspectRatio: childAspectRatioBodyHome,
+                            /* mainAxisSpacing: defaultPaddinBodyHome,
+                            crossAxisSpacing: defaultPaddinBodyHome,
+                            childAspectRatio: childAspectRatioBodyHome, */
                           ),
                           itemBuilder: (context, index) => ItemCardJobOffer(
                             jobOffer: jobofferlist[index],
@@ -44,6 +45,7 @@ class BodyHome extends StatelessWidget{
                               context,
                               MaterialPageRoute(
                                 builder: (context) => DetailsScreenJobOffer(
+                                  user: user,
                                   jobOffer: jobofferlist[index],
                                 ),
                               ),

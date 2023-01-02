@@ -10,11 +10,11 @@ class User {
   required this.phone, required this.email, required this.password,
   required this.role, required this.jwt, required this.contacts});
 
-  bool _isLoading = false;
-  bool get isLoading => _isLoading;
+  bool _isConected = false;
+  bool get isConected => _isConected;
 
-  set isLoading(bool value) {
-    _isLoading = value;
+  set isConected(bool value) {
+    _isConected = value;
   }
 
   User copyWith({ 

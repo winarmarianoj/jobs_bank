@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class JobOfferApplication {
+class JobOfferApplicant {
   String applied, deletedDay, name, surname,
   dni, email, phoneNumber, typeStudent,
   title, description, area, body, experience, modality, 
@@ -10,7 +10,7 @@ class JobOfferApplication {
   final int jobOfferApplicantID, applicantID, jobOfferID;
   final bool? jobAppdeleted, jobOfferDeleted;
 
-  JobOfferApplication({
+  JobOfferApplicant({
     required this.jobOfferApplicantID,
     required this.applied,
     required this.deletedDay,

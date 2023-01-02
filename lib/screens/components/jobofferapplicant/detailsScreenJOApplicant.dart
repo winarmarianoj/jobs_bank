@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jobs_bank/constant/constantsColors.dart';
-import 'package:jobs_bank/models/JobOffer.dart';
+import 'package:jobs_bank/models/JobOfferApplicant.dart';
 import 'package:jobs_bank/models/User.dart';
-import 'package:jobs_bank/screens/components/joboffer/detailsBodyJobOffer.dart';
+import 'package:jobs_bank/screens/components/jobofferapplicant/detailsBodyJOApplicant.dart';
 import 'package:jobs_bank/widgets/userActive/drawDrawer.dart';
 
-class DetailsScreenJobOffer extends StatelessWidget {
-  final JobOffer jobOffer;
-  final User user;
-  const DetailsScreenJobOffer({Key? key, required this.jobOffer, required this.user,}) : super(key: key);
+class DetailsScreenJOApplicant extends StatelessWidget {
+  final JobOfferApplicant joApp;
+  final User? user;
+  const DetailsScreenJOApplicant({Key? key, required this.joApp, this.user,}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
       drawer: DrawDrawer(),
-      body: DetailsBodyJobOffer(jobOffer: jobOffer, user: user,),
+      body: DetailsBodyJOApplicant(joApp: joApp, user: user,),
     );
   }
 
