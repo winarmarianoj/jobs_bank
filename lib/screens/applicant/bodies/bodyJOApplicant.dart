@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/models/JobOfferApplicant.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/screens/components/jobofferapplicant/itemsJOApplicant.dart';
 import 'package:jobs_bank/service/reportServicies.dart';
 
 class BodyJOApplicant extends StatelessWidget{
-  final User? user;
-  BodyJOApplicant({Key? key, this.user}) : super(key: key);  
+  final User user;
+  BodyJOApplicant({Key? key, required this.user}) : super(key: key);  
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class BodyJOApplicant extends StatelessWidget{
           fit: BoxFit.cover,
         ), */
         FutureBuilder(                  
-          future: reportService.getJobOfferApplied(user!),
+          future: reportService.getJobOfferApplied(user, context),
           builder: (context, snapshot) {
             if(snapshot.hasData){
               List<JobOfferApplicant>? jobOfferAppList = [];
@@ -31,12 +32,10 @@ class BodyJOApplicant extends StatelessWidget{
                     user: user,
                     joApp: jobOfferAppList![index],
                   ),
-                );
-            }else if(!snapshot.hasData){
-              print("No trae los avisos del home.");
+                );                
             }else if(snapshot.hasError){
               print(snapshot.error);
-              return Text("Error al traer jobofferApplied.");
+              return Text(logJOAppFailedBodyJOApplicant);
             }
 
             return Center(child: CircularProgressIndicator(),);

@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/cubit/userCubit.dart';
-import 'package:jobs_bank/models/User.dart';
-import 'package:jobs_bank/screens/components/joboffer/bodyHome.dart';
-import 'package:jobs_bank/screens/ui/home/bodyDrawer.dart';
+import 'package:jobs_bank/screens/publisher/bodies/bodyPublished.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/message/customPopup.dart';
 
-class BodyHomeDrawer extends StatelessWidget {
-  BodyHomeDrawer({Key? key, }) : super(key: key);  
+class BodyPublishedDrawer extends StatelessWidget {
+  BodyPublishedDrawer({Key? key, }) : super(key: key);  
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +17,21 @@ class BodyHomeDrawer extends StatelessWidget {
         switch ( state.runtimeType ) {
           
           case UserInitial:
-            User newUser = User(id: 0, name: "", lastName: "", 
-            phone: "", email: "", password: "", role: "", jwt: "", contacts: []);
-            newUser.isConected = false;
-            return BodyHome(user: newUser, );
+            return CustomPopup(
+              title: textTitleProfile,
+              message: textNoDataUserInitial,
+              buttonAccept: BounceButton(
+                buttonSize: ButtonSize.small,
+                type: ButtonType.primary,
+                label: textButtonShowDialogProfile,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ); 
 
-          case UserActive:
-            return BodyHome(user: (state as UserActive).user, );
+          case UserActive:          
+            return BodyPublished(user: (state as UserActive).user, );
 
           default:
             return CustomPopup(

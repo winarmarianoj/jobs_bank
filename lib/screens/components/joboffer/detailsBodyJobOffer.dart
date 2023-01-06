@@ -3,8 +3,8 @@ import 'package:jobs_bank/constant/constantsColors.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/models/JobOffer.dart';
 import 'package:jobs_bank/models/User.dart';
-import 'package:jobs_bank/screens/components/joboffer/descriptionJOByStudent.dart';
 import 'package:jobs_bank/screens/components/joboffer/descriptionJobOffer.dart';
+import 'package:jobs_bank/screens/components/joboffer/descriptionJobOfferByUtn.dart';
 
 class DetailsBodyJobOffer extends StatelessWidget {
   final JobOffer jobOffer;
@@ -49,8 +49,9 @@ class DetailsBodyJobOffer extends StatelessWidget {
                   ),
                   child: Column(
                     children: <Widget>[
-                      !user.isConected ? DescriptionJobOffer(jobOffer: jobOffer, user: user,)
-                      : DescriptionJOByStudent(jobOffer: jobOffer, user: user)
+                      if(!user.isConected) DescriptionJobOffer(jobOffer: jobOffer, user: user,),
+                      if(user.role == 'APPLICANT' || user.role == 'PUBLISHER') DescriptionJobOffer(jobOffer: jobOffer, user: user,),
+                      if(user.role == 'UTN') DescriptionJobOfferByUtn(jobOffer: jobOffer, user: user,),
                     ],
                   ),                  
                 ),

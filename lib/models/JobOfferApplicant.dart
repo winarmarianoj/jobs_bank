@@ -6,7 +6,7 @@ class JobOfferApplicant {
   title, description, area, body, experience, modality, 
   position, category, categoryDescription, 
   datePublished, modifiedDay, jobOfferDeletedDay, 
-  state;
+  message, state;
   final int jobOfferApplicantID, applicantID, jobOfferID;
   final bool? jobAppdeleted, jobOfferDeleted;
 
@@ -34,10 +34,24 @@ class JobOfferApplicant {
     required this.datePublished,
     required this.modifiedDay,
     required this.jobOfferDeletedDay,
+    required this.message,
     required this.state,    
     this.jobAppdeleted,
     this.jobOfferDeleted,
   });
   
+  factory JobOfferApplicant.fromJson(Map<String, dynamic> json) {    
+    return JobOfferApplicant(jobOfferApplicantID: json["jobOfferApplicantID"], 
+          applied: json["applied"], deletedDay: json["deletedDay"], 
+          applicantID: json["applicantID"], name: json["name"], surname: json["surname"], 
+          dni: json["dni"], email: json["email"], phoneNumber: json["phoneNumber"], 
+          typeStudent: json["typeStudent"], jobOfferID: json["jobOfferID"], 
+          title: json["title"], description: json["description"], area: json["area"], 
+          body: json["body"], experience: json["experience"], modality: json["modality"], 
+          position: json["position"], category: json["category"], 
+          categoryDescription: json["categoryDescription"], datePublished: json["datePublished"], 
+          modifiedDay: json["modifiedDay"], jobOfferDeletedDay: json["jobOfferDeletedDay"], 
+          message: json["message"], state: json["state"]);
+  }
   
 }

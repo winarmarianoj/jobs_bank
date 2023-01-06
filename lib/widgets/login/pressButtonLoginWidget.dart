@@ -1,13 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsColors.dart';
-import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/providers/loginFormProvider.dart';
-import 'package:jobs_bank/screens/welcome/headerPage.dart';
 import 'package:jobs_bank/service/authenticationService.dart';
-import 'package:jobs_bank/widgets/button/bounceButton.dart';
-import 'package:jobs_bank/widgets/message/customPopup.dart';
 
 class PressButtonLoginWidget extends StatelessWidget {
   const PressButtonLoginWidget({

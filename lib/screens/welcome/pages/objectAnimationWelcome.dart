@@ -5,7 +5,11 @@ import 'package:jobs_bank/constant/constantsText.dart';
 import 'dart:math';
 
 import 'package:jobs_bank/cubit/userCubit.dart';
+import 'package:jobs_bank/models/User.dart';
+import 'package:jobs_bank/screens/applicant/applicant.dart';
 import 'package:jobs_bank/screens/home/home.dart';
+import 'package:jobs_bank/screens/publisher/publisher.dart';
+import 'package:jobs_bank/screens/utn/utn.dart';
 import 'package:jobs_bank/screens/welcome/classes/animateCar.dart';
 import 'package:jobs_bank/screens/welcome/classes/animateCar64.dart';
 import 'package:jobs_bank/screens/welcome/classes/animateFiat500.dart';
@@ -16,15 +20,15 @@ import 'package:jobs_bank/screens/welcome/classes/animateVan.dart';
 import 'package:jobs_bank/screens/welcome/classes/animateVanPickUp.dart';
 
 class ObectAnimationWelcome extends StatefulWidget { 
-  const ObectAnimationWelcome({Key? key, }) : super(key: key); 
+  final User user;
+  const ObectAnimationWelcome({Key? key, required this.user}) : super(key: key); 
   @override
-  State<ObectAnimationWelcome> createState() => _VehiclesAnimadoPageState();
+  State<ObectAnimationWelcome> createState() => _VehiclesAnimadoPageState(user);
 }
 
 class _VehiclesAnimadoPageState extends State<ObectAnimationWelcome> with SingleTickerProviderStateMixin {
-    
-  _VehiclesAnimadoPageState();
-  
+  final User user;  
+  _VehiclesAnimadoPageState(this.user,);  
   
   late AnimationController controller;
   // animaciones  
@@ -95,10 +99,13 @@ class _VehiclesAnimadoPageState extends State<ObectAnimationWelcome> with Single
     });
     animationTruck.addListener(() {
         setState(() {});
-         if(controller.status == AnimationStatus.completed){           
-           Navigator.push(context, MaterialPageRoute(builder: ((context) => Home())));
-         }
-            
+         if(controller.status == AnimationStatus.completed){
+           user.role == 'APPLICANT' ? 
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => Applicant())))
+                : user.role == 'PUBLISHER' ?
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => Publisher())))
+                : Navigator.push(context, MaterialPageRoute(builder: ((context) => Utn())));
+         }            
     });
     animationTruckTrailer.addListener(() {
         setState(() {});        

@@ -4,7 +4,8 @@ class JobOffer {
   final String title, description, area, experience, modality, position, category, body,
   datePublished, modifiedDay, deletedDay, message, state;
   final int id;
-  final bool? deleted;
+  final bool deleted;
+  bool resultCreate;
 
   JobOffer({
     required this.id,
@@ -20,6 +21,7 @@ class JobOffer {
     required this.modifiedDay,
     required this.deletedDay,
     required this.deleted,
+    required this.resultCreate,
     required this.state,
     required this.message,
   });
@@ -36,9 +38,10 @@ class JobOffer {
         position: json['position'],
         category: json['category'],
         datePublished: json['datePublished'],
-        modifiedDay: json['modifiedDay'],
-        deletedDay: json['deletedDay'],
+        modifiedDay: json['modifiedDay'],        
+        deletedDay: '',
         deleted: json['deleted'],
+        resultCreate: false,
         state: json['state'],
         message: json['message']);
   }

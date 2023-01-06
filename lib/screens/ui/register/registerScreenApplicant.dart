@@ -264,25 +264,6 @@ class _RegisterFormStateApplicant extends State<RegisterFormApplicant> {
                       Future.delayed(Duration(seconds: 5));
                       AuthenticationService service = AuthenticationService();
                       service.registerApplicant(registerForm, context);
-                      
-                      if(registerForm.isLoading) {                        
-                        Navigator.push(context, MaterialPageRoute(builder: ((context) => HeadersPage())));
-                      }else{
-                        showDialog(context: context, 
-                          builder: (_) => CustomPopup(
-                              title: textResultErrorRegisterTitle,
-                              message: textResultInvalidDataRegister,
-                              buttonAccept: BounceButton(
-                                buttonSize: ButtonSize.small,
-                                type: ButtonType.primary,
-                                label: textButtonShowDialogRegister,
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                              ),
-                            )
-                        );                     
-                      }
                     }                    
             ),
           ],

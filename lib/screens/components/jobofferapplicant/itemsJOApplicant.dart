@@ -26,7 +26,7 @@ class ItemsJOApplicant extends StatelessWidget {
         ),
         border: Border.all(
           color: kFondo,
-          width: 4.0,
+          width: 3.0,
         ),
       ),
       child: ListTile(

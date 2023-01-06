@@ -64,3 +64,14 @@ const buttonInputText = Colors.green;
 const themeButtonIconsDarkMode = Colors.white;
 const themeButtonIconsCustomMode = Colors.black;
 
+//TODO Publisher
+const themeDecorationPublishFormBorderSide = Color.fromARGB(255, 214, 117, 5);
+const themeDecorationPublishFormFocusedBorder = Color.fromARGB(255, 214, 117, 5);
+const themeDecorationPublishFormHintStyle = Colors.white;
+const themeDecorationPublishFormPrefixIcon = Color.fromARGB(255, 214, 117, 5);
+const themeProductJobOfferSubscribedTextTitle = Colors.white;
+
+//TODO PublishForm
+const themePublishFormDisableButton = Colors.grey;
+const themePublishFormSendButton = Colors.green;
+const themePublishFormStateProccess = Colors.white;

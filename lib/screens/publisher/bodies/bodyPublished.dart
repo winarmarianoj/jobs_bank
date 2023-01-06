@@ -4,23 +4,31 @@ import 'package:jobs_bank/models/JobOffer.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/screens/components/joboffer/detailsScreenJobOffer.dart';
 import 'package:jobs_bank/screens/components/joboffer/itemCardJobOffer.dart';
-import 'package:jobs_bank/service/jobOfferService.dart';
+import 'package:jobs_bank/service/reportServicies.dart';
 
-class BodyHome extends StatelessWidget{
+class BodyPublished extends StatelessWidget{
   final User user;
-  BodyHome({Key? key, required this.user}) : super(key: key);  
+  BodyPublished({Key? key, required this.user}) : super(key: key);  
 
   @override
   Widget build(BuildContext context) {
-    final JobOfferService jobOfferService = JobOfferService();    
-    return Column(
+    final ReportService reportService = new ReportService();
+    return Stack(
+      children: [
+        /* Image.asset(
+          "assets/images/texture.jpg",
+          width: 600,
+          height: 800,
+          fit: BoxFit.cover,
+        ), */
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 1),
                 child: FutureBuilder(                  
-                  future: jobOfferService.getJobOfferAll(context),
+                  future: reportService.getJobOfferPublished(user, context),
                   builder: (context, snapshot) {
                     if(snapshot.hasData){
                       List<JobOffer>? jobofferlist = snapshot.data as List<JobOffer>;
@@ -47,7 +55,7 @@ class BodyHome extends StatelessWidget{
                         );
                     }else if(snapshot.hasError){
                       print(snapshot.error);
-                      return Text(logJobOfferFailedBodyHome);
+                      return Text(logJobOfferFailedBodyPublished);
                     }
 
                     return Center(child: CircularProgressIndicator(),);
@@ -56,7 +64,10 @@ class BodyHome extends StatelessWidget{
               ),
             ),
           ],
-        );
+        ),
+      ],
+    );
+    
   }
 
   int amountListJobOffer(info){

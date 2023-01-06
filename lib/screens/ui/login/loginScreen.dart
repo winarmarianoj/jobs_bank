@@ -43,24 +43,6 @@ class _LoginScreenState extends State<LoginScreen> {
               const Text(textNewAccount, style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,),
               ),
               const SizedBox(height: 10),
-
-              /*MaterialButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-                  disabledColor: themeLoginDisableButton,
-                  elevation: 0,
-                  color: themeRegisterButton,
-                  child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 80,
-                      vertical: 15),
-                      child: Text(textButtonActionRegister ,                     
-                        style: const TextStyle(color: themeLoginStateProccess),
-                      )),                   
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: ((context) => RegisterScreen())));
-              }),*/
-
-
               DropdownButtonFormField(
                 items: <String>['Estudiante', 'Empresa'].map((item) {
                   return DropdownMenuItem(

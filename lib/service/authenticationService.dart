@@ -25,21 +25,22 @@ class AuthenticationService {
       'password': loginForm.password,
     }),
     ).timeout(Duration(seconds: 10));   
+    String body = utf8.decode(response.bodyBytes);
 
-    if(response.statusCode == 200){
-      String body = utf8.decode(response.bodyBytes);      
+    if(response.statusCode == 200){           
       loginForm.isLoading = true;      
       User newUser = getNewUser(body);
       userCubit.createUser(newUser);      
-      Navigator.push(context, MaterialPageRoute(builder: ((context) => HeadersPage())));
+      Navigator.push(context, MaterialPageRoute(builder: ((context) => HeadersPage(user: newUser,))));
     }else{
-      log("Fallo el login.");
+      log(logLoginFailedAuthenticationService);
       showDialog(
         context: context, 
         builder: (_) => CustomPopup(
             title: textResultErrorLoginTitle,
-            message: textResultInvalidDataLogin,
+            message: body + textResultInvalidDataLogin,
             buttonAccept: BounceButton(
+              iconLeft: Icons.error,
               buttonSize: ButtonSize.small,
               type: ButtonType.primary,
               label: textButtonShowDialogLogin,
@@ -74,13 +75,46 @@ class AuthenticationService {
     }),
     ).timeout(Duration(seconds: 10));
 
-    if(response.statusCode == 200){
-      String body = utf8.decode(response.bodyBytes);      
+    String body = utf8.decode(response.bodyBytes); 
+    final jsonData = jsonDecode(body);
+    if(response.statusCode == 201){           
       register.isLoading = true;
       User newUser = getNewUser(body);
       userCubit.createUser(newUser);
+      showDialog(
+        context: context, 
+        builder: (_) => CustomPopup(
+            title: textResultRegisterTitle,
+            message: jsonData["message"],
+            buttonAccept: BounceButton(
+              iconLeft: Icons.save,
+              buttonSize: ButtonSize.small,
+              type: ButtonType.primary,
+              label: textButtonShowDialogLogin,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => HeadersPage(user: newUser,))));
+              },
+            ),
+          )
+      );      
     }else{
-      log("Fallo el registro del estudiante.");       
+      log(logRegisterStudentAuthenticationService);
+      showDialog(
+        context: context, 
+        builder: (_) => CustomPopup(
+            title: textResultRegisterTitle,
+            message: body,
+            buttonAccept: BounceButton(
+              iconLeft: Icons.error,
+              buttonSize: ButtonSize.small,
+              type: ButtonType.primary,
+              label: textButtonShowDialogLogin,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          )
+      );              
     }
     return register;    
   }
@@ -104,13 +138,46 @@ class AuthenticationService {
     }),
     ).timeout(Duration(seconds: 10));
 
-    if(response.statusCode == 200){
-      String body = utf8.decode(response.bodyBytes);
+    String body = utf8.decode(response.bodyBytes); 
+    final jsonData = jsonDecode(body);
+    if(response.statusCode == 201){    
       register.isLoading = true;
       User newUser = getNewUser(body);
       userCubit.createUser(newUser);
+      showDialog(
+        context: context, 
+        builder: (_) => CustomPopup(
+            title: textResultRegisterTitle,
+            message: jsonData["message"],
+            buttonAccept: BounceButton(
+              iconLeft: Icons.save,
+              buttonSize: ButtonSize.small,
+              type: ButtonType.primary,
+              label: textButtonShowDialogLogin,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => HeadersPage(user: newUser,))));
+              },
+            ),
+          )
+      );
     }else{
-      log("Fallo el registro del publicador.");   
+      log(logRegisterPublisherAuthenticationService);
+      showDialog(
+        context: context, 
+        builder: (_) => CustomPopup(
+            title: textResultRegisterTitle,
+            message: body,
+            buttonAccept: BounceButton(
+              iconLeft: Icons.error,
+              buttonSize: ButtonSize.small,
+              type: ButtonType.primary,
+              label: textButtonShowDialogLogin,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          )
+      );     
     }    
     return register;
   }
@@ -121,7 +188,7 @@ class AuthenticationService {
     phone: jsonData['phone'], email: jsonData['username'], password: jsonData['password'],
     role: jsonData['role'], jwt: jsonData['jwt'], contacts: []);
     user.isConected = true;
-    log(user.name + user.lastName + " esta todo bien");
+    log(user.name + " " + user.lastName + " " + user.role + " con id " + user.id.toString() + " esta todo bien");
     return user;
   }
   

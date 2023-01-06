@@ -18,18 +18,6 @@ class DrawDrawer extends StatelessWidget {
         switch ( state.runtimeType ) {
           
           case UserInitial:
-            /* return CustomPopup(
-                              title: textTitleProfile,
-                              message: textNoDataUserInitial,
-                              buttonAccept: BounceButton(
-                                buttonSize: ButtonSize.small,
-                                type: ButtonType.primary,
-                                label: textButtonShowDialogProfile,
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                              ),
-                            );  */
             User newUser = User(id: 0, name: "", lastName: "", 
             phone: "", email: "", password: "", role: "", jwt: "", contacts: []);
             newUser.isConected = false;
@@ -40,17 +28,17 @@ class DrawDrawer extends StatelessWidget {
 
           default:
             return CustomPopup(
-                              title: textTitleProfile,
-                              message: textUnknownState,
-                              buttonAccept: BounceButton(
-                                buttonSize: ButtonSize.small,
-                                type: ButtonType.primary,
-                                label: textButtonShowDialogProfile,
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                              ),
-                            ); 
+              title: textTitleProfile,
+              message: textUnknownState,
+              buttonAccept: BounceButton(
+                buttonSize: ButtonSize.small,
+                type: ButtonType.primary,
+                label: textButtonShowDialogProfile,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ); 
         }        
     });
   }  

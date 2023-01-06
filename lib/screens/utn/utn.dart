@@ -3,8 +3,8 @@ import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/widgets/userActive/bodyHomeDrawer.dart';
 import 'package:jobs_bank/widgets/userActive/drawDrawer.dart';
 
-class Applicant extends StatelessWidget{      
-  const Applicant({Key? key}) : super(key: key);
+class Utn extends StatelessWidget{      
+  const Utn({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class Applicant extends StatelessWidget{
   AppBar EmptyAppBar(BuildContext context){
     return AppBar(
       elevation: 10,
-      title: Text(textTitleAppBarByApplicant),
+      title: Text(textTitleAppBarByUtn),
     );
   }  
 

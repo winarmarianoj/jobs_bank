@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/models/JobOffer.dart';
 import 'package:jobs_bank/models/User.dart';
+import 'package:jobs_bank/screens/components/joboffer/widget/applicantPostulateWidget.dart';
+import 'package:jobs_bank/screens/components/joboffer/widget/jobOfferDataWidget.dart';
+import 'package:jobs_bank/screens/components/joboffer/widget/publisherSubscribedWidget.dart';
+import 'package:jobs_bank/screens/publisher/subscribed.dart';
 import 'package:jobs_bank/service/applicantService.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
-import 'package:jobs_bank/widgets/itemCardWidgetText/itemCardTextWidget.dart';
 
 class DescriptionJobOffer extends StatelessWidget {
   final JobOffer jobOffer;
@@ -15,27 +18,16 @@ class DescriptionJobOffer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin),
-      child: Column(        
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          ItemCardTextWidget(label: "", text: jobOffer.title, fontWeight: FontWeight.bold, /* color: kTitle, */ size: 22.0,),
-          const SizedBox(height: defaultSpaceBetweenObjectsDescription),
-          ItemCardTextWidget(label: "", text: jobOffer.description, fontWeight: FontWeight.bold, /* color: descriptionJobOfferDetails */ size: 16,),
-          const SizedBox(height: defaultSpaceBetweenObjectsDescription),
-          ItemCardTextWidget(label: "Detalles: ", text: jobOffer.body, fontWeight: FontWeight.normal, /* color: themeProductJobOfferPublisherTextTitle, */ size: 14,),
-          const SizedBox(height: defaultSpaceBetweenObjectsDescription),
-          ItemCardTextWidget(label: "Area: ", text: jobOffer.area, fontWeight: FontWeight.normal, /* color: themeProductJobOfferPublisherTextTitle, */ size: 14,),
-          const SizedBox(height: defaultSpaceBetweenObjectsDescription),
-          ItemCardTextWidget(label: "Experiencia: ", text: jobOffer.experience, fontWeight: FontWeight.normal, /* color: themeProductJobOfferPublisherTextTitle, */ size: 14,),
-          const SizedBox(height: defaultSpaceBetweenObjectsDescription),
-          ItemCardTextWidget(label: "Modalidad: ", text: jobOffer.modality, fontWeight: FontWeight.normal, /* color: themeProductJobOfferPublisherTextTitle, */ size: 14,),
-          const SizedBox(height: defaultSpaceBetweenObjectsDescription),
-          ItemCardTextWidget(label: "Posición: ", text: jobOffer.position, fontWeight: FontWeight.normal, /* color: themeProductJobOfferPublisherTextTitle, */ size: 14,),
-          const SizedBox(height: defaultSpaceBetweenObjectsDescription),
-          ItemCardTextWidget(label: "Categoría: ", text: jobOffer.category, fontWeight: FontWeight.normal, /* color: themeProductJobOfferPublisherTextTitle, */ size: 14,),
+        children: [
+          JobOfferDataWidget(jobOffer: jobOffer),
+          if (user.role == 'APPLICANT') ApplicantPostulateWidget(jobOffer: jobOffer, user: user),
+          if (user.role == 'PUBLISHER') PublisherSubscribedWidget(jobOffer: jobOffer),
 
-          if (user.role == 'APPLICANT') Container(
+          /*if (user.role == 'APPLICANT') Container(
             child: BounceButton(
+              iconLeft: Icons.subscript,
               buttonSize: ButtonSize.small,
               type: ButtonType.primary,
               label: textButtonAppliedByJobOffer,
@@ -44,9 +36,30 @@ class DescriptionJobOffer extends StatelessWidget {
                 service.postulate(jobOffer.id, user, context);                
               },
             ),
-          ) 
-        ],
-      ),
+          ) else if(user.role == 'PUBLISHER') Container(
+            child: BounceButton(
+                buttonSize: ButtonSize.superSmall,
+                  type: ButtonType.subscriptos,
+                  label: 'Ver Subscriptos',
+                  iconRight: Icons.subscriptions,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Subscribed(                        
+                          jobOffer: jobOffer,
+                        ),
+                      ),
+                    );
+                  },
+              ),
+          )       */   
+          
+
+
+        ]
+        
+      )
     );
   }
 }

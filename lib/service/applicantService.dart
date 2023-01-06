@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:jobs_bank/constant/constantsText.dart';
@@ -23,15 +24,16 @@ class ApplicantService {
     }),
     ).timeout(Duration(seconds: 60));
     
-    if(response.statusCode == 200){
-      String body = utf8.decode(response.bodyBytes);
+    String body = utf8.decode(response.bodyBytes);
+    if(response.statusCode == 202){      
       result = true;
       showDialog(
         context: context, 
         builder: (_) => CustomPopup(
             title: textLabelPostulateService,
-            message: body, //textResultPostulateMessageService,
+            message: body, 
             buttonAccept: BounceButton(
+              iconLeft: Icons.save,
               buttonSize: ButtonSize.small,
               type: ButtonType.primary,
               label: textButtonShowDialogLogin,
@@ -42,13 +44,14 @@ class ApplicantService {
           )
       );  
     }else{      
-      print("Fallo traer la lista de Joboffers");
+      log(logPostulateFailedApplicantService);
       showDialog(
         context: context, 
         builder: (_) => CustomPopup(
             title: textLabelPostulateService,
-            message: textFailedPostulateMessageService,
+            message: body,
             buttonAccept: BounceButton(
+              iconLeft: Icons.error,
               buttonSize: ButtonSize.small,
               type: ButtonType.primary,
               label: textButtonShowDialogLogin,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsColors.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/cubit/userCubit.dart';
+import 'package:jobs_bank/screens/home/home.dart';
 import 'package:jobs_bank/widgets/routes/optionRoutesApplicant.dart';
 import 'package:jobs_bank/screens/ui/login/loginScreen.dart';
 import 'package:jobs_bank/theme/themeChange.dart';
@@ -68,12 +69,13 @@ class BodyDrawer extends StatelessWidget{
               color: accentColor,
               fontWeight: FontWeight.bold,
             ), 
-
-            user.role == "APPLICANT" ? Expanded(child: OptionRoutesApplicant()) 
-            : user.role == "PUBLISHER" ? Expanded(child: OptionRoutesPublisher())
-            : Expanded(child: OptionRoutesUtn()),
-            
             const SizedBox(height: 5),
+
+            if(user.role == "APPLICANT") OptionRoutesApplicant(),
+            if(user.role == "PUBLISHER") OptionRoutesPublisher(),
+            if(user.role == "UTN") OptionRoutesUtn(),            
+            const SizedBox(height: 5),
+
             ListTile(
               leading: Icon( Icons.lightbulb_outline, color: accentColor ),
               title: Text(textDarkModeTheme),
@@ -119,7 +121,7 @@ class BodyDrawer extends StatelessWidget{
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => LoginScreen(),
+                    builder: (context) => const Home(),
                   ),
                 );
               }

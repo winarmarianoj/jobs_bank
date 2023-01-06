@@ -11,20 +11,22 @@ class OptionRoutesApplicant extends StatelessWidget {
 
     final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
 
-    return ListView.separated(
-      physics: BouncingScrollPhysics(),
-      separatorBuilder: ( context, i) => Divider(
-        color: appTheme.primaryColorLight,
-      ), 
-      itemCount: pageRoutesApplicant.length,
-      itemBuilder: (context, i) => ListTile(
-        leading: FaIcon( pageRoutesApplicant[i].icon , color: appTheme.accentColor ),
-        title: Text( pageRoutesApplicant[i].titulo ),
-        trailing: Icon( Icons.chevron_right, color: appTheme.accentColor ),
-        onTap: () {
-          Navigator.push(context,
-           MaterialPageRoute(builder: (context)=> pageRoutesApplicant[i].page ));
-        },
+    return Expanded(
+      child: ListView.separated(
+        physics: BouncingScrollPhysics(),
+        separatorBuilder: ( context, i) => Divider(
+          color: appTheme.primaryColorLight,
+        ), 
+        itemCount: pageRoutesApplicant.length,
+        itemBuilder: (context, i) => ListTile(
+          leading: FaIcon( pageRoutesApplicant[i].icon , color: appTheme.accentColor ),
+          title: Text( pageRoutesApplicant[i].titulo ),
+          trailing: Icon( Icons.chevron_right, color: appTheme.accentColor ),
+          onTap: () {
+            Navigator.push(context,
+              MaterialPageRoute(builder: (context)=> pageRoutesApplicant[i].page ));
+          },
+        ), 
       ), 
     );
   }

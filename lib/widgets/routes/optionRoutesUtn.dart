@@ -11,21 +11,23 @@ class OptionRoutesUtn extends StatelessWidget {
 
     final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
 
-    return ListView.separated(
-      physics: BouncingScrollPhysics(),
-      separatorBuilder: ( context, i) => Divider(
-        color: appTheme.primaryColorLight,
-      ), 
-      itemCount: pageRoutesUtn.length,
-      itemBuilder: (context, i) => ListTile(
-        leading: FaIcon( pageRoutesUtn[i].icon , color: appTheme.accentColor ),
-        title: Text( pageRoutesUtn[i].titulo ),
-        trailing: Icon( Icons.chevron_right, color: appTheme.accentColor ),
-        onTap: () {
-          Navigator.push(context,
-           MaterialPageRoute(builder: (context)=> pageRoutesUtn[i].page ));
-        },
-      ), 
+    return Expanded(
+      child: ListView.separated(
+        physics: BouncingScrollPhysics(),
+        separatorBuilder: ( context, i) => Divider(
+          color: appTheme.primaryColorLight,
+        ), 
+        itemCount: pageRoutesUtn.length,
+        itemBuilder: (context, i) => ListTile(
+          leading: FaIcon( pageRoutesUtn[i].icon , color: appTheme.accentColor ),
+          title: Text( pageRoutesUtn[i].titulo ),
+          trailing: Icon( Icons.chevron_right, color: appTheme.accentColor ),
+          onTap: () {
+            Navigator.push(context,
+             MaterialPageRoute(builder: (context)=> pageRoutesUtn[i].page ));
+          },
+        ), 
+      ),
     );
   }
 }

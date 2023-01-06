@@ -39,18 +39,20 @@ const textDecorationHintTextSearch = "Buscar...";
 //TODO Drawer
 const textWelcome = "Bienvenido: ";
 const textWebSite = "Web Site: ";
-const textWebSiteName = "Shop of Vehicles";
-const textTypeVehiclesWebSite = "Autos - Camionetas - Camiones";
+const textWebSiteName = "Bolsa de Trabajo";
+const textTypeVehiclesWebSite = "Estudiantes CUVL-UTN";
 const textContactTitle = "Contacto: ";
 const textContactPhone = "119876543 - 1123459877";
-const textContactEmail = "shopofvehicles@algunlugar.com.ar";
-const textInitialsWebSiteName = 'SoV';
+const textContactEmail = "bolsadetrabajo@algunlugar.com.ar";
+const textInitialsWebSiteName = 'BT';
 const textDarkModeTheme = 'Dark Mode';
 const textCustomModeTheme = 'Custom Theme';
 const textLogin = 'Login - Register';
 const textLogout = 'Logout';
 
+//TODO DropdownButtonFormField
 const textSelectedRoleInRegister = 'Seleccionar uno...';
+const textSelectedEvalutaionJobOffer = 'Seleccionar un estado...';
 
 //TODO Login
 const textTitle = 'Login';
@@ -89,7 +91,7 @@ const textErrorWebSiteRegister = 'El texto ingresado no es correcto o formato in
 const textRegexPatternByPhoneNumber = r'^[0-9]{2,50}$';
 const textHintTextStreetRegister = 'ingrese su calle y número de domicilio';
 const textLabelStreetRegister = 'Domicilio';
-const textResultErrorRegisterTitle = 'Resultado del Registro de Usuario';
+const textResultRegisterTitle = 'Resultado del Registro de Usuario';
 const textResultInvalidDataRegister = 'Error en el proceso de registro. Incorrectos los datos. Vuelva a intentar.';
 const textButtonShowDialogRegister = 'OK';
 
@@ -101,11 +103,10 @@ const textTitleWebSite = 'Jobs Bank';
 const textInitialRouteApp = 'login';
 
 //TODO Title AppBar
-const textTitleShopOfVans = "Shop of Vans";
-const textTitleShopOfCars = "Shop of Cars";
-const textTitleShopOfTrucks = "Shop of Trucks";
-const textTitleChangeProfile = 'Opciones de Cambio';
-const textTitleSearching = 'Buscar contenga letra...';
+const textTitleAppBarByHome = "Bolsa de Trabajo UTN";
+const textTitleAppBarByApplicant = 'Menu Estudiante';
+const textTitleAppBarByPublisher = 'Menu Empresario';
+const textTitleAppBarByUtn = 'Menu Administrativo';
 
 //TODO tooltip
 const textToolTipTruck = 'Home Trucks';
@@ -116,3 +117,48 @@ const textToolTipSearch = 'Buscador';
 
 //TODO Buttons
 
+//TODO Mensajes de la capa Serivce
+const logPostulateFailedApplicantService = "Fallo al postularse al aviso solicitado.";
+const logLoginFailedAuthenticationService = "Fallo al intentar loguearse, reivse su username y password.";
+const logRegisterStudentAuthenticationService = "Fallo el registro del estudiante.";
+const logRegisterPublisherAuthenticationService = "Fallo el registro del publicador.";
+const logJobOfferAllFailed = "Fallo traer la lista de Joboffers";
+const logJobOfferApplicantFailed = "Fallo traer la lista de jobOfferApp";
+
+//TODO Joboffer
+const logJobOfferFailedBodyHome = "Error al traer joboffer en Body Home.";
+const logJobOfferFailedBodyPublished = "Error al traer joboffer del publicador en Body Published.";
+const textResultCreateJobOffer = 'Resultado del Pedido: ';
+const logErrorCreateJobOffer = "Fallo la creacion del nuevo Joboffer - Aviso";
+const logJobOfferListEmpty = 'La lista esta vacia ya que no debe tener ningun aviso propio publicado.';
+const logJobOffersStatePendingEmpty = 'La lista de Avisos en estado Pendiente esta vacia.';
+const logJobOfferEvaluationFailed = 'Devuelve un Not Found ya que no encuentra el aviso o hay información incorrecta.';
+
+//TODO JobofferApplicant
+const logJobOfferAppFailedBodySubscribed = "Fallo traer la lista de los estudiantes subscriptos al aviso.";
+const logJOAppFailedBodyJOApplicant = "Error al traer los avisos que estoy subscripto.";
+const logJOAPPListIsEmpty = 'La lista esta vacia y no tiene postulantes.';
+const logJOAPPListIsEmptyApplied = 'La lista esta vacia, no has aplicado a ninguna oferta laboral.';
+
+//TODO PublishForm
+const textRegexPattern = r'^[a-zA-ZñÑ\s]{2,50}$';
+const textAndNumberRegexPattern = r'^[a-zA-Z0-9\s]{2,100}$';
+const numberRegexPattern = r'^[0-9]{2,50}$';
+const hintTextTitle = 'Ingrese título del aviso maximo 30 caracteres';
+const labelTextTitle = 'Título';
+const invalidFormatTitle = 'Ingrese hasta 30 caracteres y solo tipo letras.';
+const hintTextDescription = 'Ingrese la descripcion del aviso maximo 50 caracteres';
+const labelTextDescription = 'Descripción';
+const invalidFormatDescription = 'Ingrese hasta 50 caracteres y solo tipo letras.';
+const hintTextArea = 'Ingrese Area del puesto maximo 15 caracteres.';
+const labelTextArea = 'Area';
+const invalidFormatArea = 'Ingrese hasta 15 caracteres y solo tipo letras.';
+const hintTextBody = 'Ingrese el cuerpo del aviso maximo 100 caracteres.';
+const labelTextBody = 'Cuerpo Aviso';
+const invalidFormatBody = 'Ingrese hasta 100 caracteres solamente, pueden ser letras y/o numeros.';
+const hintNumberExperience = 'Ingrese cantidad en años de experiencia requerida.';
+const labelNumberExperience = 'Experiencia en años';
+const invalidFormtaExperience = 'Ingrese caracteres solamente numericos y no mayor a 50.';
+const textSelectedModality = 'Seleccionar un tipo de modalidad...';
+const textSelectedPosition = 'Seleccionar un tipo de posicion...';
+const textSelectedCategory = 'Seleccionar un tipo de categoría...';
