@@ -31,7 +31,9 @@ class JobOfferDataWidget extends StatelessWidget {
         ItemCardTextWidget(label: "Posición: ", text: jobOffer.position, fontWeight: FontWeight.normal, /* color: themeProductJobOfferPublisherTextTitle, */ size: 14,),
         const SizedBox(height: defaultSpaceBetweenObjectsDescription),
         ItemCardTextWidget(label: "Categoría: ", text: jobOffer.category, fontWeight: FontWeight.normal, /* color: themeProductJobOfferPublisherTextTitle, */ size: 14,),
-        const SizedBox(height: defaultSpaceBetweenTextAndButtonDescription),
+        const SizedBox(height: defaultSpaceBetweenObjectsDescription),
+        ItemCardTextWidget(label: "Estado: ", text: jobOffer.state, fontWeight: FontWeight.normal, /* color: themeProductJobOfferPublisherTextTitle, */ size: 14,),
+        const SizedBox(height: defaultSpaceBetweenObjectsDescription),
       ],
     );
   }

@@ -7,7 +7,7 @@ const childAspectRatioBodyHome = 0.75;
 const defaultPaddingTextObjectsHome = 4.0;
 const defaultPaddingImageObjectsHome = 0.5;
 const defaultPaddingHome = 0.9;
-const defaultSpaceBetweenObjectsDescription = 7.0;
+const defaultSpaceBetweenObjectsDescription = 4.0;
 const defaultSpaceBetweenTextAndButtonDescription = 40.0;
 
 //TODO Profile
@@ -17,10 +17,17 @@ const textUnknownState = 'Estado no reconocido';
 const textChangeProfileTitle = 'Change Profile User';
 const textButtonChangeName = 'Cambiar Nombre';
 const textButtonChangeLastName = 'Cambiar Apellido';
+const textButtonChangeIdentification = 'Cambiar Documento';
 const textButtonChangePhone = 'Cambiar Teléfono';
 const textButtonChangeEmail = 'Cambiar Email';
 const textButtonChangePassword = 'Cambiar Password';
-const textButtonChangeStreet = 'Cambiar Dirección';
+const textButtonChangeGenre = 'Cambiar Género';
+const textButtonChangeBirthdate = 'Cambiar Cumpleaños';
+const textButtonChangeTypeStudent = 'Cambiar Tipo Estudiante';
+const textButtonChangeWebPage = 'Cambiar Página Web';
+
+
+
 const textWriterNewChangeByVariable = 'Escriba su nuevo ';
 const textSendDataButton = 'Enviar Cambios';
 const textTitleResultChangeNotExists = 'Resultado de su solicitud: ';
@@ -35,6 +42,7 @@ const textFailedPostulateMessageService = "Fallo la aplicación al Joboffers.";
 
 //TODO Search
 const textDecorationHintTextSearch = "Buscar...";
+const textTitleSearching = 'Buscar contenga letra...';
 
 //TODO Drawer
 const textWelcome = "Bienvenido: ";
@@ -107,6 +115,7 @@ const textTitleAppBarByHome = "Bolsa de Trabajo UTN";
 const textTitleAppBarByApplicant = 'Menu Estudiante';
 const textTitleAppBarByPublisher = 'Menu Empresario';
 const textTitleAppBarByUtn = 'Menu Administrativo';
+const textTitleChangeProfile = 'Opciones de Cambio';
 
 //TODO tooltip
 const textToolTipTruck = 'Home Trucks';

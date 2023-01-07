@@ -185,13 +185,14 @@ class AuthenticationService {
   User getNewUser(String body){
     final jsonData = jsonDecode(body);
     User user = User(id: jsonData['id'], name: jsonData['name'], lastName: jsonData['lastName'], 
-    phone: jsonData['phone'], email: jsonData['username'], password: jsonData['password'],
-    role: jsonData['role'], jwt: jsonData['jwt'], contacts: []);
+    identification: jsonData['identification'], phone: jsonData['phone'], email: jsonData['username'], 
+    password: jsonData['password'], role: jsonData['role'], jwt: jsonData['jwt'], 
+    genre: jsonData['genre'], birthDate: jsonData['birthDate'], typeStudent: jsonData['typeStudent'],
+    webPage: jsonData['webPage']);
     user.isConected = true;
     log(user.name + " " + user.lastName + " " + user.role + " con id " + user.id.toString() + " esta todo bien");
     return user;
-  }
-  
+  }  
 
 }
 

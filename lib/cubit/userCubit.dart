@@ -1,8 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobs_bank/models/User.dart';
-
-import '../models/Contact.dart';
 part 'userState.dart';
 
 class UserCubit extends Cubit<UserState> {
@@ -49,21 +47,48 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 
-  void addContact(Contact contact) {
+  void logout() {
+    emit( UserInitial( ) );
+  }
+
+  void changeIdentification(String newAttribute) {
     final currentState = state;
-    if ( currentState is UserActive ) {      
-      final newContacts = [
-        ...currentState.user.contacts,
-        contact,
-      ];
-      
-      final newUser = currentState.user.copyWith( contacts:  newContacts);
+    if ( currentState is UserActive ) {
+      final newUser = currentState.user.copyWith( identification: newAttribute);
       emit( UserActive( newUser ) );
     }
   }
 
-  void logout() {
-    emit( UserInitial( ) );
+  void changeGenre(String newAttribute) {
+    final currentState = state;
+    if ( currentState is UserActive ) {
+      final newUser = currentState.user.copyWith( genre: newAttribute);
+      emit( UserActive( newUser ) );
+    }
+  }
+
+  void changeBirthDate(String newAttribute) {
+    final currentState = state;
+    if ( currentState is UserActive ) {
+      final newUser = currentState.user.copyWith( birthDate: newAttribute);
+      emit( UserActive( newUser ) );
+    }
+  }
+
+  void changeTypeStudent(String newAttribute) {
+    final currentState = state;
+    if ( currentState is UserActive ) {
+      final newUser = currentState.user.copyWith( typeStudent: newAttribute);
+      emit( UserActive( newUser ) );
+    }
+  }
+
+  void changeWebPage(String newAttribute) {
+    final currentState = state;
+    if ( currentState is UserActive ) {
+      final newUser = currentState.user.copyWith( webPage: newAttribute);
+      emit( UserActive( newUser ) );
+    }
   }
 
 }

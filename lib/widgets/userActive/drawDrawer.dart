@@ -18,8 +18,9 @@ class DrawDrawer extends StatelessWidget {
         switch ( state.runtimeType ) {
           
           case UserInitial:
-            User newUser = User(id: 0, name: "", lastName: "", 
-            phone: "", email: "", password: "", role: "", jwt: "", contacts: []);
+            User newUser = User(id: 0, name: "", lastName: "", identification: "",
+            phone: "", email: "", password: "", role: "", jwt: "", 
+            genre: "", birthDate: "", typeStudent: "", webPage: "");
             newUser.isConected = false;
             return BodyDrawer(user: newUser, );
 

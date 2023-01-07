@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:jobs_bank/models/Contact.dart';
 
+/*
+  String genre = '';
+  String birthDate = '';
+  String typeStudent = '';
+  String webPage = '';
+*/
+
 class User {  
   final int id;
-  final String name, lastName, phone, email, password, role, jwt;
-  final List<Contact> contacts;
+  final String name, lastName, identification, phone, email, password, role, jwt,
+  genre, birthDate, typeStudent, webPage;
 
-  User({ required this.id, required this.name, required this.lastName,
-  required this.phone, required this.email, required this.password,
-  required this.role, required this.jwt, required this.contacts});
+  User({ required this.id, required this.name, required this.lastName, required this.identification,
+  required this.phone, required this.email, required this.password, required this.genre, 
+  required this.birthDate, required this.typeStudent, required this.webPage,
+  required this.role, required this.jwt});
 
   bool _isConected = false;
   bool get isConected => _isConected;
@@ -18,20 +26,24 @@ class User {
   }
 
   User copyWith({ 
-    String? name, lastName, phone, email, password, role, jwt,
+    String? name, lastName, identification, phone, email, password, role, jwt,
+    genre, birthDate, typeStudent, webPage,
     int? id,
-    List<Contact>? contacts, 
   }) =>
     User(
     id: id?? this.id,
     name: name ?? this.name,
     lastName: lastName ?? this.lastName,
+    identification: identification ?? this.identification,
     phone: phone ?? this.phone,
     email: email ?? this.email,
+    password: password ?? this.password,
     role: role ?? this.role,
     jwt: jwt ?? this.jwt,
-    password: password ?? this.password,
-    contacts: contacts ?? this.contacts,
+    genre: genre ?? this.genre,
+    birthDate: birthDate ?? this.birthDate,
+    typeStudent: typeStudent ?? this.typeStudent,
+    webPage: webPage ?? this.webPage,
   );
 }
 
