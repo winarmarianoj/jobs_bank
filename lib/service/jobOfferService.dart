@@ -10,39 +10,8 @@ import 'package:jobs_bank/screens/publisher/published.dart';
 import 'package:jobs_bank/screens/utn/utn.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/message/customPopup.dart';
+
 class JobOfferService {
-
-  Future<List<JobOffer>?> getJobOfferAll(BuildContext context) async{
-    var url = Uri.parse('http://10.0.2.2:8082/joboffer/');
-    List<JobOffer> joboffers = [];    
-    final response = await http.get(url).timeout(Duration(seconds: 100));
-    String body = utf8.decode(response.bodyBytes);
-    final jsonData = jsonDecode(body);
-    if(response.statusCode == 200){       
-      for (var item in jsonData){
-        joboffers.add(JobOffer.fromJson(item));
-      }
-      return joboffers;
-    }else{
-      log(logJobOfferAllFailed);
-      showDialog(context: context, 
-        builder: (_) => CustomPopup(
-          title: textResultCreateJobOffer,
-          message: body,
-          buttonAccept: BounceButton(
-            iconLeft: Icons.error,
-            buttonSize: ButtonSize.small,
-            type: ButtonType.primary,
-            label: textButtonShowDialogRegister,
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        )
-      ); 
-    }    
-  }
-
   Future<JobOffer?> createJobOffer(User user, BuildContext context, PublishFormProvider publishForm) async{
     var url = Uri.parse('http://10.0.2.2:8082/joboffer/' + user.id.toString());
     final response = await http.post(url,
@@ -103,8 +72,7 @@ class JobOfferService {
     return null;
   }
 
-  Future<List<JobOffer>?> getJobOfferPending(BuildContext context) async{
-    var url = Uri.parse('http://10.0.2.2:8082/joboffer/pending');
+  Future<List<JobOffer>?> bringsJobOfferList(Uri url, BuildContext context) async{
     List<JobOffer> joboffers = [];    
     final response = await http.get(url).timeout(Duration(seconds: 100));
     String body = utf8.decode(response.bodyBytes);
@@ -154,7 +122,18 @@ class JobOfferService {
     }else{
       return joboffers;
     }
-    
+  }
+
+  Future<List<JobOffer>?> getJobOfferAll(BuildContext context) async{
+    return bringsJobOfferList(Uri.parse('http://10.0.2.2:8082/joboffer/'), context);
+  }
+
+  Future<List<JobOffer>?> getJobOfferPending(BuildContext context) async{
+    return bringsJobOfferList(Uri.parse('http://10.0.2.2:8082/joboffer/pending'), context);    
+  }
+
+  Future<List<JobOffer>?> getAllPublishedJobOffers(BuildContext context) async{
+    return bringsJobOfferList(Uri.parse('http://10.0.2.2:8082/joboffer/published-all'), context);    
   }
 
   Future<JobOffer?> jobOfferEvaluation(String selectedState, JobOffer jobOffer, BuildContext context) async{
@@ -210,7 +189,9 @@ class JobOfferService {
     }
     return null;
   }
+  
 
 }
+
 
 

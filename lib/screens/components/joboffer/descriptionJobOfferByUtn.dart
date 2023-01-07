@@ -50,16 +50,7 @@ class _DescriptionJobOfferByUtnState extends State<DescriptionJobOfferByUtn> {
               onChanged: (value) {
                 setState(() {
                   selectedState = value!;
-                  BounceButton(
-                    buttonSize: ButtonSize.superSmall,
-                      type: ButtonType.secondary,
-                      label: '',
-                      iconRight: Icons.pending,
-                      onPressed: () {
-                        selectedState = value;
-                        jobOfferService.jobOfferEvaluation(selectedState, jobOffer, context);
-                      },
-                  );
+                  jobOfferService.jobOfferEvaluation(selectedState, jobOffer, context);
                 });
               },
             ),                

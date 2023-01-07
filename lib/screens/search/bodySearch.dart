@@ -3,6 +3,7 @@ import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/screens/search/components/searchJobOffer.dart';
 import 'package:jobs_bank/screens/search/components/searchUtn.dart';
+import 'package:jobs_bank/widgets/text/myText.dart';
 import 'package:jobs_bank/widgets/userActive/drawDrawer.dart';
 
 class BodySearch extends StatefulWidget{
@@ -28,6 +29,16 @@ class FirstSearch extends State<BodySearch>{
           width: 350,
           child: Column(
             children: [
+              if(user.role == 'APPLICANT' || user.role == 'PUBLISHER')
+              MyBodyLargeText(text: "Tipo Modalidad:\nONSITE, REMOTE, MIXED\n" + 
+              "Tipo Posiciones:\nFULLTIME, PARTTIME, CONTRACT" + 
+              "Tipo Categorías:\nFULLSTACK, BACKEND, FRONTEND, QA, BILLING, CONTRACT, DEVELOPER, UI-UX, THIRD-PARTIES",
+              fontWeight: FontWeight.bold, size: 16.0,),
+              
+              if(user.role == 'UTN') MyBodyLargeText(text: "Estados posibles:\nACTIVE, APPROVED, DELETED, PENDING, PUBLISHED, REJECTED, REVIEW",
+              fontWeight: FontWeight.bold, size: 16.0,),
+
+              const SizedBox(height: kDefaultPaddin),
               TextField(
                 controller: searchController,
                 onChanged: (value) {

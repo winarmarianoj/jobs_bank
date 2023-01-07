@@ -16,7 +16,6 @@ class SearchUtn extends StatelessWidget{
     final JobOfferService jobOfferService = JobOfferService(); 
     return FutureBuilder(
       future: jobOfferService.getJobOfferAll(context),
-      //initialData: jobOfferService.getJobOfferAll(context),      
       builder: ((context, snapshot) {
         if(snapshot.hasData){
           List<JobOffer>? joboffers = snapshot.data as List<JobOffer>;

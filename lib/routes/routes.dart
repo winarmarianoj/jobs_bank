@@ -22,7 +22,7 @@ final pageRoutesPublisher = <_Route>[
 ];
 final pageRoutesUtn = <_Route>[
   _Route( FontAwesomeIcons.school , 'Utn',  Utn() ),
-  _Route( FontAwesomeIcons.check , 'Check JobOffers',  Evaluation() ),
+  _Route( FontAwesomeIcons.check , 'Check Pending',  Evaluation() ),
   _Route( FontAwesomeIcons.person , 'Profile', ProfileUser() ),
 ];
 //var roles = <String>["ADMIN", "APPLICANT", "PUBLISHER", "UTN"];

@@ -20,7 +20,7 @@ class BodyHome extends StatelessWidget{
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 1),
                 child: FutureBuilder(                  
-                  future: jobOfferService.getJobOfferAll(context),
+                  future: jobOfferService.getAllPublishedJobOffers(context),
                   builder: (context, snapshot) {
                     if(snapshot.hasData){
                       List<JobOffer>? jobofferlist = snapshot.data as List<JobOffer>;
