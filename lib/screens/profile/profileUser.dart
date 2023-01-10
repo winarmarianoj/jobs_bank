@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobs_bank/constant/constantsText.dart';
-import 'package:jobs_bank/cubit/userCubit.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/screens/profile/changeProfileUser.dart';
 
-class ProfileUser extends StatelessWidget {
+class BodyScaffold extends StatelessWidget {
+  final User user;
+  const BodyScaffold(this.user);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,31 +12,14 @@ class ProfileUser extends StatelessWidget {
         elevation: 10,
       ),
       body: SingleChildScrollView(
-        child: BodyScaffold(),
+        child: UserData(user),
       ),  
       floatingActionButton: FloatingActionButton(
         child: const Icon( Icons.accessibility_new ),
         onPressed: () => Navigator.push(context, MaterialPageRoute(builder: ((context) => ChangeProfileUser())))
       ),
    );
-  }
-}
-
-class BodyScaffold extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<UserCubit, UserState>(
-      builder: ( _ , state) {
-        switch ( state.runtimeType ) {          
-          case UserInitial:
-            return Center(child: Text(textNoDataUserInitial));
-          case UserActive:
-            return UserData( (state as UserActive).user );
-          default:
-            return Center( child: Text(textUnknownState));
-        }
-    });
-  }
+  }  
 }
 
 class UserData extends StatelessWidget {
@@ -56,8 +38,7 @@ class UserData extends StatelessWidget {
               ListTile( title: Text('Apellido: ${ user.lastName }', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal,))),
               ListTile( title: Text('Identification: ${ user.identification }', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal,))),
               ListTile( title: Text('Teléfono: ${ user.phone }', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal,))),
-              ListTile( title: Text('Email: ${ user.email }', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal,))),
-              ListTile( title: Text('Contraseña: ${ user.password }', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal,))),
+              ListTile( title: Text('Email: ${ user.email }', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal,))),              
 
               if (user.role == 'APPLICANT') Container(
                 child: Column(

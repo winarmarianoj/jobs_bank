@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/cubit/userCubit.dart';
-import 'package:jobs_bank/models/User.dart';
-import 'package:jobs_bank/screens/ui/home/bodyDrawer.dart';
+import 'package:jobs_bank/screens/profile/profileUser.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/message/customPopup.dart';
 
-class DrawDrawer extends StatelessWidget {
-  DrawDrawer({Key? key, }) : super(key: key);  
-
+class BodyProfileUserDrawer extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UserCubit, UserState>(
-      builder: ( _ , state) {        
-
-        switch ( state.runtimeType ) {
-          
+      builder: ( _ , state) {
+        switch ( state.runtimeType ) {          
           case UserInitial:
-            User newUser = User(id: 0, name: "", lastName: "", identification: "",
-            phone: "", email: "", password: "", role: "", jwt: "", 
-            genre: "", birthDate: "", typeStudent: "", webPage: "", conected: false);
-            return BodyDrawer(user: newUser, );
+            return CustomPopup(
+              title: textTitleProfile,
+              message: textNoDataUserInitial,
+              buttonAccept: BounceButton(
+                buttonSize: ButtonSize.small,
+                type: ButtonType.primary,
+                label: textButtonShowDialogProfile,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ); 
 
           case UserActive:
-            return BodyDrawer(user: (state as UserActive).user, );
+            return BodyScaffold( (state as UserActive).user );
 
           default:
             return CustomPopup(
@@ -39,7 +43,7 @@ class DrawDrawer extends StatelessWidget {
                 },
               ),
             ); 
-        }        
+        }
     });
-  }  
+  }
 }

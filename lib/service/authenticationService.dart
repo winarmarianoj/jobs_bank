@@ -8,14 +8,14 @@ import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/providers/loginFormProvider.dart';
 import 'package:jobs_bank/providers/registerFormProvider.dart';
 import 'package:http/http.dart' as http;
+import 'package:jobs_bank/screens/home/home.dart';
 import 'package:jobs_bank/screens/welcome/headerPage.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/message/customPopup.dart';
 
 class AuthenticationService {
   Future<LoginFormProvider?> getLoginUser(LoginFormProvider loginForm, BuildContext context) async{    
-    final userCubit = context.read<UserCubit>(); 
-    var url = Uri.parse('http://10.0.2.2:8082/auth/loginflutter');
+    var url = Uri.parse('http://10.0.2.2:8082/flutter/login-flutter');
     final response = await http.post(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -30,7 +30,7 @@ class AuthenticationService {
     if(response.statusCode == 200){           
       loginForm.isLoading = true;      
       User newUser = getNewUser(body);
-      userCubit.createUser(newUser);      
+      context.read<UserCubit>().createUser(newUser);      
       Navigator.push(context, MaterialPageRoute(builder: ((context) => HeadersPage(user: newUser,))));
     }else{
       log(logLoginFailedAuthenticationService);
@@ -54,9 +54,46 @@ class AuthenticationService {
     return loginForm;
   }
 
+  Future<User?> logoutUser(User user, BuildContext context) async{    
+    var url = Uri.parse('http://10.0.2.2:8082/flutter/logout-flutter');
+    final response = await http.post(url,
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'username': user.email,
+      'password': user.password,
+    }),
+    ).timeout(Duration(seconds: 10));   
+    String body = utf8.decode(response.bodyBytes);
+
+    if(response.statusCode == 200){
+      context.read<UserCubit>().logout();      
+      Navigator.push(context, MaterialPageRoute(builder: ((context) => Home())));
+    }else{
+      log(logLogoutFailedAuthenticationService);
+      showDialog(
+        context: context, 
+        builder: (_) => CustomPopup(
+            title: textResultErrorLoginTitle,
+            message: body,
+            buttonAccept: BounceButton(
+              iconLeft: Icons.error,
+              buttonSize: ButtonSize.small,
+              type: ButtonType.primary,
+              label: textButtonShowDialogLogin,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          )
+      );  
+    }
+  }
+
   Future<RegisterFormProvider?> registerApplicant(RegisterFormProvider register, BuildContext context) async{
-    final userCubit = context.read<UserCubit>();  
-    var url = Uri.parse('http://10.0.2.2:8082/applicant/');
+    final userCubit = context.read<UserCubit>();
+    var url = Uri.parse('http://10.0.2.2:8082/flutter/');
     final response = await http.post(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -71,9 +108,9 @@ class AuthenticationService {
       'role': 'APPLICANT',
       'genre': register.genre,
       'birthDate': register.birthDate,
-      'typeStudent': register.typeStudent,
+      'typeStudent': register.typeStudent,      
     }),
-    ).timeout(Duration(seconds: 10));
+    ).timeout(Duration(seconds: 1000));
 
     String body = utf8.decode(response.bodyBytes); 
     final jsonData = jsonDecode(body);
@@ -85,7 +122,7 @@ class AuthenticationService {
         context: context, 
         builder: (_) => CustomPopup(
             title: textResultRegisterTitle,
-            message: jsonData["message"],
+            message: textRegisterPersonSuccess,
             buttonAccept: BounceButton(
               iconLeft: Icons.save,
               buttonSize: ButtonSize.small,
@@ -121,7 +158,7 @@ class AuthenticationService {
 
   Future<RegisterFormProvider?> registerPublisher(RegisterFormProvider register, BuildContext context) async{
     final userCubit = context.read<UserCubit>();
-    var url = Uri.parse('http://10.0.2.2:8082/publisher/');
+    var url = Uri.parse('http://10.0.2.2:8082/flutter/');
     final response = await http.post(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -136,7 +173,7 @@ class AuthenticationService {
       'role': 'PUBLISHER',
       'webPage': register.webPage,
     }),
-    ).timeout(Duration(seconds: 10));
+    ).timeout(Duration(seconds: 1000));
 
     String body = utf8.decode(response.bodyBytes); 
     final jsonData = jsonDecode(body);
@@ -148,7 +185,7 @@ class AuthenticationService {
         context: context, 
         builder: (_) => CustomPopup(
             title: textResultRegisterTitle,
-            message: jsonData["message"],
+            message: textRegisterPersonSuccess,
             buttonAccept: BounceButton(
               iconLeft: Icons.save,
               buttonSize: ButtonSize.small,
@@ -188,8 +225,7 @@ class AuthenticationService {
     identification: jsonData['identification'], phone: jsonData['phone'], email: jsonData['username'], 
     password: jsonData['password'], role: jsonData['role'], jwt: jsonData['jwt'], 
     genre: jsonData['genre'], birthDate: jsonData['birthDate'], typeStudent: jsonData['typeStudent'],
-    webPage: jsonData['webPage']);
-    user.isConected = true;
+    webPage: jsonData['webPage'], conected: jsonData['conected']);
     log(user.name + " " + user.lastName + " " + user.role + " con id " + user.id.toString() + " esta todo bien");
     return user;
   }  

@@ -6,6 +6,7 @@ import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/models/JobOffer.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/providers/publishFormProvider.dart';
+import 'package:jobs_bank/screens/home/home.dart';
 import 'package:jobs_bank/screens/publisher/published.dart';
 import 'package:jobs_bank/screens/utn/utn.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
@@ -103,18 +104,18 @@ class JobOfferService {
     }
 
     if(joboffers.isEmpty){
-      log(logJobOffersStatePendingEmpty);
+      log(logJobOffersIsEmpty);
       showDialog(context: context, 
           builder: (_) => CustomPopup(
               title: textResultCreateJobOffer,
-              message: logJobOffersStatePendingEmpty,
+              message: logJobOffersIsEmpty,
               buttonAccept: BounceButton(
                 iconLeft: Icons.hourglass_empty,
                 buttonSize: ButtonSize.small,
                 type: ButtonType.primary,
                 label: textButtonShowDialogRegister,
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: ((context) => Utn())));
+                  Navigator.pop(context);
                 },
               ),
             )

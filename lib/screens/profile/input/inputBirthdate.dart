@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsColors.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/cubit/userCubit.dart';
-import 'package:jobs_bank/screens/profile/profileUser.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
-import 'package:jobs_bank/widgets/message/customPopup.dart';
 import 'package:jobs_bank/widgets/ui/inputDecorations.dart';
+import 'package:jobs_bank/widgets/userActive/bodyProfileDrawer.dart';
 import 'package:jobs_bank/widgets/userActive/drawDrawer.dart';
 import 'package:provider/provider.dart';
 
 class InputBirthdate extends StatelessWidget { 
-  const InputBirthdate({Key? key,}) : super(key: key);
+  const InputBirthdate({Key? key, }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final usuarioCubit = context.read<UserCubit>();
     return Scaffold(
       appBar: buildAppBar(context),
       drawer: DrawDrawer(),
@@ -42,7 +40,7 @@ class InputBirthdate extends StatelessWidget {
                               hintText: textHintBirthDateRegister,
                               labelText: textLabelBirthDateRegister,
                               prefixIcon: Icons.date_range),
-                          onChanged: (value) => context.read<UserCubit>().changeBirthDate(value),
+                          onChanged: (value) => context.read<UserCubit>().changeBirthDate(value, context),
                           validator: (value) {                
                             return (value != null)
                                 ? null
@@ -59,7 +57,7 @@ class InputBirthdate extends StatelessWidget {
                           horizontalPadding: true,
                           contentBasedWidth: true,
                           onPressed:() {
-                            Navigator.push(context, MaterialPageRoute(builder: ((context) => ProfileUser())));
+                            Navigator.push(context, MaterialPageRoute(builder: ((context) => BodyProfileUserDrawer())));
                           },
                         ),               
                       ],
@@ -85,7 +83,7 @@ class InputBirthdate extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ProfileUser(),
+                builder: (context) => BodyProfileUserDrawer(),
               ),
             );
           },

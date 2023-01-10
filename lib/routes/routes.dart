@@ -8,22 +8,23 @@ import 'package:jobs_bank/screens/publisher/published.dart';
 import 'package:jobs_bank/screens/publisher/publisher.dart';
 import 'package:jobs_bank/screens/utn/evalutaion.dart';
 import 'package:jobs_bank/screens/utn/utn.dart';
+import 'package:jobs_bank/widgets/userActive/bodyProfileDrawer.dart';
 
 final pageRoutesApplicant = <_Route>[
   _Route( FontAwesomeIcons.house , 'Applicant',  Applicant() ),
   _Route( FontAwesomeIcons.forward , 'Applied',  Applied() ),
-  _Route( FontAwesomeIcons.person , 'Profile', ProfileUser() ),
+  _Route( FontAwesomeIcons.person , 'Profile', BodyProfileUserDrawer() ),
 ];
 final pageRoutesPublisher = <_Route>[
   _Route( FontAwesomeIcons.businessTime , 'Publisher',  Publisher() ),
   _Route( FontAwesomeIcons.print , 'Published',  Published() ),
   _Route( FontAwesomeIcons.warning , 'Publish',  Publish() ),
-  _Route( FontAwesomeIcons.person , 'Profile', ProfileUser() ),
+  _Route( FontAwesomeIcons.person , 'Profile', BodyProfileUserDrawer() ),
 ];
 final pageRoutesUtn = <_Route>[
   _Route( FontAwesomeIcons.school , 'Utn',  Utn() ),
   _Route( FontAwesomeIcons.check , 'Check Pending',  Evaluation() ),
-  _Route( FontAwesomeIcons.person , 'Profile', ProfileUser() ),
+  _Route( FontAwesomeIcons.person , 'Profile', BodyProfileUserDrawer() ),
 ];
 //var roles = <String>["ADMIN", "APPLICANT", "PUBLISHER", "UTN"];
 class _Route {

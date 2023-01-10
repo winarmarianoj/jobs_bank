@@ -25,9 +25,7 @@ const textButtonChangeGenre = 'Cambiar Género';
 const textButtonChangeBirthdate = 'Cambiar Cumpleaños';
 const textButtonChangeTypeStudent = 'Cambiar Tipo Estudiante';
 const textButtonChangeWebPage = 'Cambiar Página Web';
-
-
-
+const textButtonDeleteUser = 'Darse de baja';
 const textWriterNewChangeByVariable = 'Escriba su nuevo ';
 const textSendDataButton = 'Enviar Cambios';
 const textTitleResultChangeNotExists = 'Resultado de su solicitud: ';
@@ -81,14 +79,15 @@ const textButtonShowDialogLogin = 'OK';
 const textTitleRegister = 'Register';
 const textHintTextNameRegister = 'ingrese su nombre';
 const textLabelNameRegister = 'Nombre';
-const textRegexPatternByString =  r'^[a-zA-Z]{2,50}$';
+const textRegexPatternByString =  r'^[a-zA-Z\s]{2,50}$';
 const textRegexPatternByStringWithNumber =  r'^[a-zA-Z0-9\s]{2,50}$';
-const textInvalidDataFormat = 'El texto ingresado no es valido o tiene hasta 50 caracteres maximo';
-const textPhoneInvalidDataFormat = 'Ingrese hasta 10 caracteres solamente del tipo numerico';
+const textInvalidDataFormat = 'El texto ingresado no es valido o tiene hasta 80 caracteres maximo';
+const textPhoneInvalidDataFormat = 'Ingrese hasta 15 caracteres solamente del tipo numerico';
 const textHintTextLastNameRegister = 'ingrese su apellido';
 const textLabelLastNameRegister = 'Apellido';
 const textHintIdentificationRegister = 'ingrese su dni o cuit sin guiones ni puntos';
 const textLabelIdentificationRegister = 'DNI o CUIT';
+const textIdentificationInvalidDataFormat = 'Ingrese hasta 11 caracteres solamente del tipo numerico';
 const textHintTextPhoneRegister = 'ingrese su telefono';
 const textLabelPhoneRegister = 'Telefono';
 const textHintBirthDateRegister = 'fecha nacimiento formato yyyy-MM-dd';
@@ -100,6 +99,7 @@ const textRegexPatternByPhoneNumber = r'^[0-9]{2,50}$';
 const textHintTextStreetRegister = 'ingrese su calle y número de domicilio';
 const textLabelStreetRegister = 'Domicilio';
 const textResultRegisterTitle = 'Resultado del Registro de Usuario';
+const textRegisterPersonSuccess = 'Se ha registrado exitosamente. Debe confirmar y activar su cuenta a traves del email que le llegue.';
 const textResultInvalidDataRegister = 'Error en el proceso de registro. Incorrectos los datos. Vuelva a intentar.';
 const textButtonShowDialogRegister = 'OK';
 
@@ -128,11 +128,15 @@ const textToolTipSearch = 'Buscador';
 
 //TODO Mensajes de la capa Serivce
 const logPostulateFailedApplicantService = "Fallo al postularse al aviso solicitado.";
-const logLoginFailedAuthenticationService = "Fallo al intentar loguearse, reivse su username y password.";
+const logLoginFailedAuthenticationService = "Fallo al intentar loguearse, revise su username y password.";
+const logLogoutFailedAuthenticationService = 'Fallo al intentar desloguearse.';
 const logRegisterStudentAuthenticationService = "Fallo el registro del estudiante.";
 const logRegisterPublisherAuthenticationService = "Fallo el registro del publicador.";
 const logJobOfferAllFailed = "Fallo traer la lista de Joboffers";
 const logJobOfferApplicantFailed = "Fallo traer la lista de jobOfferApp";
+const logNotModifiedProfile = 'No se ha podido modificar el perfil en la bd.';
+const logDeleteProfileUserFailed = 'No pudo ser eliminado su Perfil y usuario.';
+const logGetUserFailed = 'No se encuentra el usuario o ha fallado el traer su perfil';
 
 //TODO Joboffer
 const logJobOfferFailedBodyHome = "Error al traer joboffer en Body Home.";
@@ -142,6 +146,7 @@ const logErrorCreateJobOffer = "Fallo la creacion del nuevo Joboffer - Aviso";
 const logJobOfferListEmpty = 'La lista esta vacia ya que no debe tener ningun aviso propio publicado.';
 const logJobOffersStatePendingEmpty = 'La lista de Avisos en estado Pendiente esta vacia.';
 const logJobOfferEvaluationFailed = 'Devuelve un Not Found ya que no encuentra el aviso o hay información incorrecta.';
+const logJobOffersIsEmpty = 'La lista de Avisos esta vacia y aun no hay avisos publicados.';
 
 //TODO JobofferApplicant
 const logJobOfferAppFailedBodySubscribed = "Fallo traer la lista de los estudiantes subscriptos al aviso.";

@@ -49,7 +49,7 @@ class DetailsBodyJobOffer extends StatelessWidget {
                   ),
                   child: Column(
                     children: <Widget>[
-                      if(!user.isConected) DescriptionJobOffer(jobOffer: jobOffer, user: user,),
+                      if(!user.conected) DescriptionJobOffer(jobOffer: jobOffer, user: user,),
                       if(user.role == 'APPLICANT' || user.role == 'PUBLISHER') DescriptionJobOffer(jobOffer: jobOffer, user: user,),
                       if(user.role == 'UTN') DescriptionJobOfferByUtn(jobOffer: jobOffer, user: user,),
                     ],

@@ -3,6 +3,8 @@ import 'package:jobs_bank/constant/constantsColors.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/cubit/userCubit.dart';
 import 'package:jobs_bank/screens/home/home.dart';
+import 'package:jobs_bank/service/authenticationService.dart';
+import 'package:jobs_bank/service/profileService.dart';
 import 'package:jobs_bank/widgets/routes/optionRoutesApplicant.dart';
 import 'package:jobs_bank/screens/ui/login/loginScreen.dart';
 import 'package:jobs_bank/theme/themeChange.dart';
@@ -116,8 +118,9 @@ class BodyDrawer extends StatelessWidget{
             ListTile(
               leading: Icon(Icons.logout, color: accentColor ),
               title: Text(textLogout),
-              onTap: () {
-                context.read<UserCubit>().logout();
+              onTap: () {                
+                AuthenticationService service = AuthenticationService();
+                service.logoutUser(user, context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(

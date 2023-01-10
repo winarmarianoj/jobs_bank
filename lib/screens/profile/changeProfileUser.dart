@@ -3,17 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobs_bank/constant/constantsColors.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/cubit/userCubit.dart';
+import 'package:jobs_bank/models/User.dart';
+import 'package:jobs_bank/screens/home/home.dart';
 import 'package:jobs_bank/screens/profile/input/inputBirthdate.dart';
 import 'package:jobs_bank/screens/profile/input/inputGenre.dart';
 import 'package:jobs_bank/screens/profile/input/inputText.dart';
 import 'package:jobs_bank/screens/profile/input/inputTypeStudent.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
+import 'package:jobs_bank/widgets/message/customPopup.dart';
+import 'package:jobs_bank/widgets/text/myText.dart';
 
 class ChangeProfileUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final usuarioCubit = context.read<UserCubit>();
-    
     return Scaffold(
       appBar: AppBar(
         title: Text(textTitleChangeProfile, ),
@@ -33,7 +35,7 @@ class ChangeProfileUser extends StatelessWidget {
               horizontalPadding: true,
               contentBasedWidth: true,
               onPressed:() {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) => InputText(attribute: "Nombre",))));
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => InputText(attribute: "Nombre"))));
               },
             ),                        
             const SizedBox(height: kDefaultPaddin), 
@@ -46,7 +48,7 @@ class ChangeProfileUser extends StatelessWidget {
               horizontalPadding: true,
               contentBasedWidth: true,
               onPressed:() {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) => InputText(attribute: "Apellido",))));
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => InputText(attribute: "Apellido"))));
               },
             ),     
             const SizedBox(height: kDefaultPaddin), 
@@ -59,7 +61,7 @@ class ChangeProfileUser extends StatelessWidget {
               horizontalPadding: true,
               contentBasedWidth: true,
               onPressed:() {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) => InputText(attribute: "Identificacion",))));
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => InputText(attribute: "Identificacion"))));
               },
             ),                      
             const SizedBox(height: kDefaultPaddin), 
@@ -72,7 +74,7 @@ class ChangeProfileUser extends StatelessWidget {
               horizontalPadding: true,
               contentBasedWidth: true,
               onPressed:() {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) => InputText(attribute: "Telefono",))));
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => InputText(attribute: "Telefono"))));
               },
             ),                        
             const SizedBox(height: kDefaultPaddin), 
@@ -85,9 +87,9 @@ class ChangeProfileUser extends StatelessWidget {
               horizontalPadding: true,
               contentBasedWidth: true,
               onPressed:() {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) => InputText(attribute: "Email",))));
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => InputText(attribute: "Email"))));
               },
-            ),                        
+            ),  
             const SizedBox(height: kDefaultPaddin), 
             BounceButton(
               buttonSize: ButtonSize.small, 
@@ -98,9 +100,9 @@ class ChangeProfileUser extends StatelessWidget {
               horizontalPadding: true,
               contentBasedWidth: true,
               onPressed:() {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) => InputText(attribute: "Password",))));
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => InputText(attribute: "Password"))));
               },
-            ),                        
+            ),                                            
             const SizedBox(height: kDefaultPaddin), 
             BounceButton(
               buttonSize: ButtonSize.small, 
@@ -150,10 +152,35 @@ class ChangeProfileUser extends StatelessWidget {
               horizontalPadding: true,
               contentBasedWidth: true,
               onPressed:() {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) => InputText(attribute: "WebPage",))));
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => InputText(attribute: "WebPage"))));
               },
             ),                        
             const SizedBox(height: kDefaultPaddin), 
+            BounceButton(
+              buttonSize: ButtonSize.small, 
+              type: ButtonType.primary, 
+              label: textButtonDeleteUser,
+              iconLeft: Icons.delete,
+              textColor: buttonChangeProfile,
+              horizontalPadding: true,
+              contentBasedWidth: true,
+              onPressed:() {               
+                //context.read<UserCubit>().deleteUser(context);
+                showDialog(context: context, 
+                builder: (context) => AlertDialog(
+                    title: MyText(text: "Elimina Perfil Usuario"),
+                    content: MyText(text: "Esta seguro que desea eliminarse de la Bolsa de Trabajo?"),
+                    actions: [
+                      TextButton(onPressed:() {context.read<UserCubit>().deleteUser(context);}, child: MyText(text: "SI",)),
+                      TextButton(onPressed:() 
+                      //{Navigator.of(context);},
+                      {Navigator.push(context, MaterialPageRoute(builder: ((context) => Home())));},
+                      child: MyText(text: "NO",)),
+                    ],
+                  ),
+                );
+              }
+            ),                        
         ],
       ),
           )),

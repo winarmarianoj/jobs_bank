@@ -206,7 +206,7 @@ class _PublishFormState extends State<PublishForm> {
                   padding: const EdgeInsets.symmetric(horizontal: 80,
                    vertical: 5),
                   child: Text(
-                    user.isConected ? 'Procesando....': 'Enviar' ,                     
+                    user.conected ? 'Procesando....': 'Enviar' ,                     
                     style: const TextStyle(color: themePublishFormStateProccess),
                   )), 
               onPressed: publishForm.isLoading && publishForm.title.length!=0 && publishForm.description.length!=0

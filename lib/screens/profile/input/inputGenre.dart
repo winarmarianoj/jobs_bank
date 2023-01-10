@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsColors.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/cubit/userCubit.dart';
-import 'package:jobs_bank/screens/profile/profileUser.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/text/myText.dart';
+import 'package:jobs_bank/widgets/userActive/bodyProfileDrawer.dart';
 import 'package:jobs_bank/widgets/userActive/drawDrawer.dart';
 import 'package:provider/provider.dart';
 
 class InputGenre extends StatefulWidget { 
-  const InputGenre({Key? key, }) : super(key: key);
+  const InputGenre({Key? key,}) : super(key: key);
 
   @override
   State<InputGenre> createState() => _InputGenreState();
@@ -19,7 +19,6 @@ class _InputGenreState extends State<InputGenre> {
   String selectedGenre = '';
   @override
   Widget build(BuildContext context) {
-    final usuarioCubit = context.read<UserCubit>();
     return Scaffold(
       appBar: buildAppBar(context),
       drawer: DrawDrawer(),
@@ -56,7 +55,7 @@ class _InputGenreState extends State<InputGenre> {
                           onChanged: (value) {
                             setState(() {
                               selectedGenre = value!;
-                              context.read<UserCubit>().changeGenre(value);
+                              context.read<UserCubit>().changeGenre(value, context);
                             });
                           },
                         ),
@@ -70,7 +69,7 @@ class _InputGenreState extends State<InputGenre> {
                           horizontalPadding: true,
                           contentBasedWidth: true,
                           onPressed:() {                            
-                            Navigator.push(context, MaterialPageRoute(builder: ((context) => ProfileUser())));
+                            Navigator.push(context, MaterialPageRoute(builder: ((context) => BodyProfileUserDrawer())));
                           },
                         ),               
                       ],
@@ -96,7 +95,7 @@ class _InputGenreState extends State<InputGenre> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ProfileUser(),
+                builder: (context) => BodyProfileUserDrawer(),
               ),
             );
           },

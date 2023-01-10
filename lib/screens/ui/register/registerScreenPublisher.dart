@@ -75,7 +75,10 @@ class _RegisterFormStatePublisher extends State<RegisterFormPublisher> {
               validator: (value) {
                 String pattern = textRegexPatternByString;
                 RegExp regExp = new RegExp(pattern);
-                return regExp.hasMatch(value ?? '') && (value != null && value.length <= 50)
+                bool reg = regExp.hasMatch(value ?? '')
+                    ? true
+                    : false;
+                return (reg && value != null && value.length <= 80)
                     ? null
                     : textInvalidDataFormat;
               },
@@ -92,7 +95,10 @@ class _RegisterFormStatePublisher extends State<RegisterFormPublisher> {
               validator: (value) {
                 String pattern = textRegexPatternByString;
                 RegExp regExp = new RegExp(pattern);
-                return regExp.hasMatch(value ?? '') && (value != null && value.length <= 50)
+                bool reg = regExp.hasMatch(value ?? '')
+                    ? true
+                    : false;
+                return (reg && value != null && value.length <= 80)
                     ? null
                     : textInvalidDataFormat;
               },
@@ -109,9 +115,12 @@ class _RegisterFormStatePublisher extends State<RegisterFormPublisher> {
               validator: (value) {
                 String pattern = textRegexPatternByPhoneNumber;
                 RegExp regExp = new RegExp(pattern);
-                return (value != null && value.length <= 10)
+                bool reg = regExp.hasMatch(value ?? '')
+                    ? true
+                    : false;
+                return (reg && value != null && value.length <= 11)
                     ? null
-                    : textPhoneInvalidDataFormat;
+                    : textIdentificationInvalidDataFormat;
               },
             ),
             const SizedBox(height: 5),
@@ -126,7 +135,10 @@ class _RegisterFormStatePublisher extends State<RegisterFormPublisher> {
               validator: (value) {
                 String pattern = textRegexPatternByPhoneNumber;
                 RegExp regExp = new RegExp(pattern);
-                return (value != null && value.length <= 10)
+                bool reg = regExp.hasMatch(value ?? '')
+                    ? true
+                    : false;
+                return (reg && value != null && value.length <= 15)
                     ? null
                     : textPhoneInvalidDataFormat;
               },

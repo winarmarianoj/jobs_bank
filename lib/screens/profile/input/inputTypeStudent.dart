@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsColors.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/cubit/userCubit.dart';
-import 'package:jobs_bank/screens/profile/profileUser.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/text/myText.dart';
+import 'package:jobs_bank/widgets/userActive/bodyProfileDrawer.dart';
 import 'package:jobs_bank/widgets/userActive/drawDrawer.dart';
 import 'package:provider/provider.dart';
 
 class InputTypeStudent extends StatefulWidget { 
-  const InputTypeStudent({Key? key, }) : super(key: key);
+  const InputTypeStudent({Key? key,}) : super(key: key);
 
   @override
   State<InputTypeStudent> createState() => _InputTypeStudentState();
@@ -19,7 +19,6 @@ class _InputTypeStudentState extends State<InputTypeStudent> {
   String selectedTypeStudent = '';
   @override
   Widget build(BuildContext context) {
-    final usuarioCubit = context.read<UserCubit>();
     return Scaffold(
       appBar: buildAppBar(context),
       drawer: DrawDrawer(),
@@ -56,7 +55,7 @@ class _InputTypeStudentState extends State<InputTypeStudent> {
                           onChanged: (value) {
                             setState(() {
                               selectedTypeStudent = value!;
-                              context.read<UserCubit>().changeTypeStudent(value);
+                              context.read<UserCubit>().changeTypeStudent(value, context);
                             });
                           },
                         ),
@@ -70,7 +69,7 @@ class _InputTypeStudentState extends State<InputTypeStudent> {
                           horizontalPadding: true,
                           contentBasedWidth: true,
                           onPressed:() {                            
-                            Navigator.push(context, MaterialPageRoute(builder: ((context) => ProfileUser())));
+                            Navigator.push(context, MaterialPageRoute(builder: ((context) => BodyProfileUserDrawer())));
                           },
                         ),               
                       ],
@@ -96,7 +95,7 @@ class _InputTypeStudentState extends State<InputTypeStudent> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ProfileUser(),
+                builder: (context) => BodyProfileUserDrawer(),
               ),
             );
           },

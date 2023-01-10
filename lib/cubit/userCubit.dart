@@ -1,49 +1,68 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobs_bank/models/User.dart';
+import 'package:jobs_bank/service/profileService.dart';
+import 'package:jobs_bank/widgets/text/myText.dart';
+import 'package:jobs_bank/widgets/userActive/bodyProfileDrawer.dart';
 part 'userState.dart';
 
 class UserCubit extends Cubit<UserState> {
   
   UserCubit() : super( UserInitial() );
+  ProfileService profileService = ProfileService();
   
   void createUser( User user ) {
     emit( UserActive(user) );
   }
 
-  void changeName( String name ) {
+  void getUser(){
+    final currentState = state;
+    if ( currentState is UserActive ) {
+      final newUser = currentState.user.copyWith();
+      return emit( UserActive( newUser ) );
+    }
+  }
+
+  void changeName( String name, BuildContext context) {
     final currentState = state;
     if ( currentState is UserActive ) {
       final newUser = currentState.user.copyWith( name: name );
-      emit( UserActive( newUser ) );
+      profileService.changeUser(newUser, context);
+      //emit( UserActive( newUser ) );
     }
   }
-  void changeLastName( String lastName ) {
+  void changeLastName( String lastName, BuildContext context) {
     final currentState = state;
     if ( currentState is UserActive ) {
       final newUser = currentState.user.copyWith( lastName: lastName );
-      emit( UserActive( newUser ) );
+      profileService.changeUser(newUser, context);
+      //emit( UserActive( newUser ) );
     }
   }
-  void changePhone( String phone ) {
+  void changePhone( String phone, BuildContext context) {
     final currentState = state;
     if ( currentState is UserActive ) {
       final newUser = currentState.user.copyWith( phone: phone );
-      emit( UserActive( newUser ) );
+      profileService.changeUser(newUser, context);
+      //emit( UserActive( newUser ) );
     }
   }
-  void changeEmail( String email ) {
+  void changeEmail( String email, BuildContext context) {
     final currentState = state;
     if ( currentState is UserActive ) {
       final newUser = currentState.user.copyWith( email: email );
-      emit( UserActive( newUser ) );
+      profileService.changeUser(newUser, context);
+      //emit( UserActive( newUser ) );
     }
   }
-  void changePassword( String password ) {
+  void changePassword( String password, BuildContext context) {
     final currentState = state;
     if ( currentState is UserActive ) {
       final newUser = currentState.user.copyWith( password: password );
-      emit( UserActive( newUser ) );
+      profileService.changeUser(newUser, context);
+      //emit( UserActive( newUser ) );
     }
   }
 
@@ -51,44 +70,58 @@ class UserCubit extends Cubit<UserState> {
     emit( UserInitial( ) );
   }
 
-  void changeIdentification(String newAttribute) {
+  void changeIdentification(String newAttribute, BuildContext context) {
     final currentState = state;
     if ( currentState is UserActive ) {
       final newUser = currentState.user.copyWith( identification: newAttribute);
-      emit( UserActive( newUser ) );
+      profileService.changeUser(newUser, context);
+      //emit( UserActive( newUser ) );
     }
   }
 
-  void changeGenre(String newAttribute) {
+  void changeGenre(String newAttribute, BuildContext context) {
     final currentState = state;
     if ( currentState is UserActive ) {
       final newUser = currentState.user.copyWith( genre: newAttribute);
-      emit( UserActive( newUser ) );
+      profileService.changeUser(newUser, context);
+      //emit( UserActive( newUser ) );
     }
   }
 
-  void changeBirthDate(String newAttribute) {
+  void changeBirthDate(String newAttribute, BuildContext context) {
     final currentState = state;
     if ( currentState is UserActive ) {
       final newUser = currentState.user.copyWith( birthDate: newAttribute);
-      emit( UserActive( newUser ) );
+      profileService.changeUser(newUser, context);
+      //emit( UserActive( newUser ) );
     }
   }
 
-  void changeTypeStudent(String newAttribute) {
+  void changeTypeStudent(String newAttribute, BuildContext context) {
     final currentState = state;
     if ( currentState is UserActive ) {
       final newUser = currentState.user.copyWith( typeStudent: newAttribute);
-      emit( UserActive( newUser ) );
+      profileService.changeUser(newUser, context);
+      //emit( UserActive( newUser ) );
     }
   }
 
-  void changeWebPage(String newAttribute) {
+  void changeWebPage(String newAttribute, BuildContext context) {
     final currentState = state;
     if ( currentState is UserActive ) {
       final newUser = currentState.user.copyWith( webPage: newAttribute);
-      emit( UserActive( newUser ) );
+      profileService.changeUser(newUser, context);
+      //emit( UserActive( newUser ) );
     }
+  }
+
+  void deleteUser(BuildContext context) { 
+    final currentState = state;
+    if ( currentState is UserActive ) {      
+      final newUser = currentState.user.copyWith();
+      profileService.deleteUser(newUser, context);
+      //emit( UserActive( newUser ) );
+    }    
   }
 
 }

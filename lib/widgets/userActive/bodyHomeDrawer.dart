@@ -20,8 +20,7 @@ class BodyHomeDrawer extends StatelessWidget {
           case UserInitial:
             User newUser = User(id: 0, name: "", lastName: "", identification: "",
             phone: "", email: "", password: "", role: "", jwt: "", 
-            genre: "", birthDate: "", typeStudent: "", webPage: "");
-            newUser.isConected = false;
+            genre: "", birthDate: "", typeStudent: "", webPage: "", conected: false);
             return BodyHome(user: newUser, );
 
           case UserActive:
