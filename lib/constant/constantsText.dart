@@ -31,6 +31,7 @@ const textSendDataButton = 'Enviar Cambios';
 const textTitleResultChangeNotExists = 'Resultado de su solicitud: ';
 const textTypeChangeNotExists = 'No existe lo solicitado';
 const textButtonShowDialogProfile = 'OK';
+const textGetUserSuccess = 'Se ha encontrado su perfil correctamente.';
 
 //TODO Applicant
 const textButtonAppliedByJobOffer = 'POSTULARSE';

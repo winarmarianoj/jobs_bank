@@ -13,6 +13,7 @@ class InputBirthdate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String data = '';
     return Scaffold(
       appBar: buildAppBar(context),
       drawer: DrawDrawer(),
@@ -40,7 +41,7 @@ class InputBirthdate extends StatelessWidget {
                               hintText: textHintBirthDateRegister,
                               labelText: textLabelBirthDateRegister,
                               prefixIcon: Icons.date_range),
-                          onChanged: (value) => context.read<UserCubit>().changeBirthDate(value, context),
+                          onChanged: (value) => data = value,
                           validator: (value) {                
                             return (value != null)
                                 ? null
@@ -57,6 +58,7 @@ class InputBirthdate extends StatelessWidget {
                           horizontalPadding: true,
                           contentBasedWidth: true,
                           onPressed:() {
+                            context.read<UserCubit>().changeBirthDate(data, context);
                             Navigator.push(context, MaterialPageRoute(builder: ((context) => BodyProfileUserDrawer())));
                           },
                         ),               

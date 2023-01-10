@@ -17,6 +17,7 @@ class InputGenre extends StatefulWidget {
 
 class _InputGenreState extends State<InputGenre> {
   String selectedGenre = '';
+  String data = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,8 +55,7 @@ class _InputGenreState extends State<InputGenre> {
                           }, 
                           onChanged: (value) {
                             setState(() {
-                              selectedGenre = value!;
-                              context.read<UserCubit>().changeGenre(value, context);
+                              selectedGenre = value!;                              
                             });
                           },
                         ),
@@ -68,7 +68,8 @@ class _InputGenreState extends State<InputGenre> {
                           textColor: buttonInputText,
                           horizontalPadding: true,
                           contentBasedWidth: true,
-                          onPressed:() {                            
+                          onPressed:() {           
+                            context.read<UserCubit>().changeGenre(selectedGenre, context);                 
                             Navigator.push(context, MaterialPageRoute(builder: ((context) => BodyProfileUserDrawer())));
                           },
                         ),               

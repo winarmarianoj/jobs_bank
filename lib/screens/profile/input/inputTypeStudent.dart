@@ -54,8 +54,7 @@ class _InputTypeStudentState extends State<InputTypeStudent> {
                           }, 
                           onChanged: (value) {
                             setState(() {
-                              selectedTypeStudent = value!;
-                              context.read<UserCubit>().changeTypeStudent(value, context);
+                              selectedTypeStudent = value!;                              
                             });
                           },
                         ),
@@ -68,7 +67,8 @@ class _InputTypeStudentState extends State<InputTypeStudent> {
                           textColor: buttonInputText,
                           horizontalPadding: true,
                           contentBasedWidth: true,
-                          onPressed:() {                            
+                          onPressed:() {               
+                            context.read<UserCubit>().changeTypeStudent(selectedTypeStudent, context);             
                             Navigator.push(context, MaterialPageRoute(builder: ((context) => BodyProfileUserDrawer())));
                           },
                         ),               

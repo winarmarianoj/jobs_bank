@@ -9,6 +9,7 @@ import 'package:jobs_bank/providers/loginFormProvider.dart';
 import 'package:jobs_bank/providers/registerFormProvider.dart';
 import 'package:http/http.dart' as http;
 import 'package:jobs_bank/screens/home/home.dart';
+import 'package:jobs_bank/screens/ui/login/loginScreen.dart';
 import 'package:jobs_bank/screens/welcome/headerPage.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/message/customPopup.dart';
@@ -129,7 +130,7 @@ class AuthenticationService {
               type: ButtonType.primary,
               label: textButtonShowDialogLogin,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) => HeadersPage(user: newUser,))));
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => LoginScreen())));
               },
             ),
           )
@@ -192,7 +193,7 @@ class AuthenticationService {
               type: ButtonType.primary,
               label: textButtonShowDialogLogin,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) => HeadersPage(user: newUser,))));
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => LoginScreen())));
               },
             ),
           )
@@ -223,7 +224,7 @@ class AuthenticationService {
     final jsonData = jsonDecode(body);
     User user = User(id: jsonData['id'], name: jsonData['name'], lastName: jsonData['lastName'], 
     identification: jsonData['identification'], phone: jsonData['phone'], email: jsonData['username'], 
-    password: jsonData['password'], role: jsonData['role'], jwt: jsonData['jwt'], 
+    password: 'Developer\$2023', role: jsonData['role'], jwt: jsonData['jwt'], 
     genre: jsonData['genre'], birthDate: jsonData['birthDate'], typeStudent: jsonData['typeStudent'],
     webPage: jsonData['webPage'], conected: jsonData['conected']);
     log(user.name + " " + user.lastName + " " + user.role + " con id " + user.id.toString() + " esta todo bien");

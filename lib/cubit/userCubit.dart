@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -119,6 +121,7 @@ class UserCubit extends Cubit<UserState> {
     final currentState = state;
     if ( currentState is UserActive ) {      
       final newUser = currentState.user.copyWith();
+      log("estoy en userCubit delete y el user id es " + newUser.id.toString());
       profileService.deleteUser(newUser, context);
       //emit( UserActive( newUser ) );
     }    

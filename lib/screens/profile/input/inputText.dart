@@ -14,6 +14,7 @@ class InputText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String data = '';
     return Scaffold(
       appBar: buildAppBar(context),
       drawer: DrawDrawer(),
@@ -36,7 +37,7 @@ class InputText extends StatelessWidget {
                       children: [                      
                         TextField(
                           keyboardType: TextInputType.text,
-                          onChanged: (value) {changeNewAttribute(attribute, value, context);}
+                          onChanged: (value) => data = value,
                         ), 
                         const SizedBox(height: 20),
                         BounceButton(
@@ -48,6 +49,7 @@ class InputText extends StatelessWidget {
                           horizontalPadding: true,
                           contentBasedWidth: true,
                           onPressed:() {
+                            changeNewAttribute(attribute, data, context);
                             Navigator.push(context, MaterialPageRoute(builder: ((context) => BodyProfileUserDrawer())));
                           },
                         ),               

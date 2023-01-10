@@ -12,6 +12,7 @@ import 'package:jobs_bank/screens/profile/input/inputTypeStudent.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/message/customPopup.dart';
 import 'package:jobs_bank/widgets/text/myText.dart';
+import 'package:jobs_bank/widgets/userActive/bodyProfileDrawer.dart';
 
 class ChangeProfileUser extends StatelessWidget {
   @override
@@ -174,7 +175,7 @@ class ChangeProfileUser extends StatelessWidget {
                       TextButton(onPressed:() {context.read<UserCubit>().deleteUser(context);}, child: MyText(text: "SI",)),
                       TextButton(onPressed:() 
                       //{Navigator.of(context);},
-                      {Navigator.push(context, MaterialPageRoute(builder: ((context) => Home())));},
+                      {Navigator.push(context, MaterialPageRoute(builder: ((context) => BodyProfileUserDrawer())));},
                       child: MyText(text: "NO",)),
                     ],
                   ),
