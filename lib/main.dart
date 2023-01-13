@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/cubit/userCubit.dart';
+import 'package:jobs_bank/providers/publishFormProvider.dart';
 import 'package:jobs_bank/screens/home/home.dart';
 import 'package:jobs_bank/screens/welcome/headerPage.dart';
 import 'package:jobs_bank/theme/menuTheme.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => LoginFormProvider()),
         ChangeNotifierProvider(create: (_) => RegisterFormProvider()),
+        ChangeNotifierProvider(create: (_) => PublishFormProvider()),
         ChangeNotifierProvider(create: (_) => ThemeChanger(6)),
         BlocProvider(create: ( _ ) => UserCubit() ),
       ],

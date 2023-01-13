@@ -148,6 +148,7 @@ const logJobOfferListEmpty = 'La lista esta vacia ya que no debe tener ningun av
 const logJobOffersStatePendingEmpty = 'La lista de Avisos en estado Pendiente esta vacia.';
 const logJobOfferEvaluationFailed = 'Devuelve un Not Found ya que no encuentra el aviso o hay información incorrecta.';
 const logJobOffersIsEmpty = 'La lista de Avisos esta vacia y aun no hay avisos publicados.';
+const logJobOfferDeleteFailed = 'No se ha podido eliminar el aviso.';
 
 //TODO JobofferApplicant
 const logJobOfferAppFailedBodySubscribed = "Fallo traer la lista de los estudiantes subscriptos al aviso.";

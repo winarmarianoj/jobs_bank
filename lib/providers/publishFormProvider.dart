@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class PublishFormProvider extends ChangeNotifier {
   GlobalKey<FormState> formKey =  GlobalKey<FormState>();
 
-  int id = 0;
+  String id = '';
   String title = '';
   String description = '';
   String area = '';

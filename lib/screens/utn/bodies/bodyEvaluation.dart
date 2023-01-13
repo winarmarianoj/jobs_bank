@@ -4,7 +4,7 @@ import 'package:jobs_bank/models/JobOffer.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/screens/components/joboffer/detailsScreenJobOffer.dart';
 import 'package:jobs_bank/screens/components/joboffer/itemCardJobOffer.dart';
-import 'package:jobs_bank/service/jobOfferService.dart';
+import 'package:jobs_bank/service/jobOfferListService.dart';
 
 class BodyEvaluation extends StatelessWidget{
   final User user;
@@ -12,7 +12,7 @@ class BodyEvaluation extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    JobOfferService jobOfferService = JobOfferService();
+    final JobOfferListService jobOfferService = JobOfferListService(); 
     String selectedCategory = '';
 
     return Column(

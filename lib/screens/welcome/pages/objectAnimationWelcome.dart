@@ -3,21 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobs_bank/constant/constantsColors.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'dart:math';
-
 import 'package:jobs_bank/cubit/userCubit.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/screens/applicant/applicant.dart';
-import 'package:jobs_bank/screens/home/home.dart';
 import 'package:jobs_bank/screens/publisher/publisher.dart';
 import 'package:jobs_bank/screens/utn/utn.dart';
-import 'package:jobs_bank/screens/welcome/classes/animateCar.dart';
-import 'package:jobs_bank/screens/welcome/classes/animateCar64.dart';
-import 'package:jobs_bank/screens/welcome/classes/animateFiat500.dart';
-import 'package:jobs_bank/screens/welcome/classes/animateTruck.dart';
-import 'package:jobs_bank/screens/welcome/classes/animateTruckRepar.dart';
-import 'package:jobs_bank/screens/welcome/classes/animateTruckTrailer.dart';
-import 'package:jobs_bank/screens/welcome/classes/animateVan.dart';
-import 'package:jobs_bank/screens/welcome/classes/animateVanPickUp.dart';
+import 'package:jobs_bank/screens/welcome/classes/developer.dart';
+import 'package:jobs_bank/screens/welcome/classes/laptop.dart';
+import 'package:jobs_bank/screens/welcome/classes/programmer.dart';
+import 'package:jobs_bank/screens/welcome/classes/teamWork.dart';
 
 class ObectAnimationWelcome extends StatefulWidget { 
   final User user;
@@ -36,11 +30,21 @@ class _VehiclesAnimadoPageState extends State<ObectAnimationWelcome> with Single
   late Animation<double> animationVan;
   late Animation<double> animationTruck;
   late Animation<double> animationTruckTrailer;
-  late Animation<double> inAnimation;
+  
   late Animation<double> enlargeAnimation;
   late Animation<double> shrinkAnimation;
   late Animation<double> rotateAnimation;
+  
+  late Animation<double> inAnimation;
   late Animation<double> outAnimation;
+  late Animation<double> inAnimationOne;
+  late Animation<double> outAnimationOne;
+  late Animation<double> inAnimationTwo;
+  late Animation<double> outAnimationTwo;
+  late Animation<double> inAnimationThree;
+  late Animation<double> outAnimationThree;
+  late Animation<double> inAnimationFour;
+  late Animation<double> outAnimationFour;
 
   @override
   void initState() { 
@@ -53,6 +57,44 @@ class _VehiclesAnimadoPageState extends State<ObectAnimationWelcome> with Single
       // Se ejecuta la entrada en el primer 25% de la animación
       // Utilizamos el Curves.bounceOut para el ejecto de rebote al final
       curve: const Interval(0.00, 0.25, curve: Curves.bounceOut),
+    ));    
+     // Definimos la animación de salida ejecutarse desde su posición inicial hasta fuera de la pantalla
+    outAnimation = Tween(begin: 0.0, end: -1.0).animate(CurvedAnimation(
+      parent: controller,
+      // Se ejecuta en el ultimo 10% de la animación
+      curve: const Interval(0.90, 1.0, curve: Curves.easeInOutCirc),
+    ));
+
+
+    inAnimationOne = Tween(begin: -1.0, end: 0.65).animate(CurvedAnimation(parent: controller,     
+      curve: const Interval(0.00, 0.25, curve: Curves.bounceOut),
+    ));    
+    outAnimationOne = Tween(begin: 0.65, end: -1.0).animate(CurvedAnimation(parent: controller,      
+      curve: const Interval(0.90, 1.0, curve: Curves.easeInOutCirc),
+    ));
+
+
+    inAnimationTwo = Tween(begin: -0.9, end: 0.0).animate(CurvedAnimation(parent: controller,     
+      curve: const Interval(0.00, 0.25, curve: Curves.bounceOut),
+    ));    
+    outAnimationTwo = Tween(begin: 0.0, end: -0.9).animate(CurvedAnimation(parent: controller,      
+      curve: const Interval(0.90, 1.0, curve: Curves.easeInOutCirc),
+    ));
+
+
+    inAnimationThree = Tween(begin: 4.50, end: 0.65).animate(CurvedAnimation(parent: controller,     
+      curve: const Interval(0.00, 0.25, curve: Curves.bounceOut),
+    ));    
+    outAnimationThree = Tween(begin: 0.65, end: 4.50).animate(CurvedAnimation(parent: controller,      
+      curve: const Interval(0.90, 1.0, curve: Curves.easeInOutCirc),
+    ));
+
+
+    inAnimationFour = Tween(begin: 4.5, end: 0.65).animate(CurvedAnimation(parent: controller,     
+      curve: const Interval(0.00, 0.25, curve: Curves.bounceOut),
+    ));    
+    outAnimationFour = Tween(begin: 0.65, end: 4.5).animate(CurvedAnimation(parent: controller,      
+      curve: const Interval(0.90, 1.0, curve: Curves.easeInOutCirc),
     ));
 
     // Definimos animación de agrandado hasta 5 veces
@@ -79,12 +121,7 @@ class _VehiclesAnimadoPageState extends State<ObectAnimationWelcome> with Single
       curve: const Interval(0.65, 0.90, curve: Curves.easeInBack),
     ));
 
-    // Definimos la animación de salida ejecutarse desde su posición inicial hasta fuera de la pantalla
-    outAnimation = Tween(begin: 0.0, end: -1.0).animate(CurvedAnimation(
-      parent: controller,
-      // Se ejecuta en el ultimo 10% de la animación
-      curve: const Interval(0.90, 1.0, curve: Curves.easeInOutCirc),
-    ));
+    
 
     animationCar = Tween(begin: -128.0, end: 600.0).animate(controller);
     animationVan = Tween(begin: -50.0, end: 600.0).animate(controller);
@@ -134,47 +171,84 @@ class _VehiclesAnimadoPageState extends State<ObectAnimationWelcome> with Single
     controller.forward();
     return Container(
       child: Stack(
-        children: <Widget>[
+        children: <Widget>[    
+
           new Positioned(
-            child: AnimateCar(),
-            left: animationCar.value,
-            top: 30.0,
+            top: -85.0,
+            child: Opacity(
+              opacity: 1,
+              child: Transform.scale(
+                // El escalado es la diferencia a los valores de enlargeAnimation y shrinkAnimation
+                scale: enlargeAnimation.value - shrinkAnimation.value,
+
+                child: Transform.translate(
+                  // La traslación dx utiliza el outAnimation para la salida mienstra dy utiliza inAnimation para la entrada
+                  offset: Offset(outAnimationOne.value * width, inAnimationOne.value * height),
+                  child: Container(width: 150.0, height: 100.0, color: themeWelcomeTextBackground, 
+                    child: Laptop(),
+                  ),
+                ),
+              ),
+            ),            
           ),
+
           new Positioned(
-            child: AnimateVan(),
-            left: animationVan.value,
-            top: 320.0,
+            top: 120.0,
+            child: Opacity(
+              opacity: 1 + inAnimationTwo.value,
+              child: Transform.scale(
+                // El escalado es la diferencia a los valores de enlargeAnimation y shrinkAnimation
+                scale: enlargeAnimation.value - shrinkAnimation.value,
+
+                child: Transform.translate(
+                  // La traslación dx utiliza el outAnimation para la salida mienstra dy utiliza inAnimation para la entrada
+                  offset: Offset(outAnimationTwo.value * width, inAnimationTwo.value * height),
+                  child: Container(width: 150.0, height: 100.0, color: themeWelcomeTextBackground, 
+                    child: Developer(),
+                  ),
+                ),
+              ),
+            ),            
           ),
+
           new Positioned(
-            child: AnimateTruck(),
-            left: animationTruck.value,
-            top: 100.0,
+            top: 300.0,
+            child: Opacity(
+              opacity: 1,
+              child: Transform.scale(
+                // El escalado es la diferencia a los valores de enlargeAnimation y shrinkAnimation
+                scale: enlargeAnimation.value - shrinkAnimation.value,
+
+                child: Transform.translate(
+                  // La traslación dx utiliza el outAnimation para la salida mienstra dy utiliza inAnimation para la entrada
+                  offset: Offset(outAnimationThree.value * width, inAnimationThree.value * height),
+                  child: Container(width: 150.0, height: 100.0, color: themeWelcomeTextBackground, 
+                    child: TeamWork(),
+                  ),
+                ),
+              ),
+            ),            
           ),
+
           new Positioned(
-            child: AnimateTruckRepar(),
-            right: animationTruck.value,
-            top: 190.0,
+            top: 160.0,
+            child: Opacity(
+              opacity: 1,
+              child: Transform.scale(
+                // El escalado es la diferencia a los valores de enlargeAnimation y shrinkAnimation
+                scale: enlargeAnimation.value - shrinkAnimation.value,
+
+                child: Transform.translate(
+                  // La traslación dx utiliza el outAnimation para la salida mienstra dy utiliza inAnimation para la entrada
+                  offset: Offset(outAnimationFour.value * width, inAnimationFour.value * height),
+                  child: Container(width: 150.0, height: 100.0, color: themeWelcomeTextBackground, 
+                    child: Programmer(),
+                  ),
+                ),
+              ),
+            ),            
           ),
-          new Positioned(
-            child: AnimateCar64(),
-            left: animationTruck.value,
-            top: 420.0,
-          ),
-          new Positioned(
-            child: AnimateFiat500(),
-            left: animationCar.value,
-            top: 480.0,
-          ),
-          new Positioned(
-            child: AnimateVanPickUp(),
-            left: animationTruck.value,
-            top: 600.0,
-          ),          
-          new Positioned(
-            child: AnimateTruckTrailer(),
-            left: animationTruckTrailer.value,
-            top: 670.0,
-          ),
+
           Center(
             child: Opacity(
               // Aprovechamos el valor de outAnimation para definir la opacidad y desaparecer al final

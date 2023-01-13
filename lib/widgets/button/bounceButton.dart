@@ -155,7 +155,7 @@ class _BounceButtonState extends State<BounceButton>
     return BaseButton(
       size: widget.buttonSize,
       buttonLabel: widget.label,
-      backgroundColor: Color.fromARGB(255, 4, 235, 165),
+      backgroundColor: Color.fromARGB(255, 30, 173, 130),
       textColor: widget.textColor,
       leftIcon: widget.iconLeft,
       rightIcon: widget.iconRight,

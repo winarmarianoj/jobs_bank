@@ -13,7 +13,7 @@ class DetailsBodyJobOffer extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;    
     return Stack(
       children: [
         /* Image.asset(
@@ -26,7 +26,7 @@ class DetailsBodyJobOffer extends StatelessWidget {
           child: Column(
             children: <Widget>[          
               SizedBox(
-                height: 550,// size.height,
+                height: 700,// size.height,
                 child: Container(
                   margin: EdgeInsets.only(top: size.height * 0.04),
                   padding: EdgeInsets.only(

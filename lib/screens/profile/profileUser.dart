@@ -16,7 +16,7 @@ class BodyScaffold extends StatelessWidget {
       ),  
       floatingActionButton: FloatingActionButton(
         child: const Icon( Icons.accessibility_new ),
-        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: ((context) => ChangeProfileUser())))
+        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: ((context) => ChangeProfileUser(user))))
       ),
    );
   }  

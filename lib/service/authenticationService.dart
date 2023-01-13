@@ -27,10 +27,11 @@ class AuthenticationService {
     }),
     ).timeout(Duration(seconds: 10));   
     String body = utf8.decode(response.bodyBytes);
+    final jsonData = jsonDecode(body);
 
     if(response.statusCode == 200){           
       loginForm.isLoading = true;      
-      User newUser = getNewUser(body);
+      User newUser = User.fromJson(jsonData);
       context.read<UserCubit>().createUser(newUser);      
       Navigator.push(context, MaterialPageRoute(builder: ((context) => HeadersPage(user: newUser,))));
     }else{
@@ -117,7 +118,7 @@ class AuthenticationService {
     final jsonData = jsonDecode(body);
     if(response.statusCode == 201){           
       register.isLoading = true;
-      User newUser = getNewUser(body);
+      User newUser = User.fromJson(jsonData);
       userCubit.createUser(newUser);
       showDialog(
         context: context, 
@@ -180,7 +181,7 @@ class AuthenticationService {
     final jsonData = jsonDecode(body);
     if(response.statusCode == 201){    
       register.isLoading = true;
-      User newUser = getNewUser(body);
+      User newUser = User.fromJson(jsonData);
       userCubit.createUser(newUser);
       showDialog(
         context: context, 
@@ -220,16 +221,6 @@ class AuthenticationService {
     return register;
   }
 
-  User getNewUser(String body){
-    final jsonData = jsonDecode(body);
-    User user = User(id: jsonData['id'], name: jsonData['name'], lastName: jsonData['lastName'], 
-    identification: jsonData['identification'], phone: jsonData['phone'], email: jsonData['username'], 
-    password: 'Developer\$2023', role: jsonData['role'], jwt: jsonData['jwt'], 
-    genre: jsonData['genre'], birthDate: jsonData['birthDate'], typeStudent: jsonData['typeStudent'],
-    webPage: jsonData['webPage'], conected: jsonData['conected']);
-    log(user.name + " " + user.lastName + " " + user.role + " con id " + user.id.toString() + " esta todo bien");
-    return user;
-  }  
 
 }
 

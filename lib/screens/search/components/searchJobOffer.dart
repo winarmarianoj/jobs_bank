@@ -3,7 +3,7 @@ import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/models/JobOffer.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/screens/components/joboffer/detailsScreenJobOffer.dart';
-import 'package:jobs_bank/service/jobOfferService.dart';
+import 'package:jobs_bank/service/jobOfferListService.dart';
 import 'package:jobs_bank/widgets/text/myText.dart';
 
 class SearchJobOffer extends StatelessWidget{
@@ -13,7 +13,7 @@ class SearchJobOffer extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    final JobOfferService jobOfferService = JobOfferService();     
+    final JobOfferListService jobOfferService = JobOfferListService(); 
     return FutureBuilder(
       future: jobOfferService.getAllPublishedJobOffers(context),
       builder: ((context, snapshot) {

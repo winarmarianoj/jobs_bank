@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/models/JobOffer.dart';
 import 'package:jobs_bank/models/User.dart';
-import 'package:jobs_bank/screens/components/joboffer/widget/applicantPostulateWidget.dart';
-import 'package:jobs_bank/screens/components/joboffer/widget/jobOfferDataWidget.dart';
-import 'package:jobs_bank/screens/components/joboffer/widget/publisherSubscribedWidget.dart';
+import 'package:jobs_bank/widgets/joboffer/joboffers/applicantPostulateWidget.dart';
+import 'package:jobs_bank/widgets/joboffer/joboffers/jobOfferDataWidget.dart';
+import 'package:jobs_bank/widgets/joboffer/joboffers/publisherSubscribedWidget.dart';
 
 class DescriptionJobOffer extends StatelessWidget {
   final JobOffer jobOffer;
@@ -20,9 +20,8 @@ class DescriptionJobOffer extends StatelessWidget {
         children: [
           JobOfferDataWidget(jobOffer: jobOffer),
           if (user.role == 'APPLICANT') ApplicantPostulateWidget(jobOffer: jobOffer, user: user),
-          if (user.role == 'PUBLISHER') PublisherSubscribedWidget(jobOffer: jobOffer),
-        ]
-        
+          if (user.role == 'PUBLISHER') PublisherSubscribedWidget(jobOffer: jobOffer, user: user,),
+        ]        
       )
     );
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/models/JobOffer.dart';
 import 'package:jobs_bank/models/User.dart';
-import 'package:jobs_bank/screens/components/joboffer/widget/jobOfferDataWidget.dart';
+import 'package:jobs_bank/widgets/joboffer/joboffers/jobOfferDataWidget.dart';
 import 'package:jobs_bank/screens/publisher/subscribed.dart';
 import 'package:jobs_bank/service/jobOfferService.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';

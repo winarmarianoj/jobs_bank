@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsColors.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
+import 'package:jobs_bank/models/JobOffer.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/providers/publishFormProvider.dart';
 import 'package:jobs_bank/widgets/joboffer/publishWidgets/areaWidget.dart';
@@ -12,17 +13,19 @@ import 'package:jobs_bank/service/jobOfferService.dart';
 import 'package:jobs_bank/widgets/text/myText.dart';
 import 'package:provider/provider.dart';
 
-class PublishForm extends StatefulWidget {
+class JobOfferModify extends StatefulWidget {
   final User user;
-  const PublishForm({Key? key, required this.user}) : super(key: key);  
+  final JobOffer jobOffer;
+  const JobOfferModify({Key? key, required this.user, required this.jobOffer,}) : super(key: key);  
 
   @override
-  State<PublishForm> createState() => _PublishFormState(user: user);
+  State<JobOfferModify> createState() => _JobOfferModifyState(user: user, jobOffer: jobOffer,);
 }
 
-class _PublishFormState extends State<PublishForm> {
+class _JobOfferModifyState extends State<JobOfferModify> {
   final User user;
-  _PublishFormState({Key? key, required this.user});  
+  final JobOffer jobOffer;
+  _JobOfferModifyState({Key? key, required this.user, required this.jobOffer,});  
 
   String selectedModality = '';
   String selectedPosition = '';
@@ -36,11 +39,11 @@ class _PublishFormState extends State<PublishForm> {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         child: Column(
           children: [
-            TitleWidget(publishForm: publishForm, initialData: '',),
-            DescriptionWidget(publishForm: publishForm, initialData: '',),
-            AreaWidget(publishForm: publishForm, initialData: '',),
-            BodyWidget(publishForm: publishForm, initialData: '',),
-            ExperienceWidget(publishForm: publishForm, initialData: '',),
+            TitleWidget(publishForm: publishForm, initialData: jobOffer.title,),
+            DescriptionWidget(publishForm: publishForm, initialData: jobOffer.description,),
+            AreaWidget(publishForm: publishForm, initialData: jobOffer.area,),
+            BodyWidget(publishForm: publishForm, initialData: jobOffer.body,),
+            ExperienceWidget(publishForm: publishForm, initialData: jobOffer.experience,),
             DropdownButtonFormField(
               items: <String>['ONSITE', 'REMOTE', 'MIXED'].map((item) {
                 return DropdownMenuItem(
@@ -124,7 +127,8 @@ class _PublishFormState extends State<PublishForm> {
                       if (!publishForm.isValidForm()) return;
                       Future.delayed(Duration(seconds: 5));
                       JobOfferService jobOfferService = JobOfferService();
-                      jobOfferService.createJobOffer(user, context, publishForm);                    
+                      publishForm.id = jobOffer.id.toString();
+                      jobOfferService.modifyJobOffer(user, context, publishForm);                    
                     }
             ),
           ],
