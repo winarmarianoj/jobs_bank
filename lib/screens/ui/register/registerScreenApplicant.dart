@@ -102,7 +102,7 @@ class _RegisterFormStateApplicant extends State<RegisterFormApplicant> {
             ),
             const SizedBox(height: 5),
             DropdownButtonFormField(
-              items: <String>['ACTIVE', 'REGULAR', 'RECEIVED'].map((item) {
+              items: <String>['ACTIVO', 'REGULAR', 'RECIBIDO'].map((item) {
                 return DropdownMenuItem(
                   value: item,
                   child: Text(item),
