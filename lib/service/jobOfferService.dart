@@ -72,9 +72,7 @@ class JobOfferService {
       );       
     }
     return null;
-  }
-
-  
+  }  
 
   Future<JobOffer?> modifyJobOffer(User user, BuildContext context, PublishFormProvider publishForm) async{
     var url = Uri.parse('http://10.0.2.2:8082/flutter/joboffer');
@@ -97,7 +95,7 @@ class JobOfferService {
     String body = utf8.decode(response.bodyBytes);
     final jsonData = jsonDecode(body);
     
-    if(response.statusCode == 201){      
+    if(response.statusCode == 200){      
       JobOffer jobOffer = JobOffer.fromJson(jsonData);
       jobOffer.resultCreate = true;
       showDialog(context: context, 

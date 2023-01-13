@@ -7,6 +7,7 @@ import 'package:jobs_bank/models/JobOffer.dart';
 import 'package:jobs_bank/models/JobOfferApplicant.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/screens/applicant/applicant.dart';
+import 'package:jobs_bank/screens/publisher/published.dart';
 import 'package:jobs_bank/screens/publisher/publisher.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/message/customPopup.dart';
@@ -157,7 +158,7 @@ class ReportService {
               type: ButtonType.primary,
               label: textButtonShowDialogRegister,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) => Publisher())));
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => Published())));
               },
             ),
           )

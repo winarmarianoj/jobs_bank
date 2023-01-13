@@ -104,8 +104,9 @@ class ChangeProfileUser extends StatelessWidget {
               },
             ),            
             if(user.role == 'APPLICANT') ApplicantButtons(),
-            if(user.role == 'PUBLISHER') PublisherButtons(),                            
-            
+            if(user.role == 'PUBLISHER') PublisherButtons(), 
+                                       
+            const SizedBox(height: kDefaultPaddin), 
             BounceButton(
               buttonSize: ButtonSize.small, 
               type: ButtonType.subscriptos, 
