@@ -4,7 +4,6 @@ import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/cubit/userCubit.dart';
 import 'package:jobs_bank/providers/publishFormProvider.dart';
 import 'package:jobs_bank/screens/home/home.dart';
-import 'package:jobs_bank/screens/welcome/headerPage.dart';
 import 'package:jobs_bank/theme/menuTheme.dart';
 import 'package:jobs_bank/theme/themeChange.dart';
 import 'package:provider/provider.dart';

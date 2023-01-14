@@ -105,7 +105,7 @@ class BodyDrawer extends StatelessWidget{
             ),
             ListTile(
               leading: Icon(Icons.login, color: accentColor ),
-              title: Text(textLogin),
+              title: Text(textLoginRegisterForgot),
               onTap: () {                
                 Navigator.push(
                   context,

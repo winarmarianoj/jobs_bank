@@ -23,7 +23,7 @@ class AuthenticationService {
     },
     body: jsonEncode(<String, String>{
       'username': loginForm.email,
-      'password': loginForm.password,
+      'password': loginForm.passwordOne,
     }),
     ).timeout(Duration(seconds: 10));   
     String body = utf8.decode(response.bodyBytes);
@@ -219,6 +219,59 @@ class AuthenticationService {
       );     
     }    
     return register;
+  }
+
+  Future<LoginFormProvider?> restorePassword(LoginFormProvider forgotForm, BuildContext context) async{
+    var url = Uri.parse('http://10.0.2.2:8082/auth/forgot');
+    final response = await http.post(url,
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'username': forgotForm.email,
+      'firstPassword': forgotForm.passwordOne,
+      'secondPassword': forgotForm.passwordTwo,
+    }),
+    ).timeout(Duration(seconds: 10));   
+    String body = utf8.decode(response.bodyBytes);
+
+    if(response.statusCode == 202){           
+      forgotForm.isLoading = true;      
+      showDialog(
+        context: context, 
+        builder: (_) => CustomPopup(
+            title: textResultForgotTitle,
+            message: body,
+            buttonAccept: BounceButton(              
+              buttonSize: ButtonSize.small,
+              type: ButtonType.primary,
+              label: textButtonShowDialogForgot,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => LoginScreen())));
+              },
+            ),
+          )
+      );  
+    }else{
+      log(logForgotFailedBack);
+      showDialog(
+        context: context, 
+        builder: (_) => CustomPopup(
+            title: textResultForgotTitle,
+            message: body + logForgotFailedBack,
+            buttonAccept: BounceButton(
+              iconLeft: Icons.error,
+              buttonSize: ButtonSize.small,
+              type: ButtonType.primary,
+              label: textButtonShowDialogForgot,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          )
+      );  
+    }
+    return forgotForm;
   }
 
 

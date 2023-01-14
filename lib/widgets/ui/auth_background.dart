@@ -28,7 +28,7 @@ class _HeaderIcon extends StatelessWidget {
     return SafeArea(
       child: Container(
         width: double.infinity,
-        margin: const EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: 10),
         child: const Icon(
           Icons.person_add,
           color: themePersonAddHeaderIcon,

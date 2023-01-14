@@ -27,7 +27,7 @@ class PressButtonLoginWidget extends StatelessWidget {
             loginForm.isLoading ? 'Ingresando': 'Aceptar' ,                     
             style: const TextStyle(color: themeLoginStateProccess),
           )), 
-      onPressed: loginForm.isLoading && loginForm.email.length!=0 && loginForm.password.length!=0
+      onPressed: loginForm.isLoading && loginForm.email.length!=0 && loginForm.passwordOne.length!=0
           ? null
           : () {
               FocusScope.of(context).unfocus();

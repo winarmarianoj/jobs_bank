@@ -54,7 +54,7 @@ const textContactEmail = "bolsadetrabajo@algunlugar.com.ar";
 const textInitialsWebSiteName = 'BT';
 const textDarkModeTheme = 'Dark Mode';
 const textCustomModeTheme = 'Custom Theme';
-const textLogin = 'Login - Register';
+const textLoginRegisterForgot = 'Login - Register - Forgot';
 const textLogout = 'Logout';
 
 //TODO DropdownButtonFormField
@@ -64,6 +64,8 @@ const textSelectedEvalutaionJobOffer = 'Seleccionar un estado...';
 //TODO Login
 const textTitle = 'Login';
 const textNewAccount = 'Crea una nueva cuenta';
+const textChangePassword = 'Has olvidado tu contraseña?';
+const textRestorePassword = 'Restablecer Contraseña';
 const textButtonActionRegister = 'Registrarse';
 const textYouEmail = 'tuCasillaDeEmail@gmail.com';
 const textLabelTitleEmail = 'Correo electrónico';
@@ -71,6 +73,8 @@ const textInvalidData = 'El valor ingresado no es un correo valido';
 const textRegexPatternEmail = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 const textFormatPassword = '*******';
 const textLabelTitlePassword = 'Contraseña';
+const textLabelTitlePasswordOne = 'Primer Nueva Contraseña';
+const textLabelTitlePasswordTwo = 'Repita Contraseña';
 const textInvalidDataPassword = 'La contraseña debe de ser mayor o igual a 7 caracteres';
 const textResultErrorLoginTitle = 'Resultado del Login';
 const textResultInvalidDataLogin = 'Error en el proceso de login. Incorrecto password o su usuario no existe.';
@@ -103,6 +107,13 @@ const textResultRegisterTitle = 'Resultado del Registro de Usuario';
 const textRegisterPersonSuccess = 'Se ha registrado exitosamente. Debe confirmar y activar su cuenta a traves del email que le llegue.';
 const textResultInvalidDataRegister = 'Error en el proceso de registro. Incorrectos los datos. Vuelva a intentar.';
 const textButtonShowDialogRegister = 'OK';
+
+//TODO Forgot
+const textTitleForgot = 'Restore Password';
+const textResultForgotTitle = 'Resultado de Restaurar Contraseña';
+const textButtonShowDialogForgot = 'OK';
+const logForgotFailed = "Primer Contraseña es distinta a su repetición. Vuelva a intentarlo.";
+const logForgotFailedBack = 'Ha fallado el intento de restaurar su contraseña, intenten nuevamente mas tarde.';
 
 //TODO Welcome
 const textWelcomeTitleAnimation = "Bienvenido!!!";

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsColors.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/providers/loginFormProvider.dart';
+import 'package:jobs_bank/screens/ui/forgot/forgot.dart';
 import 'package:jobs_bank/screens/ui/register/registerScreenApplicant.dart';
+import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/login/emailLoginWidget.dart';
 import 'package:jobs_bank/widgets/login/pressButtonLoginWidget.dart';
 import 'package:jobs_bank/screens/ui/register/registerScreenPublisher.dart';
@@ -67,6 +69,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   });
                 },
               ),
+              const SizedBox(height: 50),
+              const Text(textChangePassword, style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,),
+              ),
+              const SizedBox(height: 10),
+              BounceButton(
+                buttonSize: ButtonSize.small, 
+                type: ButtonType.subscriptos, 
+                label: textRestorePassword,
+                iconLeft: Icons.password,
+                textColor: buttonChangeProfile,
+                horizontalPadding: true,
+                contentBasedWidth: true,
+                onPressed:() {
+                  Navigator.push(context, MaterialPageRoute(builder: ((context) => Forgot())));
+                },
+              ),  
+              const SizedBox(height: 50),                     
             ],
           ),
         ),
@@ -136,7 +155,7 @@ class _LoginFormState extends State<_LoginForm> {
               })
             ),
         ),
-        onChanged: (value) => loginForm.password = value,
+        onChanged: (value) => loginForm.passwordOne = value,
         validator: (value) {
           return (value != null && value.length > 6) ? null : textInvalidDataPassword;
         },
