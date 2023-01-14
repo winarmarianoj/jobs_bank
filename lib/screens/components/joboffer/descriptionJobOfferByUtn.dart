@@ -3,10 +3,7 @@ import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/models/JobOffer.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/widgets/joboffer/joboffers/jobOfferDataWidget.dart';
-import 'package:jobs_bank/screens/publisher/subscribed.dart';
 import 'package:jobs_bank/service/jobOfferService.dart';
-import 'package:jobs_bank/widgets/button/bounceButton.dart';
-import 'package:jobs_bank/widgets/itemCardWidgetText/itemCardTextWidget.dart';
 import 'package:jobs_bank/widgets/text/myText.dart';
 
 class DescriptionJobOfferByUtn extends StatefulWidget {
@@ -15,12 +12,13 @@ class DescriptionJobOfferByUtn extends StatefulWidget {
   const DescriptionJobOfferByUtn({Key? key, required this.jobOffer, required this.user,}) : super(key: key); 
 
   @override
-  State<DescriptionJobOfferByUtn> createState() => _DescriptionJobOfferByUtnState(jobOffer);
+  State<DescriptionJobOfferByUtn> createState() => _DescriptionJobOfferByUtnState(jobOffer, user);
 }
 
 class _DescriptionJobOfferByUtnState extends State<DescriptionJobOfferByUtn> {
   final JobOffer jobOffer;
-  _DescriptionJobOfferByUtnState(this.jobOffer);
+  final User user;
+  _DescriptionJobOfferByUtnState(this.jobOffer, this.user);
 
   JobOfferService jobOfferService = JobOfferService();
   String selectedState = '';
@@ -33,7 +31,7 @@ class _DescriptionJobOfferByUtnState extends State<DescriptionJobOfferByUtn> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           JobOfferDataWidget(jobOffer: jobOffer),
-          if (widget.user.role == 'UTN') Container(
+          if (!user.isUtnHome) Container(
             child: DropdownButtonFormField(
               items: <String>['APPROVED', 'REJECTED', 'REVIEW', 'DELETED'].map((item) {
                 return DropdownMenuItem(

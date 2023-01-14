@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
-import 'package:jobs_bank/widgets/userActive/bodyUtnDrawer.dart';
+import 'package:jobs_bank/widgets/userActive/bodyUtnEvaluationDrawer.dart';
 import 'package:jobs_bank/widgets/userActive/drawDrawer.dart';
 
 class Evaluation extends StatelessWidget{
@@ -11,7 +11,7 @@ class Evaluation extends StatelessWidget{
     return Scaffold(
       appBar: EmptyAppBar(context),
       drawer: DrawDrawer(),
-      body: BodyUtnDrawer(),
+      body: BodyUtnEvaluationDrawer(),
     );
   }
 

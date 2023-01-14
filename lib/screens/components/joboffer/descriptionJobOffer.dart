@@ -12,13 +12,16 @@ class DescriptionJobOffer extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size; 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           JobOfferDataWidget(jobOffer: jobOffer),
+          const SizedBox(height: defaultSpaceBetweenObjectsDescription),
           if (user.role == 'APPLICANT') ApplicantPostulateWidget(jobOffer: jobOffer, user: user),
+          const SizedBox(height: kDefaultPaddin*2),
         ]        
       )
     );

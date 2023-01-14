@@ -50,5 +50,12 @@ class User {
     _isPublisherHome = value;
   }
 
+  bool _isUtnHome = false;
+  bool get isUtnHome => _isUtnHome;
+
+  set setIsUtnHome(bool value) {
+    _isUtnHome = value;
+  }
+
 }
 

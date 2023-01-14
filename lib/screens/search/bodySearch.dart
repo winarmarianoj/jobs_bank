@@ -31,7 +31,7 @@ class FirstSearch extends State<BodySearch>{
             children: [
               if(user.role == 'APPLICANT' || user.role == 'PUBLISHER')
               MyBodyLargeText(text: "Tipo Modalidad:\nONSITE, REMOTE, MIXED\n" + 
-              "Tipo Posiciones:\nFULLTIME, PARTTIME, CONTRACT" + 
+              "Tipo Posiciones:\nFULLTIME, PARTTIME, CONTRACT\n" + 
               "Tipo Categorías:\nFULLSTACK, BACKEND, FRONTEND, QA, BILLING, CONTRACT, DEVELOPER, UI-UX, THIRD-PARTIES",
               fontWeight: FontWeight.bold, size: 16.0,),
               

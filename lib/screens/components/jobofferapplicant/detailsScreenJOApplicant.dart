@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jobs_bank/constant/constantsColors.dart';
+import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/models/JobOfferApplicant.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/screens/components/jobofferapplicant/detailsBodyJOApplicant.dart';
@@ -22,6 +23,7 @@ class DetailsScreenJOApplicant extends StatelessWidget {
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
       elevation: 0,
+      title: Text(textTitleJOApplicant),
       leading: IconButton(
         //color: colorIconAppBar,
         icon: SvgPicture.asset(

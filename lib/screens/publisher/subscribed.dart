@@ -19,7 +19,7 @@ class Subscribed extends StatelessWidget{
   AppBar EmptyAppBar(BuildContext context){
     return AppBar(
       elevation: 10,
-      title: Text(textTitleAppBarByPublisher),
+      title: Text(textTitleSubscribed),
     );
   }  
 

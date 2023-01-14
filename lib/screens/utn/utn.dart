@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/screens/search/search.dart';
 import 'package:jobs_bank/widgets/userActive/bodyHomeDrawer.dart';
+import 'package:jobs_bank/widgets/userActive/bodyUtnDrawer.dart';
 import 'package:jobs_bank/widgets/userActive/drawDrawer.dart';
 
 class Utn extends StatelessWidget{      
@@ -12,7 +13,7 @@ class Utn extends StatelessWidget{
     return Scaffold(
       appBar: EmptyAppBar(context), 
       drawer: DrawDrawer(),
-      body: BodyHomeDrawer(),
+      body: BodyUtnDrawer(),
     );
   }
   AppBar EmptyAppBar(BuildContext context){

@@ -12,9 +12,9 @@ class BodyEvaluation extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    user.setIsUtnHome = false;
     final JobOfferListService jobOfferService = JobOfferListService(); 
     String selectedCategory = '';
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

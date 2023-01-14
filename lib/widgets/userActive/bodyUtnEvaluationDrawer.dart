@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/cubit/userCubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jobs_bank/screens/utn/bodies/bodyUtn.dart';
+import 'package:jobs_bank/screens/utn/bodies/bodyEvaluation.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/message/customPopup.dart';
 
-class BodyUtnDrawer extends StatelessWidget {
-  BodyUtnDrawer({Key? key, }) : super(key: key);  
+class BodyUtnEvaluationDrawer extends StatelessWidget {
+  BodyUtnEvaluationDrawer({Key? key, }) : super(key: key);  
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class BodyUtnDrawer extends StatelessWidget {
             ); 
 
           case UserActive:
-            return BodyUtn(user: (state as UserActive).user, );
+            return BodyEvaluation(user: (state as UserActive).user, );
 
           default:
             return CustomPopup(

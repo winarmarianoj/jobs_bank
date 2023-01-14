@@ -52,8 +52,7 @@ class DetailsBodyJobOffer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[                      
                       if(!user!.conected || user!.role == 'APPLICANT') DescriptionJobOffer(jobOffer: jobOffer, user: user!,),
-                      if(user!.role == 'PUBLISHER') DescriptionJobOfferPublisher(jobOffer: jobOffer, user: user!),
-                      //if(user!.role == 'APPLICANT') DescriptionJobOffer(jobOffer: jobOffer, user: user!,),
+                      if(user!.role == 'PUBLISHER') DescriptionJobOfferPublisher(jobOffer: jobOffer, user: user!),                      
                       if(user!.role == 'UTN') DescriptionJobOfferByUtn(jobOffer: jobOffer, user: user!,),
                     ],
                   ),                  

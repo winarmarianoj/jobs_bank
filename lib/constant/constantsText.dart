@@ -117,6 +117,12 @@ const textTitleAppBarByApplicant = 'Menu Estudiante';
 const textTitleAppBarByPublisher = 'Menu Empresario';
 const textTitleAppBarByUtn = 'Menu Administrativo';
 const textTitleChangeProfile = 'Opciones de Cambio';
+const textTitleModifyPublisher = 'Modifica el Aviso';
+const textTitlePublish = 'Publicar Aviso';
+const textTitlePublished = 'Sus Avisos Publicados';
+const textTitleSubscribed = 'Subscriptores';
+const textTitleApplied = 'Mis Postulaciones';
+const textTitleJOApplicant = 'Descripción';
 
 //TODO tooltip
 const textToolTipTruck = 'Home Trucks';

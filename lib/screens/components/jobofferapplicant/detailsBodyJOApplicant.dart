@@ -19,7 +19,7 @@ class DetailsBodyJOApplicant extends StatelessWidget {
       child: Column(
         children: <Widget>[
           SizedBox(
-            height: size.height,
+            //height: size.height,
             child: Stack(
               children: <Widget>[
                 /* Image.asset(

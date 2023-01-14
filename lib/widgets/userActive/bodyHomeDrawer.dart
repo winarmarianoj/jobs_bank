@@ -25,7 +25,6 @@ class BodyHomeDrawer extends StatelessWidget {
             return BodyHome(user: newUser, );
 
           case UserActive:
-            //return BodyHome(user: (state as UserActive).user, );
             return BodyPublisher(user: (state as UserActive).user, );
 
           default:
