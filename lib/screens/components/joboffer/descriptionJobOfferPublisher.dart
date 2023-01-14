@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/models/JobOffer.dart';
 import 'package:jobs_bank/models/User.dart';
-import 'package:jobs_bank/widgets/joboffer/joboffers/applicantPostulateWidget.dart';
 import 'package:jobs_bank/widgets/joboffer/joboffers/jobOfferDataWidget.dart';
+import 'package:jobs_bank/widgets/joboffer/joboffers/publisherSubscribedWidget.dart';
 
-class DescriptionJobOffer extends StatelessWidget {
+class DescriptionJobOfferPublisher extends StatelessWidget {
   final JobOffer jobOffer;
   final User user;
-  const DescriptionJobOffer({Key? key, required this.jobOffer, required this.user,}) : super(key: key); 
+  const DescriptionJobOfferPublisher({Key? key, required this.jobOffer, required this.user,}) : super(key: key); 
   
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,8 @@ class DescriptionJobOffer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          JobOfferDataWidget(jobOffer: jobOffer),
-          if (user.role == 'APPLICANT') ApplicantPostulateWidget(jobOffer: jobOffer, user: user),
+          JobOfferDataWidget(jobOffer: jobOffer),          
+          if(!user.isPublisherHome) PublisherSubscribedWidget(jobOffer: jobOffer, user: user,),
         ]        
       )
     );

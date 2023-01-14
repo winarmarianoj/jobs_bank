@@ -4,32 +4,24 @@ import 'package:jobs_bank/models/JobOffer.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/screens/components/joboffer/detailsScreenJobOffer.dart';
 import 'package:jobs_bank/screens/components/joboffer/itemCardJobOffer.dart';
-import 'package:jobs_bank/service/reportServicies.dart';
+import 'package:jobs_bank/service/jobOfferListService.dart';
 
-class BodyPublished extends StatelessWidget{
+class BodyPublisher extends StatelessWidget{
   final User user;
-  BodyPublished({Key? key, required this.user}) : super(key: key);  
+  BodyPublisher({Key? key, required this.user}) : super(key: key);  
 
   @override
   Widget build(BuildContext context) {
-    final ReportService reportService = new ReportService();
-    user.setIsPublisherHome = false;
-    return Stack(
-      children: [
-        /* Image.asset(
-          "assets/images/texture.jpg",
-          width: 600,
-          height: 800,
-          fit: BoxFit.cover,
-        ), */
-        Column(
+    final JobOfferListService jobOfferService = JobOfferListService();
+    user.setIsPublisherHome = true;
+    return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 1),
                 child: FutureBuilder(                  
-                  future: reportService.getJobOfferPublished(user, context),
+                  future: jobOfferService.getAllPublishedJobOffers(context),
                   builder: (context, snapshot) {
                     if(snapshot.hasData){
                       List<JobOffer>? jobofferlist = snapshot.data as List<JobOffer>;
@@ -56,7 +48,7 @@ class BodyPublished extends StatelessWidget{
                         );
                     }else if(snapshot.hasError){
                       print(snapshot.error);
-                      return Text(logJobOfferFailedBodyPublished);
+                      return Text(logJobOfferFailedBodyHome);
                     }
 
                     return Center(child: CircularProgressIndicator(),);
@@ -65,10 +57,7 @@ class BodyPublished extends StatelessWidget{
               ),
             ),
           ],
-        ),
-      ],
-    );
-    
+        );
   }
 
   int amountListJobOffer(info){

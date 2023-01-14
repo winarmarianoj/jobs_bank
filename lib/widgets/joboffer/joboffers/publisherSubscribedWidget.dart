@@ -82,10 +82,10 @@ class PublisherSubscribedWidget extends StatelessWidget {
                       child: MyText(text: "NO",)),
                     ],
                   ),
-                );
-                
+                );                
               },
           ),
+          const SizedBox(height: kDefaultPaddin*2),
         ],
       ),
     );

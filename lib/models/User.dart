@@ -16,7 +16,7 @@ class User {
     String? name, lastName, identification, phone, email, password, role, jwt,
     genre, birthDate, typeStudent, webPage,
     int? id,
-    bool? conected,
+    bool? conected,     
   }) =>
     User(
     id: id?? this.id,
@@ -32,7 +32,7 @@ class User {
     birthDate: birthDate ?? this.birthDate,
     typeStudent: typeStudent ?? this.typeStudent,
     webPage: webPage ?? this.webPage,
-    conected: conected ?? this.conected,
+    conected: conected ?? this.conected,    
   );
 
   factory User.fromJson(Map<String, dynamic> jsonData) {    
@@ -41,21 +41,14 @@ class User {
     password: 'Developer\$2023', role: jsonData['role'], jwt: jsonData['jwt'], 
     genre: jsonData['genre'], birthDate: jsonData['birthDate'], typeStudent: jsonData['typeStudent'],
     webPage: jsonData['webPage'], conected: jsonData['conected']);
+  } 
+
+  bool _isPublisherHome = false;
+  bool get isPublisherHome => _isPublisherHome;
+
+  set setIsPublisherHome(bool value) {
+    _isPublisherHome = value;
   }
 
-  
-  /* User getNewUser(String body){
-    final jsonData = jsonDecode(body);
-    User user = User(id: jsonData['id'], name: jsonData['name'], lastName: jsonData['lastName'], 
-    identification: jsonData['identification'], phone: jsonData['phone'], email: jsonData['username'], 
-    password: 'Developer\$2023', role: jsonData['role'], jwt: jsonData['jwt'], 
-    genre: jsonData['genre'], birthDate: jsonData['birthDate'], typeStudent: jsonData['typeStudent'],
-    webPage: jsonData['webPage'], conected: jsonData['conected']);
-    log(user.name + " " + user.lastName + " " + user.role + " con id " + user.id.toString() + " esta todo bien");
-    return user;
-  }  */ 
-
-
 }
-
 

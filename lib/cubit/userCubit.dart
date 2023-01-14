@@ -1,13 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/service/profileService.dart';
-import 'package:jobs_bank/widgets/text/myText.dart';
-import 'package:jobs_bank/widgets/userActive/bodyProfileDrawer.dart';
 part 'userState.dart';
 
 class UserCubit extends Cubit<UserState> {

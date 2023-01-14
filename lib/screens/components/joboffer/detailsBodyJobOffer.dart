@@ -5,11 +5,12 @@ import 'package:jobs_bank/models/JobOffer.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/screens/components/joboffer/descriptionJobOffer.dart';
 import 'package:jobs_bank/screens/components/joboffer/descriptionJobOfferByUtn.dart';
+import 'package:jobs_bank/screens/components/joboffer/descriptionJobOfferPublisher.dart';
 
 class DetailsBodyJobOffer extends StatelessWidget {
   final JobOffer jobOffer;
-  final User user;
-  const DetailsBodyJobOffer({Key? key, required this.jobOffer, required this.user}) : super(key: key);
+  User? user;
+  DetailsBodyJobOffer({Key? key, required this.jobOffer, this.user}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class DetailsBodyJobOffer extends StatelessWidget {
           child: Column(
             children: <Widget>[          
               SizedBox(
-                height: 700,// size.height,
+                //height: 700,                
                 child: Container(
                   margin: EdgeInsets.only(top: size.height * 0.04),
                   padding: EdgeInsets.only(
@@ -48,10 +49,12 @@ class DetailsBodyJobOffer extends StatelessWidget {
                     ),
                   ),
                   child: Column(
-                    children: <Widget>[
-                      if(!user.conected) DescriptionJobOffer(jobOffer: jobOffer, user: user,),
-                      if(user.role == 'APPLICANT' || user.role == 'PUBLISHER') DescriptionJobOffer(jobOffer: jobOffer, user: user,),
-                      if(user.role == 'UTN') DescriptionJobOfferByUtn(jobOffer: jobOffer, user: user,),
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[                      
+                      if(!user!.conected || user!.role == 'APPLICANT') DescriptionJobOffer(jobOffer: jobOffer, user: user!,),
+                      if(user!.role == 'PUBLISHER') DescriptionJobOfferPublisher(jobOffer: jobOffer, user: user!),
+                      //if(user!.role == 'APPLICANT') DescriptionJobOffer(jobOffer: jobOffer, user: user!,),
+                      if(user!.role == 'UTN') DescriptionJobOfferByUtn(jobOffer: jobOffer, user: user!,),
                     ],
                   ),                  
                 ),
