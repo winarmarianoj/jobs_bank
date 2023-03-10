@@ -29,7 +29,18 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ThemeChanger(6)),
         BlocProvider(create: ( _ ) => UserCubit() ),
       ],
-      child: Builder(
+      child: MaterialApp(
+      
+        debugShowCheckedModeBanner: false,
+            title: textTitleWebSite,
+            //initialRoute: textInitialRouteApp,
+            home: Home(),
+            //theme: appTheme.darkTheme ? themeDarkTwo : themeLightTwo, 
+            //theme: appTheme.darkTheme ? themeDarkOne : themeLightOne, 
+            theme: ThemeData.light(), 
+      ), 
+      
+      /*child: Builder(
         builder: (context) {
           final appTheme = Provider.of<ThemeChanger>(context);
           return MaterialApp(            
@@ -37,12 +48,13 @@ class MyApp extends StatelessWidget {
             title: textTitleWebSite,
             //initialRoute: textInitialRouteApp,
             home: Home(),
-            theme: appTheme.darkTheme ? themeDarkTwo : themeLightTwo, 
+            //theme: appTheme.darkTheme ? themeDarkTwo : themeLightTwo, 
             //theme: appTheme.darkTheme ? themeDarkOne : themeLightOne, 
-            //theme: appTheme.darkTheme ? ThemeData.dark() : ThemeData.light(), 
+            theme: appTheme.darkTheme ? ThemeData.dark() : ThemeData.light(), 
           );
         }
-      ),      
+      ),*/
+
     );     
   } 
     

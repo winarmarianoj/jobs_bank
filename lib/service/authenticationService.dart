@@ -15,8 +15,12 @@ import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/message/customPopup.dart';
 
 class AuthenticationService {
+  final String baseHeroku = 'https://bolsadetrabajo.herokuapp.com/';
+  final String baseLocalhost = 'http://localhost:8082/';
+  final String baseLocal = 'http://10.0.2.2:8082/';
+  
   Future<LoginFormProvider?> getLoginUser(LoginFormProvider loginForm, BuildContext context) async{    
-    var url = Uri.parse('http://10.0.2.2:8082/flutter/login-flutter');
+    var url = Uri.parse(baseLocalhost + 'flutter/login-flutter');
     final response = await http.post(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -57,7 +61,7 @@ class AuthenticationService {
   }
 
   Future<User?> logoutUser(User user, BuildContext context) async{    
-    var url = Uri.parse('http://10.0.2.2:8082/flutter/logout-flutter');
+    var url = Uri.parse(baseLocalhost + 'flutter/logout-flutter');
     final response = await http.post(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -95,7 +99,7 @@ class AuthenticationService {
 
   Future<RegisterFormProvider?> registerApplicant(RegisterFormProvider register, BuildContext context) async{
     final userCubit = context.read<UserCubit>();
-    var url = Uri.parse('http://10.0.2.2:8082/flutter/');
+    var url = Uri.parse(baseLocalhost + 'flutter/');
     final response = await http.post(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -160,7 +164,7 @@ class AuthenticationService {
 
   Future<RegisterFormProvider?> registerPublisher(RegisterFormProvider register, BuildContext context) async{
     final userCubit = context.read<UserCubit>();
-    var url = Uri.parse('http://10.0.2.2:8082/flutter/');
+    var url = Uri.parse(baseLocalhost + 'flutter/');
     final response = await http.post(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -222,7 +226,7 @@ class AuthenticationService {
   }
 
   Future<LoginFormProvider?> restorePassword(LoginFormProvider forgotForm, BuildContext context) async{
-    var url = Uri.parse('http://10.0.2.2:8082/auth/forgot');
+    var url = Uri.parse(baseLocalhost + 'auth/forgot');
     final response = await http.post(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',

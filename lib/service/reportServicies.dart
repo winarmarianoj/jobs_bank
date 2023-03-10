@@ -13,9 +13,12 @@ import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/message/customPopup.dart';
 
 class ReportService {
-
+  final String baseHeroku = 'https://bolsadetrabajo.herokuapp.com/';
+  final String baseLocalhost = 'http://localhost:8082/';
+  final String baseLocal = 'http://10.0.2.2:8082/';
+  
   Future<List<JobOfferApplicant>?> getJobOfferApplied(User user, BuildContext context) async{
-    var url = Uri.parse('http://10.0.2.2:8082/flutter/applied/' + user.id.toString());
+    var url = Uri.parse(baseLocalhost + 'flutter/applied/' + user.id.toString());
     List<JobOfferApplicant> jobOfferAppList = [];    
     final response = await http.get(url).timeout(Duration(seconds: 10));
     String body = utf8.decode(response.bodyBytes);
@@ -67,7 +70,7 @@ class ReportService {
   }
 
   Future<List<JobOffer>?> getJobOfferPublished(User user, BuildContext context) async{
-    var url = Uri.parse('http://10.0.2.2:8082/flutter/publisher/'+user.id.toString());
+    var url = Uri.parse(baseLocalhost + 'flutter/publisher/' + user.id.toString());
     List<JobOffer> joboffers = [];    
     final response = await http.get(url).timeout(Duration(seconds: 10));
     String body = utf8.decode(response.bodyBytes);
@@ -119,7 +122,7 @@ class ReportService {
   }
 
   Future<List<JobOfferApplicant>?> getAllAppliedByJobOffer(int jobOfferID, BuildContext context) async{
-    var url = Uri.parse('http://10.0.2.2:8082/flutter/jobapplicants-by-my-offers/'+jobOfferID.toString());
+    var url = Uri.parse(baseLocalhost + 'flutter/jobapplicants-by-my-offers/' + jobOfferID.toString());
     List<JobOfferApplicant> jobOfferApp = [];    
     final response = await http.get(url).timeout(Duration(seconds: 10));
     String body = utf8.decode(response.bodyBytes);

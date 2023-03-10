@@ -13,9 +13,12 @@ import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/message/customPopup.dart';
 
 class JobOfferService { 
+  final String baseHeroku = 'https://bolsadetrabajo.herokuapp.com/';
+  final String baseLocalhost = 'http://localhost:8082/';
+  final String baseLocal = 'http://10.0.2.2:8082/';
 
   Future<JobOffer?> createJobOffer(User user, BuildContext context, PublishFormProvider publishForm) async{
-    var url = Uri.parse('http://10.0.2.2:8082/joboffer/' + user.id.toString());
+    var url = Uri.parse(baseLocalhost + 'joboffer/' + user.id.toString());
     final response = await http.post(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -75,7 +78,7 @@ class JobOfferService {
   }  
 
   Future<JobOffer?> modifyJobOffer(User user, BuildContext context, PublishFormProvider publishForm) async{
-    var url = Uri.parse('http://10.0.2.2:8082/flutter/joboffer');
+    var url = Uri.parse(baseLocalhost + 'flutter/joboffer' + publishForm.id);
     final response = await http.put(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -136,7 +139,7 @@ class JobOfferService {
   }    
 
   Future<JobOffer?> jobOfferEvaluation(String selectedState, JobOffer jobOffer, BuildContext context) async{
-    var url = Uri.parse('http://10.0.2.2:8082/joboffer/evaluation');
+    var url = Uri.parse(baseLocalhost + 'joboffer/evaluation');
     final response = await http.post(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -190,7 +193,7 @@ class JobOfferService {
   }
 
   void deleteJobOffer(JobOffer jobOffer, BuildContext context) async{    
-    var url = Uri.parse('http://10.0.2.2:8082/joboffer/' + jobOffer.id.toString());    
+    var url = Uri.parse(baseLocalhost + 'joboffer/' + jobOffer.id.toString());    
     final response = await http.delete(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',

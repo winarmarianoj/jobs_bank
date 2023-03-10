@@ -9,10 +9,13 @@ import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/message/customPopup.dart';
 
 class ApplicantService {
+  final String baseHeroku = 'https://bolsadetrabajo.herokuapp.com/';
+  final String baseLocalhost = 'http://localhost:8082/';
+  final String baseLocal = 'http://10.0.2.2:8082/';
 
   Future<bool?> postulate(int jobOfferID, User user, BuildContext context) async{
     bool result = false;
-    var url = Uri.parse('http://10.0.2.2:8082/joboffer/postulate');
+    var url = Uri.parse(baseLocalhost + 'joboffer/postulate');
     final response = await http.post(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',

@@ -13,8 +13,12 @@ import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/message/customPopup.dart';
 
 class JobOfferListService{
+  final String baseHeroku = 'https://bolsadetrabajo.herokuapp.com/';
+  final String baseLocalhost = 'http://localhost:8082/';
+  final String baseLocal = 'http://10.0.2.2:8082/';
+  
   Future<List<JobOffer>?> getJobOfferAll(BuildContext context) async{
-    var url = Uri.parse('http://10.0.2.2:8082/joboffer/');
+    var url = Uri.parse(baseLocalhost + 'joboffer/');
     List<JobOffer> joboffers = [];    
     final response = await http.get(url).timeout(Duration(seconds: 100));
     String body = utf8.decode(response.bodyBytes);
@@ -67,7 +71,7 @@ class JobOfferListService{
   }
 
   Future<List<JobOffer>?> getJobOfferPending(BuildContext context) async{
-    var url = Uri.parse('http://10.0.2.2:8082/joboffer/pending');
+    var url = Uri.parse(baseLocalhost + 'joboffer/pending');
     List<JobOffer> joboffers = [];    
     final response = await http.get(url).timeout(Duration(seconds: 100));
     String body = utf8.decode(response.bodyBytes);
@@ -120,7 +124,7 @@ class JobOfferListService{
   }
 
   Future<List<JobOffer>?> getAllPublishedJobOffers(BuildContext context) async{
-    var url = Uri.parse('http://10.0.2.2:8082/joboffer/published-all');
+    var url = Uri.parse(baseLocalhost + 'joboffer/published-all');
     List<JobOffer> joboffers = [];    
     final response = await http.get(url).timeout(Duration(seconds: 100));
     String body = utf8.decode(response.bodyBytes);

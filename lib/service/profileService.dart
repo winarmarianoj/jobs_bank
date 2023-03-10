@@ -14,9 +14,13 @@ import 'package:jobs_bank/widgets/userActive/bodyHomeDrawer.dart';
 import 'package:jobs_bank/widgets/userActive/bodyProfileDrawer.dart';
 
 class ProfileService {
+  final String baseHeroku = 'https://bolsadetrabajo.herokuapp.com/';
+  final String baseLocalhost = 'http://localhost:8082/';
+  final String baseLocal = 'http://10.0.2.2:8082/';
+  
   Future<User?> changeUser(User newUser, BuildContext context) async{
     final userCubit = context.read<UserCubit>();  
-    var url = Uri.parse('http://10.0.2.2:8082/person/' + newUser.id.toString());
+    var url = Uri.parse(baseLocalhost + 'flutter/' + newUser.id.toString());
     final response = await http.put(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -37,11 +41,16 @@ class ProfileService {
     }),
     ).timeout(Duration(seconds: 10));    
 
-    var urlUser = Uri.parse('http://10.0.2.2:8082/flutter/' + newUser.id.toString());
-    final responseUser = await http.get(urlUser,
+    var urlUser = Uri.parse(baseLocalhost + 'flutter/getprofile');
+    final responseUser = await http.post(urlUser,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
-    },).timeout(Duration(seconds: 50));
+    },
+    body: jsonEncode(<String, String>{
+      'id': newUser.id.toString(),
+      'role': newUser.role
+    }),
+    ).timeout(Duration(seconds: 50));
     String bodyUser = utf8.decode(responseUser.bodyBytes);
     final jsonData = jsonDecode(bodyUser); 
 
@@ -89,7 +98,7 @@ class ProfileService {
   }
 
   void deleteUser(User user, BuildContext context) async{    
-    var url = Uri.parse('http://10.0.2.2:8082/person/' + user.id.toString());    
+    var url = Uri.parse(baseLocalhost + 'flutter/' + user.id.toString());    
     final response = await http.delete(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
