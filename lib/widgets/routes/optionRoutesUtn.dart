@@ -19,9 +19,9 @@ class OptionRoutesUtn extends StatelessWidget {
         ), 
         itemCount: pageRoutesUtn.length,
         itemBuilder: (context, i) => ListTile(
-          leading: FaIcon( pageRoutesUtn[i].icon , color: appTheme.accentColor ),
+          leading: FaIcon( pageRoutesUtn[i].icon , color: appTheme.hintColor ),
           title: Text( pageRoutesUtn[i].titulo ),
-          trailing: Icon( Icons.chevron_right, color: appTheme.accentColor ),
+          trailing: Icon( Icons.chevron_right, color: appTheme.hintColor ),
           onTap: () {
             Navigator.push(context,
              MaterialPageRoute(builder: (context)=> pageRoutesUtn[i].page ));

@@ -1,6 +1,25 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+
+ Brightness estimateBrightnessForColor(Color color) {
+    final double relativeLuminance = color.computeLuminance();
+
+    // See <https://www.w3.org/TR/WCAG20/#contrast-ratiodef>
+    // The spec says to use kThreshold=0.0525, but Material Design appears to bias
+    // more towards using light text than WCAG20 recommends. Material Design spec
+    // doesn't say what value to use, but 0.15 seemed close to what the Material
+    // Design spec shows for its color palette on
+    // <https://material.io/go/design-theming#color-color-palette>.
+    const double kThreshold = 0.15;
+    if ((relativeLuminance + 0.05) * (relativeLuminance + 0.05) > kThreshold) {
+      return Brightness.light;
+    }
+    return Brightness.dark;
+  }
+ 
 /* ThemeData themeLightOne = ThemeData(
     brightness: Brightness.light,
     visualDensity: VisualDensity(vertical: 0.5, horizontal: 0.5),
@@ -66,6 +85,7 @@ import 'package:flutter/cupertino.dart';
     focusColor: Color(0x1a311F06));
  */
 
+
 ThemeData themeLightTwo = ThemeData(
   brightness: Brightness.light,
   visualDensity: VisualDensity(vertical: 0.5, horizontal: 0.5),
@@ -101,8 +121,9 @@ ThemeData themeLightTwo = ThemeData(
   primaryColorLight: Color(0x1aF5E0C3),
   primaryColorDark: Color(0xff1CE9D4),
   canvasColor: Color(0xffE09E45),
-  accentColor: Color(0xff457BE0),
-  accentColorBrightness: Brightness.light,
+  colorScheme: themeLightTwo.colorScheme.copyWith(secondary: Color(0xff457BE0)),
+  hintColor: const Color(0xff457BE0),
+  //accentColorBrightness : ThemeData.estimateBrightnessForColor(Brightness.lighty),
   // color fondo background
   scaffoldBackgroundColor: Color.fromARGB(170, 27, 207, 189),
   bottomAppBarColor: Color(0xff6D42CE),
@@ -122,7 +143,7 @@ ThemeData themeLightTwo = ThemeData(
   toggleButtonsTheme: ToggleButtonsThemeData(
       //toggle button theme
       ),
-  buttonColor: Color(0xff1CE9D4),
+  //buttonColor: Color(0xff1CE9D4),
   secondaryHeaderColor: Colors.grey,
   /* textSelectionColor: Color(0xffB5BFD3),
   cursorColor: Color(0xff936F3E),
@@ -130,7 +151,6 @@ ThemeData themeLightTwo = ThemeData(
   backgroundColor: Color(0xff457BE0),
   dialogBackgroundColor: Colors.white,
   indicatorColor: Color(0xff457BE0),
-  hintColor: Colors.grey,
   errorColor: Colors.red,
   toggleableActiveColor: Color(0xff6D42CE),
   textTheme: TextTheme(
@@ -139,9 +159,7 @@ ThemeData themeLightTwo = ThemeData(
   primaryTextTheme: TextTheme(
       //text theme that contrast with primary color
       ),
-  accentTextTheme: TextTheme(
-      //text theme that contrast with accent Color
-      ),
+  //accentTextTheme: themeDarkTwo.textTheme.headlineLarge(color: themeDarkTwo.colorScheme.onSecondary,),
   inputDecorationTheme: InputDecorationTheme(
       // default values for InputDecorator, TextField, and TextFormField
       ),
@@ -151,9 +169,7 @@ ThemeData themeLightTwo = ThemeData(
   primaryIconTheme: IconThemeData(
       //icon themes that contrast primary color
       ),
-  accentIconTheme: IconThemeData(
-      //icon themes that contrast accent color
-      ),
+  //accentIconTheme: IconThemeData(//icon themes that contrast accent color),
 );
 
 ThemeData themeDarkTwo = ThemeData(
@@ -191,8 +207,9 @@ ThemeData themeDarkTwo = ThemeData(
   primaryColorLight: Color(0x1a311F06),
   primaryColorDark: Color(0xff0E655C),
   canvasColor: Color(0xffE09E45),
-  accentColor: Colors.pink,//Color(0xff457BE0),
-  accentColorBrightness: Brightness.dark,
+  colorScheme: themeLightTwo.colorScheme.copyWith(secondary: Colors.pink),
+  hintColor: const Color(0xff457BE0),
+  //accentColorBrightness: Brightness.dark,
   scaffoldBackgroundColor: Color(0xaa0E655C),// Color.fromARGB(255, 10, 76, 206),
   bottomAppBarColor: Color(0xff6D42CE),
   cardColor: Color.fromARGB(170, 35, 143, 132),
@@ -211,7 +228,7 @@ ThemeData themeDarkTwo = ThemeData(
   toggleButtonsTheme: ToggleButtonsThemeData(
 //toggle button theme
       ),
-  buttonColor: Color(0xffC24303),
+  //buttonColor: Color(0xffC24303),
   secondaryHeaderColor: Colors.grey,
   /* textSelectionColor: Color(0x1a483112),
   cursorColor: Color(0xff483112),
@@ -220,7 +237,6 @@ ThemeData themeDarkTwo = ThemeData(
    
   dialogBackgroundColor: Color.fromARGB(255, 187, 30, 30),
   indicatorColor: Color.fromARGB(255, 159, 168, 185),
-  hintColor: Colors.grey,
   errorColor: Colors.red,
   toggleableActiveColor: Color(0xff6D42CE),
   textTheme: TextTheme(
@@ -229,9 +245,7 @@ ThemeData themeDarkTwo = ThemeData(
   primaryTextTheme: TextTheme(
 //text theme that contrast with primary color
       ),
-  accentTextTheme: TextTheme(
-//text theme that contrast with accent Color
-      ),
+ // accentTextTheme: TextTheme(//text theme that contrast with accent Color),
   inputDecorationTheme: InputDecorationTheme(
 // default values for InputDecorator, TextField, and TextFormField
       ),
@@ -241,9 +255,7 @@ ThemeData themeDarkTwo = ThemeData(
   primaryIconTheme: IconThemeData(
 //icon themes that contrast primary color
       ),
-  accentIconTheme: IconThemeData(
-//icon themes that contrast accent color
-      ),
+  //accentIconTheme: IconThemeData(//icon themes that contrast accent color),
 );
 
 /* ThemeData themeLightThree = ThemeData(

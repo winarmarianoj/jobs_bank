@@ -23,7 +23,7 @@ class BodyDrawer extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     final appTheme = Provider.of<ThemeChanger>(context);
-    final accentColor = appTheme.currentTheme.accentColor;
+    final accentColor = appTheme.currentTheme.hintColor;
     return Drawer(
       width: 280,
         child: Column(

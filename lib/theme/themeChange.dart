@@ -27,7 +27,7 @@ class ThemeChanger with ChangeNotifier {
         _darkTheme   = true;
         _customTheme = false;
         _currentTheme = ThemeData.dark().copyWith(
-          accentColor: Colors.pink
+          hintColor: Colors.pink
         ); 
       break;
 
@@ -49,7 +49,7 @@ class ThemeChanger with ChangeNotifier {
 
     if ( value ) {
       _currentTheme = ThemeData.dark().copyWith(
-          accentColor: Colors.pink
+          hintColor: Colors.pink
       ); 
     } else {
       _currentTheme = themeLightTwo; 
@@ -64,7 +64,7 @@ class ThemeChanger with ChangeNotifier {
 
     if ( value ) {
       _currentTheme = ThemeData.dark().copyWith(
-          accentColor: Color.fromARGB(255, 4, 97, 179),
+          hintColor: Color.fromARGB(255, 4, 97, 179),
           primaryColorLight: Colors.white,
           scaffoldBackgroundColor: Color(0xff16202B),
           textTheme: TextTheme(
