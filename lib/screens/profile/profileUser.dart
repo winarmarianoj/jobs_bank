@@ -36,6 +36,7 @@ class UserData extends StatelessWidget {
             children: [              
               Text("Datos de su perfil", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold,),),
               Divider(),
+              ListTile( title: Text('Person ID: ${ user.personId }', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal,))),
               ListTile( title: Text('Nombre: ${ user.name }', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal,))),
               ListTile( title: Text('Apellido: ${ user.lastName }', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal,))),
               ListTile( title: Text('Identification: ${ user.identification }', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal,))),

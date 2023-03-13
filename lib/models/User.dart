@@ -1,25 +1,28 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:jobs_bank/models/Contact.dart';
 
 class User {  
   final int id;
-  final String name, lastName, identification, phone, email, password, role, jwt,
+  final String personId, name, lastName, identification, phone, email, password, role, jwt,
   genre, birthDate, typeStudent, webPage;
   final bool conected;
 
-  User({ required this.id, required this.name, required this.lastName, required this.identification,
+  User({ required this.id, required this.personId, required this.name, required this.lastName, required this.identification,
   required this.phone, required this.email, required this.password, required this.genre, 
   required this.birthDate, required this.typeStudent, required this.webPage,
   required this.role, required this.jwt, required this.conected});
 
   User copyWith({ 
-    String? name, lastName, identification, phone, email, password, role, jwt,
+    String? personId, name, lastName, identification, phone, email, password, role, jwt,
     genre, birthDate, typeStudent, webPage,
     int? id,
     bool? conected,     
   }) =>
     User(
     id: id?? this.id,
+    personId: personId?? this.personId,
     name: name ?? this.name,
     lastName: lastName ?? this.lastName,
     identification: identification ?? this.identification,
@@ -36,7 +39,7 @@ class User {
   );
 
   factory User.fromJson(Map<String, dynamic> jsonData) {    
-    return User(id: jsonData['id'], name: jsonData['name'], lastName: jsonData['lastName'], 
+    return User(id: jsonData['id'], personId: jsonData['personId'], name: jsonData['name'], lastName: jsonData['lastName'], 
     identification: jsonData['identification'], phone: jsonData['phone'], email: jsonData['username'], 
     password: 'Developer\$2023', role: jsonData['role'], jwt: jsonData['jwt'], 
     genre: jsonData['genre'], birthDate: jsonData['birthDate'], typeStudent: jsonData['typeStudent'],

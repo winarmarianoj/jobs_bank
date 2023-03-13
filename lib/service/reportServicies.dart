@@ -18,7 +18,7 @@ class ReportService {
   final String baseLocal = 'http://10.0.2.2:8082/';
   
   Future<List<JobOfferApplicant>?> getJobOfferApplied(User user, BuildContext context) async{
-    var url = Uri.parse(baseLocalhost + 'flutter/applied/' + user.id.toString());
+    var url = Uri.parse(baseLocalhost + 'flutter/applied/' + user.personId.toString());
     List<JobOfferApplicant> jobOfferAppList = [];    
     final response = await http.get(url).timeout(Duration(seconds: 10));
     String body = utf8.decode(response.bodyBytes);
@@ -70,7 +70,7 @@ class ReportService {
   }
 
   Future<List<JobOffer>?> getJobOfferPublished(User user, BuildContext context) async{
-    var url = Uri.parse(baseLocalhost + 'flutter/publisher/' + user.id.toString());
+    var url = Uri.parse(baseLocalhost + 'flutter/publisher/' + user.personId.toString());
     List<JobOffer> joboffers = [];    
     final response = await http.get(url).timeout(Duration(seconds: 10));
     String body = utf8.decode(response.bodyBytes);

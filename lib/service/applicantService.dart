@@ -21,9 +21,9 @@ class ApplicantService {
       'Content-Type': 'application/json; charset=UTF-8',
       'Charset' : 'utf-8'
     },
-    body: jsonEncode(<String, int>{
-      'jobofferID': jobOfferID,
-      'applicantID': user.id,
+    body: jsonEncode(<String, String>{
+      'jobofferID': jobOfferID.toString(),
+      'applicantID': user.personId,
     }),
     ).timeout(Duration(seconds: 60));
     

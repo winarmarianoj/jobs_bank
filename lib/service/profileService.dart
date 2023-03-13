@@ -19,7 +19,7 @@ class ProfileService {
   final String baseLocal = 'http://10.0.2.2:8082/';
   
   Future<User?> changeUser(User newUser, BuildContext context) async{
-    var url = Uri.parse(baseLocalhost + 'flutter/changeuser/' + newUser.id.toString());
+    var url = Uri.parse(baseLocalhost + 'flutter/changeuser/' + newUser.personId.toString());
     final response = await http.put(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -46,7 +46,7 @@ class ProfileService {
       'Content-Type': 'application/json; charset=UTF-8',
     },
     body: jsonEncode(<String, String>{
-      'id': newUser.id.toString(),
+      'id': newUser.personId.toString(),
       'role': newUser.role
     }),
     ).timeout(Duration(seconds: 50));
@@ -103,7 +103,7 @@ class ProfileService {
       'Content-Type': 'application/json; charset=UTF-8',
     },
     body: jsonEncode(<String, String>{
-      'id': user.id.toString(),
+      'id': user.personId.toString(),
       'role': user.role
     }),
     ).timeout(Duration(seconds: 10));

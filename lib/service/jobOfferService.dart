@@ -18,7 +18,7 @@ class JobOfferService {
   final String baseLocal = 'http://10.0.2.2:8082/';
 
   Future<JobOffer?> createJobOffer(User user, BuildContext context, PublishFormProvider publishForm) async{
-    var url = Uri.parse(baseLocalhost + 'joboffer/' + user.id.toString());
+    var url = Uri.parse(baseLocalhost + 'joboffer/' + user.personId.toString());
     final response = await http.post(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
