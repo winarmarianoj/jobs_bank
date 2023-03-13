@@ -4,13 +4,13 @@ import 'package:jobs_bank/theme/menuTheme.dart';
 class ThemeChanger with ChangeNotifier {
 
   bool _darkTheme   = false;
-  bool _customTheme = false;
+  bool _customTheme =  false;
 
   ThemeData? _currentTheme;
 
-  bool get darkTheme   => this._darkTheme;
-  bool get customTheme => this._customTheme;
-  ThemeData get currentTheme => this._currentTheme!;
+  bool get darkTheme   => _darkTheme;
+  bool get customTheme => _customTheme;
+  ThemeData get currentTheme => _currentTheme!;
 
 
   ThemeChanger( int theme ) {
@@ -20,7 +20,7 @@ class ThemeChanger with ChangeNotifier {
       case 1: // light
         _darkTheme   = false;
         _customTheme = true;
-        _currentTheme = themeLightTwo;
+        _currentTheme = ThemeData.light(); //themeLightTwo;
       break;
 
       case 2: // Dark
@@ -38,8 +38,8 @@ class ThemeChanger with ChangeNotifier {
 
       default:
         _darkTheme = false;
-        _darkTheme = false;
-        _currentTheme = themeDarkTwo;
+        _customTheme = false;
+        _currentTheme = ThemeData.dark(); // themeDarkTwo;
     }
   }
 
@@ -52,7 +52,7 @@ class ThemeChanger with ChangeNotifier {
           hintColor: Colors.pink
       ); 
     } else {
-      _currentTheme = themeLightTwo; 
+      _currentTheme = ThemeData.light(); // themeLightTwo; 
     }
 
     notifyListeners();
@@ -73,7 +73,7 @@ class ThemeChanger with ChangeNotifier {
           // textTheme.body1.color
       ); 
     } else {
-      _currentTheme = themeDarkTwo; 
+      _currentTheme = ThemeData.dark(); // themeDarkTwo; 
     }
 
     notifyListeners();

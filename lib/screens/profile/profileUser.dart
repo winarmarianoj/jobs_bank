@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/screens/profile/changeProfileUser.dart';
+import 'package:jobs_bank/widgets/userActive/drawDrawer.dart';
 
 class BodyScaffold extends StatelessWidget {
   final User user;
@@ -11,6 +12,7 @@ class BodyScaffold extends StatelessWidget {
       appBar:  AppBar(
         elevation: 10,
       ),
+      drawer: DrawDrawer(),
       body: SingleChildScrollView(
         child: UserData(user),
       ),  

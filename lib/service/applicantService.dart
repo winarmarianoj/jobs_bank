@@ -27,14 +27,14 @@ class ApplicantService {
     }),
     ).timeout(Duration(seconds: 60));
     
-    String body = utf8.decode(response.bodyBytes);
+    String bodyMessage = utf8.decode(response.bodyBytes);
     if(response.statusCode == 202){      
       result = true;
       showDialog(
         context: context, 
         builder: (_) => CustomPopup(
             title: textLabelPostulateService,
-            message: body, 
+            message: bodyMessage, 
             buttonAccept: BounceButton(
               iconLeft: Icons.save,
               buttonSize: ButtonSize.small,
@@ -46,13 +46,30 @@ class ApplicantService {
             ),
           )
       );  
-    }else{      
-      log(logPostulateFailedApplicantService);
+    }else if(response.statusCode == 406){      
+      log(logPostulateFailedApplicantService + " " + bodyMessage);
       showDialog(
         context: context, 
         builder: (_) => CustomPopup(
             title: textLabelPostulateService,
-            message: body,
+            message: logPostulateFailedApplicantService + " " + bodyMessage,
+            buttonAccept: BounceButton(
+              iconLeft: Icons.error,
+              buttonSize: ButtonSize.small,
+              type: ButtonType.primary,
+              label: textButtonShowDialogLogin,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => Applicant())));
+              },
+            ),
+          )
+      );  
+    }else if(response.statusCode == 503){
+      showDialog(
+        context: context, 
+        builder: (_) => CustomPopup(
+            title: textLabelPostulateService,
+            message: bodyMessage,
             buttonAccept: BounceButton(
               iconLeft: Icons.error,
               buttonSize: ButtonSize.small,

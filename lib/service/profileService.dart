@@ -7,7 +7,7 @@ import 'package:jobs_bank/constant/constantsText.dart';
 import 'package:jobs_bank/cubit/userCubit.dart';
 import 'package:jobs_bank/models/User.dart';
 import 'package:jobs_bank/screens/home/home.dart';
-import 'package:jobs_bank/screens/publisher/publisher.dart';
+import 'package:jobs_bank/screens/profile/profileUser.dart';
 import 'package:jobs_bank/widgets/button/bounceButton.dart';
 import 'package:jobs_bank/widgets/message/customPopup.dart';
 import 'package:jobs_bank/widgets/userActive/bodyHomeDrawer.dart';
@@ -19,8 +19,7 @@ class ProfileService {
   final String baseLocal = 'http://10.0.2.2:8082/';
   
   Future<User?> changeUser(User newUser, BuildContext context) async{
-    final userCubit = context.read<UserCubit>();  
-    var url = Uri.parse(baseLocalhost + 'flutter/' + newUser.id.toString());
+    var url = Uri.parse(baseLocalhost + 'flutter/changeuser/' + newUser.id.toString());
     final response = await http.put(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
@@ -56,7 +55,7 @@ class ProfileService {
 
     if(response.statusCode == 200){ 
       User getNewUserChanged = User.fromJson(jsonData);
-      userCubit.createUser(getNewUserChanged);
+      context.read<UserCubit>().createUser(getNewUserChanged);
       showDialog(
         context: context, 
         builder: (_) => CustomPopup(
@@ -68,7 +67,7 @@ class ProfileService {
               type: ButtonType.primary,
               label: textButtonShowDialogLogin,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) => Home())));
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => BodyScaffold(getNewUserChanged))));
               },
             ),
           )
@@ -97,16 +96,21 @@ class ProfileService {
     return newUser;    
   }
 
-  void deleteUser(User user, BuildContext context) async{    
-    var url = Uri.parse(baseLocalhost + 'flutter/' + user.id.toString());    
+  void deleteUser(User user, BuildContext context) async{
+    var url = Uri.parse(baseLocalhost + 'flutter/deleteuser');    
     final response = await http.delete(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
-    },    
+    },
+    body: jsonEncode(<String, String>{
+      'id': user.id.toString(),
+      'role': user.role
+    }),
     ).timeout(Duration(seconds: 10));
     String body = utf8.decode(response.bodyBytes); 
 
-    if(response.statusCode == 200){         
+    if(response.statusCode == 200){ 
+      context.read<UserCubit>().logout();
       showDialog(
         context: context, 
         builder: (_) => CustomPopup(
@@ -118,7 +122,7 @@ class ProfileService {
               type: ButtonType.primary,
               label: textButtonShowDialogLogin,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) => BodyHomeDrawer())));
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => Home())));
               },
             ),
           )

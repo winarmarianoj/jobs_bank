@@ -65,10 +65,6 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 
-  void logout() {
-    emit( UserInitial( ) );
-  }
-
   void changeIdentification(String newAttribute, BuildContext context) {
     final currentState = state;
     if ( currentState is UserActive ) {
@@ -120,8 +116,11 @@ class UserCubit extends Cubit<UserState> {
       final newUser = currentState.user.copyWith();
       log("estoy en userCubit delete y el user id es " + newUser.id.toString());
       profileService.deleteUser(newUser, context);
-      //emit( UserActive( newUser ) );
     }    
+  }
+
+  void logout() {
+    emit(UserInitial());
   }
 
 }
